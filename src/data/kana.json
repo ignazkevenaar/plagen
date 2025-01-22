@@ -1,0 +1,53 @@
+{
+  "private": [
+    { "kana": "さ", "transliteration": "sa" },
+    { "kana": "す", "transliteration": "su" },
+    { "kana": "せ", "transliteration": "se" },
+    { "kana": "そ", "transliteration": "so" },
+    { "kana": "た", "transliteration": "ta" },
+    { "kana": "ち", "transliteration": "chi" },
+    { "kana": "つ", "transliteration": "tsu" },
+    { "kana": "て", "transliteration": "te" },
+    { "kana": "と", "transliteration": "to" },
+    { "kana": "な", "transliteration": "na" },
+    { "kana": "に", "transliteration": "ni" },
+    { "kana": "ぬ", "transliteration": "nu" },
+    { "kana": "ね", "transliteration": "ne" },
+    { "kana": "の", "transliteration": "no" },
+    { "kana": "は", "transliteration": "ha" },
+    { "kana": "ひ", "transliteration": "hi" },
+    { "kana": "ふ", "transliteration": "fu" },
+    { "kana": "ほ", "transliteration": "ho" },
+    { "kana": "ま", "transliteration": "ma" },
+    { "kana": "み", "transliteration": "mi" },
+    { "kana": "む", "transliteration": "mu" },
+    { "kana": "め", "transliteration": "me" },
+    { "kana": "も", "transliteration": "mo" },
+    { "kana": "や", "transliteration": "ya" },
+    { "kana": "ゆ", "transliteration": "yu" },
+    {
+      "kana": "よ",
+      "transliteration": "yo",
+      "use": "Retired US military personnel"
+    },
+    { "kana": "ら", "transliteration": "ra" },
+    { "kana": "り", "transliteration": "ri" },
+    { "kana": "る", "transliteration": "ru" },
+    { "kana": "ろ", "transliteration": "ro" },
+    { "kana": "れ", "transliteration": "re", "use": "Rental car" },
+    { "kana": "わ", "transliteration": "wa", "use": "Rental car" }
+  ],
+  "commercial": [
+    { "kana": "あ", "transliteration": "a" },
+    { "kana": "い", "transliteration": "i" },
+    { "kana": "う", "transliteration": "u" },
+    { "kana": "え", "transliteration": "e" },
+    { "kana": "か", "transliteration": "ka" },
+    { "kana": "き", "transliteration": "ki" },
+    { "kana": "く", "transliteration": "ku" },
+    { "kana": "け", "transliteration": "ke" },
+    { "kana": "こ", "transliteration": "ko" },
+    { "kana": "を", "transliteration": "wo" }
+  ],
+  "special": ["Y", "A", "K", "M", "G", "H", "E"]
+}

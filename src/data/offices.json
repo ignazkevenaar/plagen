@@ -1,0 +1,1362 @@
+[
+  {
+    "transliteration": "Aichi",
+    "kanji": "愛知県",
+    "municipalities": [
+      {
+        "name": "Komaki",
+        "markings": [
+          {
+            "kanji": "尾張小牧",
+            "transliteration": "Owari-Komaki",
+            "international": "ACO"
+          },
+          {
+            "kanji": "一宮",
+            "transliteration": "Ichinomiya",
+            "international": "ACI"
+          },
+          {
+            "kanji": "春日井",
+            "transliteration": "Kasugai",
+            "international": "ACK"
+          }
+        ]
+      },
+      {
+        "name": "Nagoya",
+        "markings": [
+          {
+            "kanji": "名古屋",
+            "transliteration": "Nagoya",
+            "international": "ACN",
+            "oldNames": [{ "kanji": "愛", "transliteration": "AC" }]
+          }
+        ]
+      },
+      {
+        "name": "Toyohashi",
+        "markings": [
+          {
+            "kanji": "豊橋",
+            "transliteration": "Toyohashi",
+            "international": "ACT"
+          }
+        ]
+      },
+      {
+        "name": "Toyota",
+        "markings": [
+          {
+            "kanji": "三河",
+            "transliteration": "Mikawa",
+            "international": "ACM"
+          },
+          {
+            "kanji": "岡崎",
+            "transliteration": "Okazaki",
+            "international": "ACZ"
+          },
+          {
+            "kanji": "豊田",
+            "transliteration": "Toyota",
+            "international": "ACY"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Akita",
+    "kanji": "秋田県",
+    "municipalities": [
+      {
+        "name": "Akita",
+        "markings": [
+          {
+            "kanji": "秋田",
+            "transliteration": "Akita",
+            "international": "ATA",
+            "oldNames": [{ "kanji": "秋", "transliteration": "AT" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Aomori",
+    "kanji": "青森県",
+    "municipalities": [
+      {
+        "name": "Aomori",
+        "markings": [
+          {
+            "kanji": "青森",
+            "transliteration": "Aomori",
+            "international": "AMA",
+            "oldNames": [{ "kanji": "青", "transliteration": "AM" }]
+          }
+        ]
+      },
+      {
+        "name": "Hachinohe",
+        "markings": [
+          {
+            "kanji": "八戸",
+            "transliteration": "Hachinohe",
+            "international": "AMH"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Chiba",
+    "kanji": "千葉県",
+    "municipalities": [
+      {
+        "name": "Chiba",
+        "markings": [
+          {
+            "kanji": "千葉",
+            "transliteration": "Chiba",
+            "international": "CBC",
+            "oldNames": [{ "kanji": "千", "transliteration": "CB" }]
+          },
+          {
+            "kanji": "成田",
+            "transliteration": "Narita",
+            "international": "CBT"
+          }
+        ]
+      },
+      {
+        "name": "Funabashi",
+        "markings": [
+          {
+            "kanji": "習志野",
+            "transliteration": "Narashino",
+            "international": "CBN"
+          }
+        ]
+      },
+      {
+        "name": "Noda",
+        "markings": [
+          {
+            "kanji": "野田",
+            "transliteration": "Noda",
+            "international": "CBD"
+          },
+          {
+            "kanji": "柏",
+            "transliteration": "Kashiwa",
+            "international": "CBK"
+          }
+        ]
+      },
+      {
+        "name": "Sodegaura",
+        "markings": [
+          {
+            "kanji": "袖ヶ浦",
+            "transliteration": "Sodegaura",
+            "international": "CBS"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Ehime",
+    "kanji": "愛媛県",
+    "municipalities": [
+      {
+        "name": "Matsuyama",
+        "markings": [
+          { "kanji": "愛媛", "transliteration": "Ehime", "international": "EH" }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Fukui",
+    "kanji": "福井県",
+    "municipalities": [
+      {
+        "name": "Fukui",
+        "markings": [
+          { "kanji": "福井", "transliteration": "Fukui", "international": "FI" }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Fukuoka",
+    "kanji": "福岡県",
+    "municipalities": [
+      {
+        "name": "Fukuoka",
+        "markings": [
+          {
+            "kanji": "福岡",
+            "transliteration": "Fukuoka",
+            "international": "FOF",
+            "oldNames": [{ "kanji": "福", "transliteration": "FO" }]
+          }
+        ]
+      },
+      {
+        "name": "Iizuka",
+        "markings": [
+          {
+            "kanji": "筑豊",
+            "transliteration": "Chikuhō",
+            "international": "FOC"
+          }
+        ]
+      },
+      {
+        "name": "Kitakyushu",
+        "markings": [
+          {
+            "kanji": "北九州",
+            "transliteration": "Kitakyūshū",
+            "international": "FOK"
+          }
+        ]
+      },
+      {
+        "name": "Kurume",
+        "markings": [
+          {
+            "kanji": "久留米",
+            "transliteration": "Kurume",
+            "international": "FOR"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Fukushima",
+    "kanji": "福島県",
+    "municipalities": [
+      {
+        "name": "Fukushima",
+        "markings": [
+          {
+            "kanji": "福島",
+            "transliteration": "Fukushima",
+            "international": "FS"
+          },
+          {
+            "kanji": "会津",
+            "transliteration": "Aizu",
+            "international": "FSA"
+          },
+          {
+            "kanji": "郡山",
+            "transliteration": "Kōriyama",
+            "international": "FSK"
+          }
+        ]
+      },
+      {
+        "name": "Iwaki",
+        "markings": [
+          {
+            "kanji": "いわき",
+            "transliteration": "Iwaki",
+            "international": "FSI"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Gifu",
+    "kanji": "岐阜県",
+    "municipalities": [
+      {
+        "name": "Gifu",
+        "markings": [
+          {
+            "kanji": "岐阜",
+            "transliteration": "Gifu",
+            "international": "GFG",
+            "oldNames": [{ "kanji": "岐", "transliteration": "GF" }]
+          }
+        ]
+      },
+      {
+        "name": "Takayama",
+        "markings": [
+          { "kanji": "飛騨", "transliteration": "Hida", "international": "GFH" }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Gunma",
+    "kanji": "群馬県",
+    "municipalities": [
+      {
+        "name": "Maebashi",
+        "markings": [
+          {
+            "kanji": "群馬",
+            "transliteration": "Gunma",
+            "international": "GMG",
+            "oldNames": [{ "kanji": "群", "transliteration": "GM" }]
+          },
+          {
+            "kanji": "前橋",
+            "transliteration": "Maebashi",
+            "international": "GMM"
+          },
+          {
+            "kanji": "高崎",
+            "transliteration": "Takasaki",
+            "international": "GMT"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Hiroshima",
+    "kanji": "広島県",
+    "municipalities": [
+      {
+        "name": "Fukuyama",
+        "markings": [
+          {
+            "kanji": "福山",
+            "transliteration": "Fukuyama",
+            "international": "HSF"
+          }
+        ]
+      },
+      {
+        "name": "Hiroshima",
+        "markings": [
+          {
+            "kanji": "広島",
+            "transliteration": "Hiroshima",
+            "international": "HSH",
+            "oldNames": [{ "kanji": "広", "transliteration": "HS" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Hokkaidō",
+    "kanji": "北海道",
+    "municipalities": [
+      {
+        "name": "Asahikawa",
+        "markings": [
+          {
+            "kanji": "旭川",
+            "transliteration": "Asahikawa",
+            "international": "AKA",
+            "oldNames": [{ "kanji": "旭", "transliteration": "AK" }]
+          }
+        ]
+      },
+      {
+        "name": "Hakodate",
+        "markings": [
+          {
+            "kanji": "函館",
+            "transliteration": "Hakodate",
+            "international": "HDH",
+            "oldNames": [{ "kanji": "函", "transliteration": "HD" }]
+          }
+        ]
+      },
+      {
+        "name": "Kitami",
+        "markings": [
+          {
+            "kanji": "北見",
+            "transliteration": "Kitami",
+            "international": "KIK",
+            "oldNames": [{ "kanji": "北", "transliteration": "KI" }]
+          }
+        ]
+      },
+      {
+        "name": "Kushiro",
+        "markings": [
+          {
+            "kanji": "釧路",
+            "transliteration": "Kushiro",
+            "international": "KRK",
+            "oldNames": [{ "kanji": "釧", "transliteration": "KR" }]
+          }
+        ]
+      },
+      {
+        "name": "Muroran",
+        "markings": [
+          {
+            "kanji": "室蘭",
+            "transliteration": "Muroran",
+            "international": "MRM",
+            "oldNames": [{ "kanji": "室", "transliteration": "MR" }]
+          }
+        ]
+      },
+      {
+        "name": "Obihiro",
+        "markings": [
+          {
+            "kanji": "帯広",
+            "transliteration": "Obihiro",
+            "international": "OHO",
+            "oldNames": [{ "kanji": "帯", "transliteration": "OH" }]
+          }
+        ]
+      },
+      {
+        "name": "Sapporo",
+        "markings": [
+          {
+            "kanji": "札幌",
+            "transliteration": "Sapporo",
+            "international": "SPS",
+            "oldNames": [{ "kanji": "札", "transliteration": "SP" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Hyōgo",
+    "kanji": "兵庫県",
+    "municipalities": [
+      {
+        "name": "Himeji",
+        "markings": [
+          {
+            "kanji": "姫路",
+            "transliteration": "Himeji",
+            "international": "HGH"
+          }
+        ]
+      },
+      {
+        "name": "Kobe",
+        "markings": [
+          {
+            "kanji": "神戸",
+            "transliteration": "Kōbe",
+            "international": "HGK",
+            "oldNames": [{ "kanji": "兵", "transliteration": "HG" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Ibaraki",
+    "kanji": "茨城県",
+    "municipalities": [
+      {
+        "name": "Mito",
+        "markings": [
+          {
+            "kanji": "水戸",
+            "transliteration": "Mito",
+            "international": "IGM",
+            "oldNames": [
+              { "kanji": "茨城", "transliteration": "IGI" },
+              { "kanji": "茨", "transliteration": "IG" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Tsuchiura",
+        "markings": [
+          {
+            "kanji": "土浦",
+            "transliteration": "Tsuchiura",
+            "international": "IGT"
+          },
+          {
+            "kanji": "つくば",
+            "transliteration": "Tsukuba",
+            "international": "IGK"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Ishikawa",
+    "kanji": "石川県",
+    "municipalities": [
+      {
+        "name": "Kanazawa",
+        "markings": [
+          {
+            "kanji": "石川",
+            "transliteration": "Ishikawa",
+            "international": "IKI",
+            "oldNames": [{ "kanji": "石", "transliteration": "IK" }]
+          },
+          {
+            "kanji": "金沢",
+            "transliteration": "Kanazawa",
+            "international": "IKK"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Iwate",
+    "kanji": "岩手県",
+    "municipalities": [
+      {
+        "name": "Yahaba",
+        "markings": [
+          {
+            "kanji": "岩手",
+            "transliteration": "Iwate",
+            "international": "ITI",
+            "oldNames": [{ "kanji": "岩", "transliteration": "IT" }]
+          },
+          {
+            "kanji": "平泉",
+            "transliteration": "Hiraizumi",
+            "international": "ITH"
+          },
+          {
+            "kanji": "盛岡",
+            "transliteration": "Morioka",
+            "international": "ITM"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Kagawa",
+    "kanji": "香川県",
+    "municipalities": [
+      {
+        "name": "Takamatsu",
+        "markings": [
+          {
+            "kanji": "香川",
+            "transliteration": "Kagawa",
+            "international": "KAK",
+            "oldNames": [{ "kanji": "香", "transliteration": "KA" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Kagoshima",
+    "kanji": "鹿児島県",
+    "municipalities": [
+      {
+        "name": "Kagoshima",
+        "markings": [
+          {
+            "kanji": "鹿児島",
+            "transliteration": "Kagoshima",
+            "international": "KOK",
+            "oldNames": [{ "kanji": "鹿", "transliteration": "KO" }]
+          },
+          {
+            "kanji": "奄美",
+            "transliteration": "Amami",
+            "international": "KOA"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Kanagawa",
+    "kanji": "神奈川県",
+    "municipalities": [
+      {
+        "name": "Aikawa",
+        "markings": [
+          {
+            "kanji": "相模",
+            "transliteration": "Sagami",
+            "international": "KNS"
+          }
+        ]
+      },
+      {
+        "name": "Hiratsuka",
+        "markings": [
+          {
+            "kanji": "湘南",
+            "transliteration": "Shōnan",
+            "international": "KNN"
+          }
+        ]
+      },
+      {
+        "name": "Kawasaki",
+        "markings": [
+          {
+            "kanji": "川崎",
+            "transliteration": "Kawasaki",
+            "international": "KNK"
+          }
+        ]
+      },
+      {
+        "name": "Yokohama",
+        "markings": [
+          {
+            "kanji": "横浜",
+            "transliteration": "Yokohama",
+            "international": "KNY",
+            "oldNames": [{ "kanji": "神", "transliteration": "KN" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Kōchi",
+    "kanji": "高知県",
+    "municipalities": [
+      {
+        "name": "Kōchi",
+        "markings": [
+          {
+            "kanji": "高知",
+            "transliteration": "Kōchi",
+            "international": "KCK",
+            "oldNames": [{ "kanji": "高", "transliteration": "KC" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Kumamoto",
+    "kanji": "熊本県",
+    "municipalities": [
+      {
+        "name": "Kumamoto",
+        "markings": [
+          {
+            "kanji": "熊本",
+            "transliteration": "Kumamoto",
+            "international": "KUK",
+            "oldNames": [{ "kanji": "熊", "transliteration": "KU" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Kyōto",
+    "kanji": "京都府",
+    "municipalities": [
+      {
+        "name": "Kyōto",
+        "markings": [
+          {
+            "kanji": "京都",
+            "transliteration": "Kyōto",
+            "international": "KTK",
+            "oldNames": [{ "kanji": "京", "transliteration": "KT" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Mie",
+    "kanji": "三重県",
+    "municipalities": [
+      {
+        "name": "Tsu",
+        "markings": [
+          {
+            "kanji": "三重",
+            "transliteration": "Mie",
+            "international": "MEM",
+            "oldNames": [{ "kanji": "三", "transliteration": "ME" }]
+          },
+          {
+            "kanji": "鈴鹿",
+            "transliteration": "Suzuka",
+            "international": "MES"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Miyagi",
+    "kanji": "宮城県",
+    "municipalities": [
+      {
+        "name": "Sendai",
+        "markings": [
+          {
+            "kanji": "宮城",
+            "transliteration": "Miyagi",
+            "international": "MGM",
+            "oldNames": [{ "kanji": "宮", "transliteration": "MG" }]
+          },
+          {
+            "kanji": "仙台",
+            "transliteration": "Sendai",
+            "international": "MGS"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Miyazaki",
+    "kanji": "宮崎県",
+    "municipalities": [
+      {
+        "name": "Miyazaki",
+        "markings": [
+          {
+            "kanji": "宮崎",
+            "transliteration": "Miyazaki",
+            "international": "MZ"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Nagano",
+    "kanji": "長野県",
+    "municipalities": [
+      {
+        "name": "Matsumoto",
+        "markings": [
+          {
+            "kanji": "松本",
+            "transliteration": "Matsumoto",
+            "international": "NNM"
+          },
+          { "kanji": "諏訪", "transliteration": "Suwa", "international": "NNS" }
+        ]
+      },
+      {
+        "name": "Nagano",
+        "markings": [
+          {
+            "kanji": "長野",
+            "transliteration": "Nagano",
+            "international": "NNN",
+            "oldNames": [{ "kanji": "長", "transliteration": "NN" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Nagasaki",
+    "kanji": "長崎県",
+    "municipalities": [
+      {
+        "name": "Nagasaki",
+        "markings": [
+          {
+            "kanji": "長崎",
+            "transliteration": "Nagasaki",
+            "international": "NS"
+          }
+        ]
+      },
+      {
+        "name": "Tsushima",
+        "markings": [
+          {
+            "kanji": "長崎",
+            "transliteration": "Nagasaki",
+            "international": "NS"
+          }
+        ]
+      },
+      {
+        "name": "Sasebo",
+        "markings": [
+          {
+            "kanji": "佐世保",
+            "transliteration": "Sasebo",
+            "international": "NSS"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Nara",
+    "kanji": "奈良県",
+    "municipalities": [
+      {
+        "name": "Yamatokōriyama",
+        "markings": [
+          {
+            "kanji": "奈良",
+            "transliteration": "Nara",
+            "international": "NRN",
+            "oldNames": [{ "kanji": "奈", "transliteration": "NR" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Niigata",
+    "kanji": "新潟県",
+    "municipalities": [
+      {
+        "name": "Nagaoka",
+        "markings": [
+          {
+            "kanji": "長岡",
+            "transliteration": "Nagaoka",
+            "international": "NGO"
+          }
+        ]
+      },
+      {
+        "name": "Niigata",
+        "markings": [
+          {
+            "kanji": "新潟",
+            "transliteration": "Niigata",
+            "international": "NGN",
+            "oldNames": [{ "kanji": "新", "transliteration": "NG" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Ōita",
+    "kanji": "大分県",
+    "municipalities": [
+      {
+        "name": "Ōita",
+        "markings": [
+          { "kanji": "大分", "transliteration": "Ōita", "international": "OT" }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Okayama",
+    "kanji": "岡山県",
+    "municipalities": [
+      {
+        "name": "Okayama",
+        "markings": [
+          {
+            "kanji": "岡山",
+            "transliteration": "Okayama",
+            "international": "OYO",
+            "oldNames": [{ "kanji": "岡", "transliteration": "OY" }]
+          },
+          {
+            "kanji": "倉敷",
+            "transliteration": "Kurashiki",
+            "international": "OYK"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Okinawa",
+    "kanji": "沖縄県",
+    "municipalities": [
+      {
+        "name": "Ishigaki",
+        "markings": [
+          {
+            "kanji": "沖縄",
+            "transliteration": "Okinawa",
+            "international": "ONO",
+            "oldNames": [{ "kanji": "沖", "transliteration": "ON" }]
+          }
+        ]
+      },
+      {
+        "name": "Miyakojima",
+        "markings": [
+          {
+            "kanji": "沖縄",
+            "transliteration": "Okinawa",
+            "international": "ONO",
+            "oldNames": [{ "kanji": "沖", "transliteration": "ON" }]
+          }
+        ]
+      },
+      {
+        "name": "Urasoe",
+        "markings": [
+          {
+            "kanji": "沖縄",
+            "transliteration": "Okinawa",
+            "international": "ONO",
+            "oldNames": [{ "kanji": "沖", "transliteration": "ON" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Ōsaka",
+    "kanji": "大阪府",
+    "municipalities": [
+      {
+        "name": "Izumi",
+        "markings": [
+          {
+            "kanji": "和泉",
+            "transliteration": "Izumi",
+            "international": "OSZ",
+            "oldNames": [{ "kanji": "泉", "transliteration": "OSI" }]
+          },
+          { "kanji": "堺", "transliteration": "Sakai", "international": "OSS" }
+        ]
+      },
+      {
+        "name": "Neyagawa",
+        "markings": [
+          {
+            "kanji": "大阪",
+            "transliteration": "Ōsaka",
+            "international": "OSO",
+            "oldNames": [{ "kanji": "大", "transliteration": "OS" }]
+          }
+        ]
+      },
+      {
+        "name": "Ōsaka",
+        "markings": [
+          {
+            "kanji": "なにわ",
+            "transliteration": "Naniwa",
+            "international": "OSN"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Saga",
+    "kanji": "佐賀県",
+    "municipalities": [
+      {
+        "name": "Saga",
+        "markings": [
+          {
+            "kanji": "佐賀",
+            "transliteration": "Saga",
+            "international": "SAS",
+            "oldNames": [{ "kanji": "佐", "transliteration": "SA" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Saitama",
+    "kanji": "埼玉県",
+    "municipalities": [
+      {
+        "name": "Kasukabe",
+        "markings": [
+          {
+            "kanji": "春日部",
+            "transliteration": "Kasukabe",
+            "international": "STB"
+          },
+          {
+            "kanji": "越谷",
+            "transliteration": "Koshigaya",
+            "international": "STY"
+          }
+        ]
+      },
+      {
+        "name": "Kumagaya",
+        "markings": [
+          {
+            "kanji": "熊谷",
+            "transliteration": "Kumagaya",
+            "international": "STK"
+          }
+        ]
+      },
+      {
+        "name": "Saitama",
+        "markings": [
+          {
+            "kanji": "大宮",
+            "transliteration": "Ōmiya",
+            "international": "STO",
+            "oldNames": [
+              { "kanji": "埼玉", "transliteration": "STS" },
+              { "kanji": "埼", "transliteration": "ST" }
+            ]
+          },
+          {
+            "kanji": "川口",
+            "transliteration": "Kawaguchi",
+            "international": "STW"
+          }
+        ]
+      },
+      {
+        "name": "Tokorozawa",
+        "markings": [
+          {
+            "kanji": "所沢",
+            "transliteration": "Tokorozawa",
+            "international": "STT"
+          },
+          {
+            "kanji": "川越",
+            "transliteration": "Kawagoe",
+            "international": "STG"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Shiga",
+    "kanji": "滋賀県",
+    "municipalities": [
+      {
+        "name": "Moriyama",
+        "markings": [
+          {
+            "kanji": "滋賀",
+            "transliteration": "Shiga",
+            "international": "SIS",
+            "oldNames": [{ "kanji": "滋", "transliteration": "SI" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Shimane",
+    "kanji": "島根県",
+    "municipalities": [
+      {
+        "name": "Shimane",
+        "markings": [
+          {
+            "kanji": "島根",
+            "transliteration": "Shimane",
+            "international": "SN",
+            "oldNames": [{ "kanji": "嶋", "transliteration": "SM" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Shizuoka",
+    "kanji": "静岡県",
+    "municipalities": [
+      {
+        "name": "Hamamatsu",
+        "markings": [
+          {
+            "kanji": "浜松",
+            "transliteration": "Hamamatsu",
+            "international": "SZH"
+          }
+        ]
+      },
+      {
+        "name": "Numazu",
+        "markings": [
+          {
+            "kanji": "沼津",
+            "transliteration": "Numazu",
+            "international": "SZN"
+          },
+          {
+            "kanji": "富士山",
+            "transliteration": "Fujisan",
+            "international": "SZF"
+          },
+          { "kanji": "伊豆", "transliteration": "Izu", "international": "SZI" }
+        ]
+      },
+      {
+        "name": "Shizuoka",
+        "markings": [
+          {
+            "kanji": "静岡",
+            "transliteration": "Shizuoka",
+            "international": "SZS",
+            "oldNames": [{ "kanji": "静", "transliteration": "SZ" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Tochigi",
+    "kanji": "栃木県",
+    "municipalities": [
+      {
+        "name": "Sano",
+        "markings": [
+          {
+            "kanji": "とちぎ",
+            "transliteration": "Tochigi",
+            "international": "TCK"
+          }
+        ]
+      },
+      {
+        "name": "Utsunomiya",
+        "markings": [
+          {
+            "kanji": "宇都宮",
+            "transliteration": "Utsunomiya",
+            "international": "TGU",
+            "oldNames": [
+              { "kanji": "栃木", "transliteration": "TGT" },
+              { "kanji": "栃", "transliteration": "TG" }
+            ]
+          },
+          { "kanji": "那須", "transliteration": "Nasu", "international": "TGN" }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Tokushima",
+    "kanji": "徳島県",
+    "municipalities": [
+      {
+        "name": "Tokushima",
+        "markings": [
+          {
+            "kanji": "徳島",
+            "transliteration": "Tokushima",
+            "international": "TST",
+            "oldNames": [{ "kanji": "徳", "transliteration": "TS" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Tōkyō",
+    "kanji": "東京都",
+    "municipalities": [
+      {
+        "name": "Adachi",
+        "markings": [
+          {
+            "kanji": "足立",
+            "transliteration": "Adachi",
+            "international": "TKA",
+            "oldNames": [{ "kanji": "足", "transliteration": "TOA" }]
+          }
+        ]
+      },
+      {
+        "name": "Hachiōji",
+        "markings": [
+          {
+            "kanji": "八王子",
+            "transliteration": "Hachiōji",
+            "international": "TKH"
+          }
+        ]
+      },
+      {
+        "name": "Kunitachi",
+        "markings": [
+          {
+            "kanji": "多摩",
+            "transliteration": "Tama",
+            "international": "TKT",
+            "oldNames": [{ "kanji": "多", "transliteration": "TOT" }]
+          }
+        ]
+      },
+      {
+        "name": "Nerima",
+        "markings": [
+          {
+            "kanji": "練馬",
+            "transliteration": "Nerima",
+            "international": "TKN",
+            "oldNames": [{ "kanji": "練", "transliteration": "TON" }]
+          },
+          {
+            "kanji": "杉並",
+            "transliteration": "Suginami",
+            "international": "TKM"
+          }
+        ]
+      },
+      {
+        "name": "Shinagawa",
+        "markings": [
+          {
+            "kanji": "品川",
+            "transliteration": "Shinagawa, Ogasawara",
+            "international": "TKS",
+            "oldNames": [{ "kanji": "品", "transliteration": "TOS" }]
+          },
+          {
+            "kanji": "世田谷",
+            "transliteration": "Setagaya",
+            "international": "TKG"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Tottori",
+    "kanji": "鳥取県",
+    "municipalities": [
+      {
+        "name": "Tottori",
+        "markings": [
+          {
+            "kanji": "鳥取",
+            "transliteration": "Tottori",
+            "international": "TTT",
+            "oldNames": [{ "kanji": "鳥", "transliteration": "TT" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Toyama",
+    "kanji": "富山県",
+    "municipalities": [
+      {
+        "name": "Toyama",
+        "markings": [
+          {
+            "kanji": "富山",
+            "transliteration": "Toyama",
+            "international": "TYT",
+            "oldNames": [{ "kanji": "富", "transliteration": "TY" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Wakayama",
+    "kanji": "和歌山県",
+    "municipalities": [
+      {
+        "name": "Wakayama",
+        "markings": [
+          {
+            "kanji": "和歌山",
+            "transliteration": "Wakayama",
+            "international": "WKW",
+            "oldNames": [{ "kanji": "和", "transliteration": "WK" }]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Yamagata",
+    "kanji": "山形県",
+    "municipalities": [
+      {
+        "name": "Mikawa",
+        "markings": [
+          {
+            "kanji": "庄内",
+            "transliteration": "Shōnai",
+            "international": "YAS"
+          }
+        ]
+      },
+      {
+        "name": "Yamagata",
+        "markings": [
+          {
+            "kanji": "山形",
+            "transliteration": "Yamagata",
+            "international": "YA"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Yamaguchi",
+    "kanji": "山口県",
+    "municipalities": [
+      {
+        "name": "Yamaguchi",
+        "markings": [
+          {
+            "kanji": "山口",
+            "transliteration": "Yamaguchi",
+            "international": "YUY",
+            "oldNames": [{ "kanji": "山", "transliteration": "YU" }]
+          },
+          {
+            "kanji": "下関",
+            "transliteration": "Shimonoseki",
+            "international": "YUS"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "transliteration": "Yamanashi",
+    "kanji": "山梨県",
+    "municipalities": [
+      {
+        "name": "Fuefuki",
+        "markings": [
+          {
+            "kanji": "山梨",
+            "transliteration": "Yamanashi",
+            "international": "YN"
+          },
+          {
+            "kanji": "富士山",
+            "transliteration": "Fujisan",
+            "international": "YNF"
+          }
+        ]
+      }
+    ]
+  }
+]
