@@ -31,7 +31,7 @@ const settings = ref({
 
 <template>
   <div
-    class="grid h-screen grid-cols-[1fr_auto] gap-6 bg-gray-50 p-8 text-black dark:bg-gray-800 dark:text-white"
+    class="grid h-screen grid-cols-[1fr_auto] gap-6 bg-gray-50 p-8 text-black scheme-light-dark dark:bg-gray-800 dark:text-white"
   >
     <LicencePlate
       ref="plate"
