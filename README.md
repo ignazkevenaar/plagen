@@ -5,7 +5,6 @@ A small tool to create Japanese licence plates to use in video games or car mode
 ## Wishlist
 
 - Commercial vehicle kana
-- Optional seal
 - Improved fonts
 - Improved font for latin military characters
 - Generating PNGs

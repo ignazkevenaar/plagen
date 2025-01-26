@@ -26,6 +26,7 @@ const settings = ref({
   office: "TKS",
   classification: "33",
   kana: "つ",
+  showSeal: true,
 });
 </script>
 
@@ -41,6 +42,7 @@ const settings = ref({
       :office="settings.office"
       :classification="settings.classification"
       :kana="settings.kana"
+      :show-seal="settings.showSeal"
     />
     <div class="md:overflow-hidden">
       <SettingsPanel

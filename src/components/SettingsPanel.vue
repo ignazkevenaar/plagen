@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
-import InputText from "./settings/InputText.vue";
-import ColorButton from "./settings/ColorButton.vue";
-import SettingsSection from "./SettingsSection.vue";
-import offices from "../data/offices.json";
+
 import kana from "../data/kana.json";
+import offices from "../data/offices.json";
+
+import ColorButton from "./settings/ColorButton.vue";
 import InputSelect from "./settings/InputSelect.vue";
+import InputSwitch from "./settings/InputSwitch.vue";
+import InputText from "./settings/InputText.vue";
+import SettingsSection from "./SettingsSection.vue";
 
 const version = import.meta.env.VITE_VERSION;
 
@@ -123,11 +126,14 @@ const formattedKana = computed(() => {
       <SettingsSection title="Kana">
         <InputSelect v-model="model.kana" :items="formattedKana" />
       </SettingsSection>
+      <SettingsSection title="Seal">
+        <InputSwitch v-model="model.showSeal" />
+      </SettingsSection>
     </div>
     <div class="p-4 text-center">
       <button
         v-if="false"
-        class="rounded-full bg-purple-600 px-8 py-2 text-lg font-bold capitalize text-white"
+        class="rounded-full bg-purple-600 px-8 py-2 text-lg font-bold text-white capitalize"
       >
         generate
       </button>

@@ -23,6 +23,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  showSeal: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const showSerialSeparator = computed(() => {
@@ -81,7 +85,7 @@ const sealCharacters = computed(() => {
       <!-- <img src="/img/reference3.png" alt="plate reference" class="reference" /> -->
       <div class="screws">
         <div>
-          <div class="seal">
+          <div v-if="showSeal" class="seal">
             <div>
               <span :class="{ small: sealCharacters.length > 1 }">
                 <span v-text="sealCharacters[0]" />
@@ -92,9 +96,10 @@ const sealCharacters = computed(() => {
               </span>
             </div>
           </div>
+          <div v-else><!-- Screw --></div>
         </div>
         <div>
-          <div></div>
+          <div><!-- Screw --></div>
         </div>
       </div>
       <div class="topRow">
