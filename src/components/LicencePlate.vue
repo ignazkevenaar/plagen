@@ -85,9 +85,6 @@ const isSpecialKana = computed(
   <div class="plateContainer">
     <div class="licencePlate" :class="color">
       <div class="ridge"><div></div></div>
-      <!-- <img src="/img/reference1.png" alt="plate reference" class="reference" /> -->
-      <!-- <img src="/img/reference2.png" alt="plate reference" class="reference" /> -->
-      <!-- <img src="/img/reference3.png" alt="plate reference" class="reference" /> -->
       <div class="screws">
         <div>
           <div v-if="showSeal" class="seal">
@@ -225,16 +222,7 @@ const isSpecialKana = computed(
     }
   }
 
-  .reference {
-    position: absolute;
-    opacity: 0.25;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
   .screws {
-    /* background-color: blue; */
     display: flex;
     position: relative;
     top: calc(25 * var(--cmm));
@@ -270,7 +258,6 @@ const isSpecialKana = computed(
             calc(1 * var(--cmm)) rgba(0, 0, 0, 0.25),
           inset calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
             calc(2 * var(--cmm)) white;
-        /* background: linear-gradient(to bottom right, white 0%, grey); */
         background-image: conic-gradient(
           from 320deg at 50% 50%,
           #ffffffff 3%,
@@ -283,7 +270,6 @@ const isSpecialKana = computed(
         width: calc(28 * var(--cmm));
         height: calc(28 * var(--cmm));
         font-weight: 400;
-        /* font-family: "Zen Maru Gothic", serif; */
         font-family: "M PLUS Rounded 1c", serif;
 
         > div {
@@ -302,7 +288,6 @@ const isSpecialKana = computed(
             inset calc(-0.25 * var(--cmm)) calc(-0.25 * var(--cmm))
               calc(1 * var(--cmm)) rgba(0, 0, 0, 1);
           border-radius: 100%;
-          /* background: linear-gradient(to bottom right, grey 0%, #ddd 30%, silver 50%, silver 70%, white); */
           background-image: conic-gradient(
             from 320deg at 50% 50%,
             #ffffffff 3%,
@@ -369,7 +354,6 @@ const isSpecialKana = computed(
     top: calc(13.5 * var(--cmm));
     left: calc(2.5 * var(--cmm));
     justify-content: space-evenly;
-    /* background-color: rgba(255, 0, 0, 0.25); */
     width: calc(190 * var(--cmm));
     height: calc(40 * var(--cmm));
     white-space: nowrap;
@@ -377,12 +361,8 @@ const isSpecialKana = computed(
     .office {
       transform-origin: center left;
       filter: url("#drop-shadow");
-      /* background-color: rgba(0, 0, 255, 0.1); */
       font-weight: 500;
       font-size: calc(48 * var(--cmm));
-      /* font-family: "Kiwi Maru", serif; */
-      /* font-family: "Kosugi Maru", serif; */
-      /* font-family: "Zen Maru Gothic", serif; */
       font-family: "M PLUS Rounded 1c", serif;
       letter-spacing: calc(-4 * var(--cmm));
 
@@ -403,7 +383,6 @@ const isSpecialKana = computed(
     .classification {
       position: relative;
       top: calc(4 * var(--cmm));
-      /* background-color: rgba(0, 0, 255, 0.1); */
       font-size: calc(49 * var(--cmm));
       font-family: "TrmFontJB";
       letter-spacing: calc(-1 * var(--cmm));
@@ -431,7 +410,6 @@ const isSpecialKana = computed(
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* background-color: rgba(0, 0, 255, 0.1); */
       width: calc(42 * var(--cmm));
       font-weight: 900;
       font-size: calc(45 * var(--cmm));
@@ -447,7 +425,6 @@ const isSpecialKana = computed(
 
       span {
         position: relative;
-        /* inset-inline-start:  calc(-4 * var(--cmm)); */
         inset-block-start: calc(-2 * var(--cmm));
       }
     }
@@ -455,7 +432,6 @@ const isSpecialKana = computed(
     .serial {
       display: flex;
       gap: calc(7.5 * var(--cmm));
-      /* background-color: rgba(0, 255, 0, 0.1); */
       height: calc(80 * var(--cmm));
       font-family: "TrmFontJB";
       letter-spacing: calc(3 * var(--cmm));
@@ -463,7 +439,6 @@ const isSpecialKana = computed(
       .number {
         display: grid;
         place-items: center;
-        /* background-color: rgba(255, 128, 0, 0.15); */
         width: calc(47 * var(--cmm));
 
         &:not(.dot) span {
@@ -486,7 +461,6 @@ const isSpecialKana = computed(
       .separator {
         display: grid;
         place-items: center;
-        /* background-color: rgba(255, 0, 128, 0.15); */
         width: calc(25 * var(--cmm));
 
         span {
