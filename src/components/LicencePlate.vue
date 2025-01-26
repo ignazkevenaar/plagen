@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import offices from "../data/offices.json";
+import kanaData from "../data/kana.json";
 
 const props = defineProps({
   color: {
@@ -74,6 +75,10 @@ const sealCharacters = computed(() => {
 
   return output;
 });
+
+const isSpecialKana = computed(
+  () => kanaData.special.find((k) => k === props.kana) !== undefined,
+);
 </script>
 
 <template>
@@ -121,7 +126,7 @@ const sealCharacters = computed(() => {
         </p>
       </div>
       <div class="bottomRow">
-        <p class="kana">
+        <p class="kana" :class="{ special: isSpecialKana }">
           <span>{{ kana }}</span>
         </p>
         <div class="serial">
@@ -416,21 +421,29 @@ const sealCharacters = computed(() => {
     bottom: calc(12 * var(--cmm));
     justify-content: space-between;
     inset-inline-end: calc(15 * var(--cmm));
-    inset-inline-start: calc(15 * var(--cmm));
+    inset-inline-start: calc(20 * var(--cmm));
     height: calc(85 * var(--cmm));
     font-weight: 600;
     font-size: calc(95 * var(--cmm));
     line-height: calc(85 * var(--cmm));
 
     .kana {
-      display: grid;
-      place-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       /* background-color: rgba(0, 0, 255, 0.1); */
       width: calc(42 * var(--cmm));
       font-weight: 900;
       font-size: calc(45 * var(--cmm));
-      font-family: "Noto Serif JP", serif;
+      font-family: "BIZ UDPMincho", serif;
       font-optical-sizing: auto;
+
+      &.special {
+        transform: scaleY(1);
+        font-weight: 600;
+        font-size: calc(60 * var(--cmm));
+        font-family: "Lexend Giga", serif;
+      }
 
       span {
         position: relative;

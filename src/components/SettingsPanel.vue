@@ -36,6 +36,13 @@ const formattedOffices = computed(() =>
 );
 
 const formattedKana = computed(() => {
+  if (model.value?.color === "commercial") {
+    return kana.commercial.map((kana) => ({
+      value: kana.kana,
+      text: `${kana.kana} - ${kana.transliteration}`,
+    }));
+  }
+
   const output = kana.private.map((kana) => ({
     value: kana.kana,
     text: `${kana.kana} - ${kana.transliteration}`,
