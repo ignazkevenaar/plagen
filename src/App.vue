@@ -31,7 +31,7 @@ const settings = ref({
 
 <template>
   <div
-    class="grid h-screen grid-cols-[1fr_auto] gap-6 bg-gray-50 p-8 text-black scheme-light-dark dark:bg-gray-800 dark:text-white"
+    class="flex min-h-screen grid-cols-[1fr_auto] flex-col gap-6 bg-gray-50 p-8 text-black scheme-light-dark md:grid md:h-screen md:overflow-hidden dark:bg-gray-800 dark:text-white"
   >
     <LicencePlate
       ref="plate"
@@ -42,8 +42,11 @@ const settings = ref({
       :classification="settings.classification"
       :kana="settings.kana"
     />
-    <div>
-      <SettingsPanel class="w-80 place-self-end" v-model="settings" />
+    <div class="md:overflow-hidden">
+      <SettingsPanel
+        class="relative z-10 h-full md:w-80 md:place-self-end"
+        v-model="settings"
+      />
     </div>
   </div>
 </template>

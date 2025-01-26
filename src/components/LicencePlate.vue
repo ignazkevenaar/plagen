@@ -73,69 +73,71 @@ const sealCharacters = computed(() => {
 </script>
 
 <template>
-  <div class="licencePlate" :class="color">
-    <div class="ridge"><div></div></div>
-    <!-- <img src="/img/reference1.png" alt="plate reference" class="reference" /> -->
-    <!-- <img src="/img/reference2.png" alt="plate reference" class="reference" /> -->
-    <!-- <img src="/img/reference3.png" alt="plate reference" class="reference" /> -->
-    <div class="screws">
-      <div>
-        <div class="seal">
-          <div>
-            <span :class="{ small: sealCharacters.length > 1 }">
-              <span v-text="sealCharacters[0]" />
-              <span
-                v-if="sealCharacters.length > 1"
-                v-text="sealCharacters[1]"
-              />
-            </span>
+  <div class="plateContainer">
+    <div class="licencePlate" :class="color">
+      <div class="ridge"><div></div></div>
+      <!-- <img src="/img/reference1.png" alt="plate reference" class="reference" /> -->
+      <!-- <img src="/img/reference2.png" alt="plate reference" class="reference" /> -->
+      <!-- <img src="/img/reference3.png" alt="plate reference" class="reference" /> -->
+      <div class="screws">
+        <div>
+          <div class="seal">
+            <div>
+              <span :class="{ small: sealCharacters.length > 1 }">
+                <span v-text="sealCharacters[0]" />
+                <span
+                  v-if="sealCharacters.length > 1"
+                  v-text="sealCharacters[1]"
+                />
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <div></div>
-      </div>
-    </div>
-    <div class="topRow">
-      <p
-        class="office"
-        :class="{
-          three: formattedOffice.length === 3,
-          four: formattedOffice.length === 4,
-        }"
-      >
-        {{ formattedOffice }}
-      </p>
-      <p
-        v-if="classification"
-        class="classification"
-        :class="{ wide: classification.length < 3 }"
-      >
-        {{ classification }}
-      </p>
-    </div>
-    <div class="bottomRow">
-      <p class="kana">
-        <span>{{ kana }}</span>
-      </p>
-      <div class="serial">
-        <div class="number" :class="{ dot: serial.length < 4 }">
-          <span>{{ serial?.[serial.length - 4] }}</span>
+        <div>
+          <div></div>
         </div>
-        <div class="number" :class="{ dot: serial.length < 3 }">
-          <span>{{ serial?.[serial.length - 3] }}</span>
-        </div>
-        <div
-          class="separator"
-          :style="{ opacity: showSerialSeparator ? 1 : 0 }"
+      </div>
+      <div class="topRow">
+        <p
+          class="office"
+          :class="{
+            three: formattedOffice.length === 3,
+            four: formattedOffice.length === 4,
+          }"
         >
-          <span></span>
-        </div>
-        <div class="number" :class="{ dot: serial.length < 2 }">
-          <span>{{ serial?.[serial.length - 2] }}</span>
-        </div>
-        <div class="number" :class="{ dot: serial.length < 1 }">
-          <span>{{ serial?.[serial.length - 1] }}</span>
+          {{ formattedOffice }}
+        </p>
+        <p
+          v-if="classification"
+          class="classification"
+          :class="{ wide: classification.length < 3 }"
+        >
+          {{ classification }}
+        </p>
+      </div>
+      <div class="bottomRow">
+        <p class="kana">
+          <span>{{ kana }}</span>
+        </p>
+        <div class="serial">
+          <div class="number" :class="{ dot: serial.length < 4 }">
+            <span>{{ serial?.[serial.length - 4] }}</span>
+          </div>
+          <div class="number" :class="{ dot: serial.length < 3 }">
+            <span>{{ serial?.[serial.length - 3] }}</span>
+          </div>
+          <div
+            class="separator"
+            :style="{ opacity: showSerialSeparator ? 1 : 0 }"
+          >
+            <span></span>
+          </div>
+          <div class="number" :class="{ dot: serial.length < 2 }">
+            <span>{{ serial?.[serial.length - 2] }}</span>
+          </div>
+          <div class="number" :class="{ dot: serial.length < 1 }">
+            <span>{{ serial?.[serial.length - 1] }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -143,15 +145,22 @@ const sealCharacters = computed(() => {
 </template>
 
 <style lang="css" scoped>
+.plateContainer {
+  --cmm: calc(1cqw / 3.3);
+  container-type: inline-size;
+  aspect-ratio: 2;
+
+  width: 100%;
+}
+
 .licencePlate {
   position: relative;
-  box-shadow: 5mm 10mm 25mm black;
+  box-shadow: calc(5 * var(--cmm)) calc(10 * var(--cmm)) calc(25 * var(--cmm))
+    black;
   border: 2px solid rgba(0 0 0 / 20%);
-  border-radius: 10mm;
+  border-radius: calc(10 * var(--cmm));
   background-color: var(--plate-background);
-  aspect-ratio: 2;
-  width: 330mm;
-  height: 165mm;
+  height: 100%;
   color: var(--plate-foreground);
 
   &.regular {
@@ -176,24 +185,32 @@ const sealCharacters = computed(() => {
 
   .ridge {
     position: absolute;
-    inset: 2mm;
+    inset: calc(2 * var(--cmm));
     box-shadow:
-      inset 1mm 1mm 2mm rgba(255, 255, 255, 0.5),
-      inset -1mm -1mm 2mm rgba(0, 0, 0, 0.25),
-      1mm 1mm 1mm rgba(0, 0, 0, 0.2),
-      -1mm -1mm 1mm rgba(255, 255, 255, 0.5);
-    border-radius: 7mm;
+      inset calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(2 * var(--cmm))
+        rgba(255, 255, 255, 0.5),
+      inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(2 * var(--cmm))
+        rgba(0, 0, 0, 0.25),
+      calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
+        rgba(0, 0, 0, 0.2),
+      calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(1 * var(--cmm))
+        rgba(255, 255, 255, 0.5);
+    border-radius: calc(7 * var(--cmm));
     background-color: var(--plate-background);
 
     > div {
       position: absolute;
-      inset: 4mm;
+      inset: calc(4 * var(--cmm));
       box-shadow:
-        1mm 1mm 2mm rgba(255, 255, 255, 0.5),
-        -1mm -1mm 2mm rgba(0, 0, 0, 0.1),
-        inset 1mm 1mm 1mm rgba(0, 0, 0, 0.1),
-        inset -1mm -1mm 1mm rgba(255, 255, 255, 0.5);
-      border-radius: 3mm;
+        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(2 * var(--cmm))
+          rgba(255, 255, 255, 0.5),
+        calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(2 * var(--cmm))
+          rgba(0, 0, 0, 0.1),
+        inset calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
+          rgba(0, 0, 0, 0.1),
+        inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(1 * var(--cmm))
+          rgba(255, 255, 255, 0.5);
+      border-radius: calc(3 * var(--cmm));
       background-color: var(--plate-background);
     }
   }
@@ -210,12 +227,12 @@ const sealCharacters = computed(() => {
     /* background-color: blue; */
     display: flex;
     position: relative;
-    top: 25mm;
+    top: calc(25 * var(--cmm));
     justify-content: space-between;
     align-items: center;
     z-index: 1;
     margin: auto;
-    width: 210mm;
+    width: calc(210 * var(--cmm));
 
     > * {
       display: grid;
@@ -226,19 +243,23 @@ const sealCharacters = computed(() => {
         position: absolute;
         border-radius: 100%;
         background-color: black;
-        width: 8mm;
-        height: 8mm;
+        width: calc(8 * var(--cmm));
+        height: calc(8 * var(--cmm));
       }
 
       .seal {
         display: grid;
         place-items: center;
         box-shadow:
-          inset -1mm -1mm 3mm rgba(0, 0, 0, 0.4),
-          2mm 2mm 4mm rgba(0, 0, 0, 0.2),
-          inset 0 0 1mm 1mm rgba(0, 0, 0, 0.4),
-          inset -1mm -1mm 2mm 1mm rgba(0, 0, 0, 0.25),
-          inset 1mm 1mm 1mm 2mm white;
+          inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(3 * var(--cmm))
+            rgba(0, 0, 0, 0.4),
+          calc(2 * var(--cmm)) calc(2 * var(--cmm)) calc(4 * var(--cmm))
+            rgba(0, 0, 0, 0.2),
+          inset 0 0 calc(1 * var(--cmm)) calc(1 * var(--cmm)) rgba(0, 0, 0, 0.4),
+          inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(2 * var(--cmm))
+            calc(1 * var(--cmm)) rgba(0, 0, 0, 0.25),
+          inset calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
+            calc(2 * var(--cmm)) white;
         /* background: linear-gradient(to bottom right, white 0%, grey); */
         background-image: conic-gradient(
           from 320deg at 50% 50%,
@@ -249,8 +270,8 @@ const sealCharacters = computed(() => {
           #ffffffff 100%
         );
         background-color: grey;
-        width: 28mm;
-        height: 28mm;
+        width: calc(28 * var(--cmm));
+        height: calc(28 * var(--cmm));
         font-weight: 400;
         /* font-family: "Zen Maru Gothic", serif; */
         font-family: "M PLUS Rounded 1c", serif;
@@ -260,11 +281,16 @@ const sealCharacters = computed(() => {
           position: relative;
           place-items: center;
           box-shadow:
-            0.25mm 0.25mm 0.5mm 0.25mm rgba(0, 0, 0, 0.75),
-            1mm 1mm 1mm rgba(255, 255, 255, 0.6),
-            -0.5mm -0.5mm 1mm rgba(0, 0, 0, 0.75),
-            inset 0.25mm 0.25mm 0.25mm white,
-            inset -0.25mm -0.25mm 1mm rgba(0, 0, 0, 1);
+            calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
+              calc(0.5 * var(--cmm)) calc(0.25 * var(--cmm)) rgba(0, 0, 0, 0.75),
+            calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
+              rgba(255, 255, 255, 0.6),
+            calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
+              rgba(0, 0, 0, 0.75),
+            inset calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
+              calc(0.25 * var(--cmm)) white,
+            inset calc(-0.25 * var(--cmm)) calc(-0.25 * var(--cmm))
+              calc(1 * var(--cmm)) rgba(0, 0, 0, 1);
           border-radius: 100%;
           /* background: linear-gradient(to bottom right, grey 0%, #ddd 30%, silver 50%, silver 70%, white); */
           background-image: conic-gradient(
@@ -276,37 +302,42 @@ const sealCharacters = computed(() => {
             #ffffffff 100%
           );
           background-color: silver;
-          width: 21mm;
-          height: 21mm;
+          width: calc(21 * var(--cmm));
+          height: calc(21 * var(--cmm));
 
           &::before {
             display: block;
             position: absolute;
-            inset: 2mm;
+            inset: calc(2 * var(--cmm));
             box-shadow:
-              -0.25mm -0.25mm 0.25mm rgba(0, 0, 0, 0.25),
-              inset 0.25mm 0.25mm 0.25mm white,
-              inset -0.25mm -0.25mm 0.25mm rgba(0, 0, 0, 0.25);
+              calc(-0.25 * var(--cmm)) calc(-0.25 * var(--cmm))
+                calc(0.25 * var(--cmm)) rgba(0, 0, 0, 0.25),
+              inset calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
+                calc(0.25 * var(--cmm)) white,
+              inset calc(-0.25 * var(--cmm)) calc(-0.25 * var(--cmm))
+                calc(0.25 * var(--cmm)) rgba(0, 0, 0, 0.25);
             border-radius: 100%;
             content: "";
           }
 
           span {
             position: relative;
-            top: -0.25mm;
+            top: calc(-0.25 * var(--cmm));
             color: silver;
-            font-size: 12mm;
+            font-size: calc(12 * var(--cmm));
             line-height: 0;
             text-shadow:
-              0.25mm 0.25mm 0.25mm white,
-              -0.2mm -0.2mm 0.5mm black;
+              calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
+                calc(0.25 * var(--cmm)) white,
+              calc(-0.2 * var(--cmm)) calc(-0.2 * var(--cmm))
+                calc(0.5 * var(--cmm)) black;
 
             &.small {
               span {
                 display: block;
                 transform: scaleY(0.8);
-                font-size: 8mm;
-                line-height: 7mm;
+                font-size: calc(8 * var(--cmm));
+                line-height: calc(7 * var(--cmm));
               }
             }
           }
@@ -325,12 +356,12 @@ const sealCharacters = computed(() => {
   }
 
   .topRow {
-    top: 13.5mm;
-    left: 2.5mm;
+    top: calc(13.5 * var(--cmm));
+    left: calc(2.5 * var(--cmm));
     justify-content: space-evenly;
     /* background-color: rgba(255, 0, 0, 0.25); */
-    width: 190mm;
-    height: 40mm;
+    width: calc(190 * var(--cmm));
+    height: calc(40 * var(--cmm));
     white-space: nowrap;
 
     .office {
@@ -338,38 +369,38 @@ const sealCharacters = computed(() => {
       filter: url("#drop-shadow");
       /* background-color: rgba(0, 0, 255, 0.1); */
       font-weight: 500;
-      font-size: 48mm;
+      font-size: calc(48 * var(--cmm));
       /* font-family: "Kiwi Maru", serif; */
       /* font-family: "Kosugi Maru", serif; */
       /* font-family: "Zen Maru Gothic", serif; */
       font-family: "M PLUS Rounded 1c", serif;
-      letter-spacing: -4mm;
+      letter-spacing: calc(-4 * var(--cmm));
 
       &.three {
         transform: scaleY(1.5);
-        font-size: 30mm;
+        font-size: calc(30 * var(--cmm));
         letter-spacing: normal;
       }
 
       &.four {
         transform: scaleY(2);
         font-weight: 600;
-        font-size: 23mm;
+        font-size: calc(23 * var(--cmm));
         letter-spacing: normal;
       }
     }
 
     .classification {
       position: relative;
-      top: 4mm;
+      top: calc(4 * var(--cmm));
       /* background-color: rgba(0, 0, 255, 0.1); */
-      font-size: 49mm;
+      font-size: calc(49 * var(--cmm));
       font-family: "TrmFontJB";
-      letter-spacing: -1mm;
+      letter-spacing: calc(-1 * var(--cmm));
 
       &.wide {
         transform: scaleY(0.75);
-        font-size: 65mm;
+        font-size: calc(65 * var(--cmm));
       }
     }
   }
@@ -377,50 +408,50 @@ const sealCharacters = computed(() => {
   .bottomRow {
     display: flex;
     position: absolute;
-    bottom: 12mm;
+    bottom: calc(12 * var(--cmm));
     justify-content: space-between;
-    inset-inline-end: 15mm;
-    inset-inline-start: 15mm;
-    height: 85mm;
+    inset-inline-end: calc(15 * var(--cmm));
+    inset-inline-start: calc(15 * var(--cmm));
+    height: calc(85 * var(--cmm));
     font-weight: 600;
-    font-size: 95mm;
-    line-height: 85mm;
+    font-size: calc(95 * var(--cmm));
+    line-height: calc(85 * var(--cmm));
 
     .kana {
       display: grid;
       place-items: center;
       /* background-color: rgba(0, 0, 255, 0.1); */
-      width: 42mm;
+      width: calc(42 * var(--cmm));
       font-weight: 900;
-      font-size: 45mm;
+      font-size: calc(45 * var(--cmm));
       font-family: "Noto Serif JP", serif;
       font-optical-sizing: auto;
 
       span {
         position: relative;
-        /* inset-inline-start: -4mm; */
-        inset-block-start: -2mm;
+        /* inset-inline-start:  calc(-4 * var(--cmm)); */
+        inset-block-start: calc(-2 * var(--cmm));
       }
     }
 
     .serial {
       display: flex;
-      gap: 7.5mm;
+      gap: calc(7.5 * var(--cmm));
       /* background-color: rgba(0, 255, 0, 0.1); */
-      height: 80mm;
+      height: calc(80 * var(--cmm));
       font-family: "TrmFontJB";
-      letter-spacing: 3mm;
+      letter-spacing: calc(3 * var(--cmm));
 
       .number {
         display: grid;
         place-items: center;
         /* background-color: rgba(255, 128, 0, 0.15); */
-        width: 47mm;
+        width: calc(47 * var(--cmm));
 
         &:not(.dot) span {
           position: relative;
-          top: 4mm;
-          left: -4mm;
+          top: calc(4 * var(--cmm));
+          left: calc(-4 * var(--cmm));
         }
 
         &.dot {
@@ -428,8 +459,8 @@ const sealCharacters = computed(() => {
             display: block;
             border-radius: 100%;
             background-color: currentColor;
-            width: 14mm;
-            height: 14mm;
+            width: calc(14 * var(--cmm));
+            height: calc(14 * var(--cmm));
           }
         }
       }
@@ -438,13 +469,13 @@ const sealCharacters = computed(() => {
         display: grid;
         place-items: center;
         /* background-color: rgba(255, 0, 128, 0.15); */
-        width: 25mm;
+        width: calc(25 * var(--cmm));
 
         span {
-          border-radius: 2mm;
+          border-radius: calc(2 * var(--cmm));
           background-color: currentColor;
-          width: 20mm;
-          height: 12mm;
+          width: calc(20 * var(--cmm));
+          height: calc(12 * var(--cmm));
         }
       }
     }
