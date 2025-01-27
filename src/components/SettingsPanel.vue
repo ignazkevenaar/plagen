@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 
 import kana from "../data/kana.json";
 import offices from "../data/offices.json";
@@ -63,6 +63,21 @@ const formattedKana = computed(() => {
 });
 
 const exportUnits = ["cm", "mm", "in", "px"];
+
+const checkKanaOnColorChange = (newColor) => {
+  const validKana = kana[newColor === "commercial" ? "commercial" : "private"];
+  if (newColor !== "commercial") validKana.push(...kana.special);
+
+  const isKanaValid = validKana.find(
+    (k) =>
+      k.transliteration === plateModel.value.kana ||
+      k === plateModel.value.kana,
+  );
+
+  if (!isKanaValid) {
+    plateModel.value.kana = validKana[0].transliteration;
+  }
+};
 </script>
 
 <template>
@@ -95,6 +110,7 @@ const exportUnits = ["cm", "mm", "in", "px"];
             name="color"
             background="#d7d8d5"
             foreground="#194a17"
+            @update:model-value="checkKanaOnColorChange"
           />
           <ColorButton
             v-model="plateModel.color"
@@ -102,6 +118,7 @@ const exportUnits = ["cm", "mm", "in", "px"];
             name="color"
             background="#f1c209"
             foreground="#000"
+            @update:model-value="checkKanaOnColorChange"
           />
           <ColorButton
             v-model="plateModel.color"
@@ -109,6 +126,7 @@ const exportUnits = ["cm", "mm", "in", "px"];
             name="color"
             background="#194a17"
             foreground="#d7d8d5"
+            @update:model-value="checkKanaOnColorChange"
           />
           <ColorButton
             v-model="plateModel.color"
@@ -116,6 +134,7 @@ const exportUnits = ["cm", "mm", "in", "px"];
             name="color"
             background="#000"
             foreground="#f1c209"
+            @update:model-value="checkKanaOnColorChange"
           />
         </div>
       </SettingsSection>
