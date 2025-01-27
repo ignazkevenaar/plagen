@@ -1,22 +1,26 @@
 <script setup>
 import { ref } from "vue";
 import LicencePlate from "./components/LicencePlate.vue";
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
+import { toPng } from "html-to-image";
 import SettingsPanel from "./components/SettingsPanel.vue";
+import download from "downloadjs";
 
 const plate = ref(null);
 
 const render = () => {
-  var node = plate.value.$el;
-
-  toPng(node)
-    .then(function (dataUrl) {
-      var img = new Image();
-      img.src = dataUrl;
-      document.body.appendChild(img);
+  loading.value = true;
+  toPng(plate.value.$el.children[0])
+    .then((dataUrl) => {
+      download(
+        dataUrl,
+        `plate-${settings.value.serial}-${settings.value.kana}-${settings.value.classification}-${settings.value.office}.png`,
+      );
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.error("oops, something went wrong!", error);
+    })
+    .finally(() => {
+      loading.value = false;
     });
 };
 
@@ -28,6 +32,8 @@ const settings = ref({
   kana: "つ",
   showSeal: true,
 });
+
+const loading = ref(false);
 </script>
 
 <template>
@@ -46,8 +52,10 @@ const settings = ref({
     />
     <div class="md:overflow-hidden">
       <SettingsPanel
-        class="relative z-10 h-full md:w-80 md:place-self-end"
         v-model="settings"
+        :loading="loading"
+        class="relative z-10 h-full md:w-80 md:place-self-end"
+        @generate="render()"
       />
     </div>
   </div>

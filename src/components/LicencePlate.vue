@@ -155,15 +155,15 @@ const isSpecialKana = computed(
 .plateContainer {
   --cmm: calc(1cqw / 3.3);
   container-type: inline-size;
+  box-shadow: calc(5 * var(--cmm)) calc(10 * var(--cmm)) calc(25 * var(--cmm))
+    black;
+  border-radius: calc(10 * var(--cmm));
   aspect-ratio: 2;
-
   width: 100%;
 }
 
 .licencePlate {
   position: relative;
-  box-shadow: calc(5 * var(--cmm)) calc(10 * var(--cmm)) calc(25 * var(--cmm))
-    black;
   border: 2px solid rgba(0 0 0 / 20%);
   border-radius: calc(10 * var(--cmm));
   background-color: var(--plate-background);

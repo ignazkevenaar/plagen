@@ -13,6 +13,10 @@ import SettingsSection from "./SettingsSection.vue";
 const version = import.meta.env.VITE_VERSION;
 
 const model = defineModel();
+const emit = defineEmits(["generate"]);
+const props = defineProps({
+  loading: Boolean,
+});
 
 const checkValiditySerial = (event) => {
   if (event.target.value.match(/^\d{0,4}$/))
@@ -137,12 +141,34 @@ const formattedKana = computed(() => {
         <InputSwitch v-model="model.showSeal" />
       </SettingsSection>
     </div>
-    <div class="p-4 text-center">
+    <div class="p-4">
       <button
-        v-if="false"
-        class="rounded-full bg-purple-600 px-8 py-2 text-lg font-bold text-white capitalize"
+        class="mx-auto flex cursor-pointer items-baseline gap-2 rounded-full bg-purple-600 px-6 py-2 text-lg font-bold text-white capitalize"
+        :disabled="loading"
+        @click="emit('generate')"
       >
-        generate
+        Download PNG
+        <svg
+          v-if="loading"
+          class="size-5 translate-y-1 animate-spin text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
       </button>
     </div>
   </div>
