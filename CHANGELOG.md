@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.0 - 2025-01-27
+
+## Changed
+
+- Improve layout responsiveness
+- Improve kana appearance
+- Switch to build-time font bundling
+- Implement switching to valid kana when changing plate color
+
+## Added
+
+- Add download PNG button
+- Add setting for showing seal
+- Add settings for export size
+
+## Removed
+
+- Debugging leftovers
+
 ## 0.2.0 - 2025-01-26
 
 ## Changed
