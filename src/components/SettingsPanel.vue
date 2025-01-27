@@ -12,20 +12,22 @@ import SettingsSection from "./SettingsSection.vue";
 
 const version = import.meta.env.VITE_VERSION;
 
-const model = defineModel();
+const plateModel = defineModel("plate");
+const exportModel = defineModel("export");
+
 const emit = defineEmits(["generate"]);
 const props = defineProps({
-  loading: Boolean,
+  generating: Boolean,
 });
 
 const checkValiditySerial = (event) => {
   if (event.target.value.match(/^\d{0,4}$/))
-    model.value.serial = event.target.value;
+    plateModel.value.serial = event.target.value;
 };
 
 const checkValidityClassification = (event) => {
   if (event.target.value.match(/^\d{0,4}$/))
-    model.value.classification = event.target.value;
+    plateModel.value.classification = event.target.value;
 };
 
 const formattedOffices = computed(() =>
@@ -40,15 +42,15 @@ const formattedOffices = computed(() =>
 );
 
 const formattedKana = computed(() => {
-  if (model.value?.color === "commercial") {
+  if (plateModel.value?.color === "commercial") {
     return kana.commercial.map((kana) => ({
-      value: kana.kana,
+      value: kana.transliteration,
       text: `${kana.kana} - ${kana.transliteration}`,
     }));
   }
 
   const output = kana.private.map((kana) => ({
-    value: kana.kana,
+    value: kana.transliteration,
     text: `${kana.kana} - ${kana.transliteration}`,
   }));
 
@@ -59,6 +61,8 @@ const formattedKana = computed(() => {
 
   return [...output, ...specialoutput];
 });
+
+const exportUnits = ["cm", "mm", "in", "px"];
 </script>
 
 <template>
@@ -86,28 +90,28 @@ const formattedKana = computed(() => {
       <SettingsSection title="Color">
         <div class="flex justify-evenly">
           <ColorButton
-            v-model="model.color"
-            value="regular"
+            v-model="plateModel.color"
+            value="private"
             name="color"
             background="#d7d8d5"
             foreground="#194a17"
           />
           <ColorButton
-            v-model="model.color"
+            v-model="plateModel.color"
             value="kei"
             name="color"
             background="#f1c209"
             foreground="#000"
           />
           <ColorButton
-            v-model="model.color"
+            v-model="plateModel.color"
             value="commercial"
             name="color"
             background="#194a17"
             foreground="#d7d8d5"
           />
           <ColorButton
-            v-model="model.color"
+            v-model="plateModel.color"
             value="commercial-kei"
             name="color"
             background="#000"
@@ -117,39 +121,54 @@ const formattedKana = computed(() => {
       </SettingsSection>
       <SettingsSection title="Serial number">
         <InputText
-          :model-value="model.serial"
+          :model-value="plateModel.serial"
           maxlength="4"
           pattern="[0-9]{4}"
           @input="checkValiditySerial($event)"
         />
       </SettingsSection>
       <SettingsSection title="Office">
-        <InputSelect v-model="model.office" :items="formattedOffices" />
+        <InputSelect v-model="plateModel.office" :items="formattedOffices" />
       </SettingsSection>
       <SettingsSection title="Vehicle classification">
         <InputText
-          :model-value="model.classification"
+          :model-value="plateModel.classification"
           maxlength="3"
           pattern="[0-9]{3}"
           @input="checkValidityClassification($event)"
         />
       </SettingsSection>
       <SettingsSection title="Kana">
-        <InputSelect v-model="model.kana" :items="formattedKana" />
+        <InputSelect v-model="plateModel.kana" :items="formattedKana" />
       </SettingsSection>
       <SettingsSection title="Seal">
-        <InputSwitch v-model="model.showSeal" />
+        <InputSwitch v-model="plateModel.showSeal" />
+      </SettingsSection>
+      <hr />
+      <SettingsSection title="Export width">
+        <div class="flex gap-2">
+          <InputText v-model="exportModel.width" type="number" min="1" />
+          <InputSelect v-model="exportModel.unit" :items="exportUnits" />
+        </div>
+      </SettingsSection>
+      <SettingsSection v-if="exportModel.unit !== 'px'" title="DPI">
+        <InputText
+          v-model="exportModel.dpi"
+          type="number"
+          min="72"
+          max="2400"
+        />
       </SettingsSection>
     </div>
     <div class="p-4">
       <button
         class="mx-auto flex cursor-pointer items-baseline gap-2 rounded-full bg-purple-600 px-6 py-2 text-lg font-bold text-white capitalize"
-        :disabled="loading"
+        :disabled="generating"
         @click="emit('generate')"
       >
         Download PNG
         <svg
-          v-if="loading"
+          v-if="generating"
           class="size-5 translate-y-1 animate-spin text-white"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

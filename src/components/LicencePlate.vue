@@ -76,9 +76,21 @@ const sealCharacters = computed(() => {
   return output;
 });
 
-const isSpecialKana = computed(
-  () => kanaData.special.find((k) => k === props.kana) !== undefined,
+const isSpecialKana = computed(() =>
+  kanaData.special.find((k) => k === props.kana),
 );
+
+const computedKana = computed(() => {
+  const flatKana = [
+    ...kanaData.private,
+    ...kanaData.commercial,
+    ...kanaData.special,
+  ];
+
+  return flatKana.find(
+    (k) => k.transliteration === props.kana || k === props.kana,
+  );
+});
 </script>
 
 <template>
@@ -124,7 +136,7 @@ const isSpecialKana = computed(
       </div>
       <div class="bottomRow">
         <p class="kana" :class="{ special: isSpecialKana }">
-          <span>{{ kana }}</span>
+          <span>{{ computedKana.kana ?? computedKana }}</span>
         </p>
         <div class="serial">
           <div class="number" :class="{ dot: serial.length < 4 }">
@@ -170,7 +182,7 @@ const isSpecialKana = computed(
   height: 100%;
   color: var(--plate-foreground);
 
-  &.regular {
+  &.private {
     --plate-background: #d7d8d5;
     --plate-foreground: #194a17;
   }
