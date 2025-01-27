@@ -411,7 +411,7 @@ const isSpecialKana = computed(
       flex-direction: column;
       align-items: center;
       width: calc(42 * var(--cmm));
-      font-weight: 900;
+      font-weight: 700;
       font-size: calc(45 * var(--cmm));
       font-family: "BIZ UDPMincho", serif;
       font-optical-sizing: auto;
