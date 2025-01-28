@@ -379,15 +379,15 @@ const computedKana = computed(() => {
       letter-spacing: calc(-4 * var(--cmm));
 
       &.three {
-        transform: scaleY(1.5);
-        font-size: calc(30 * var(--cmm));
+        transform: scaleY(1.35);
+        font-size: calc(34 * var(--cmm));
         letter-spacing: normal;
       }
 
       &.four {
-        transform: scaleY(2);
-        font-weight: 600;
-        font-size: calc(23 * var(--cmm));
+        transform: scaleY(1.75);
+        font-weight: 500;
+        font-size: calc(26 * var(--cmm));
         letter-spacing: normal;
       }
     }
@@ -397,7 +397,7 @@ const computedKana = computed(() => {
       top: calc(4 * var(--cmm));
       font-size: calc(49 * var(--cmm));
       font-family: "TrmFontJB";
-      letter-spacing: calc(-1 * var(--cmm));
+      letter-spacing: calc(-2 * var(--cmm));
 
       &.wide {
         transform: scaleY(0.75);
