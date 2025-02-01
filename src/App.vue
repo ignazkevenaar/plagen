@@ -12,6 +12,7 @@ const plateSettings = ref({
   classification: "33",
   kana: "tsu",
   showSeal: true,
+  showScrews: true,
 });
 
 const exportSettings = ref({
@@ -79,6 +80,7 @@ const render = () => {
       :classification="plateSettings.classification"
       :kana="plateSettings.kana"
       :show-seal="plateSettings.showSeal"
+      :show-screws="plateSettings.showScrews"
     />
     <div
       v-if="generating"
@@ -92,6 +94,7 @@ const render = () => {
         :classification="plateSettings.classification"
         :kana="plateSettings.kana"
         :show-seal="plateSettings.showSeal"
+        :show-screws="plateSettings.showScrews"
         :style="{ width: `${Math.round(plateWidthPx)}px !important` }"
       />
     </div>

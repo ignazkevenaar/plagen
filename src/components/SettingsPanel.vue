@@ -160,8 +160,11 @@ const checkKanaOnColorChange = (newColor) => {
       <SettingsSection title="Kana">
         <InputSelect v-model="plateModel.kana" :items="formattedKana" />
       </SettingsSection>
-      <SettingsSection title="Seal">
+      <SettingsSection title="Show Seal">
         <InputSwitch v-model="plateModel.showSeal" />
+      </SettingsSection>
+      <SettingsSection title="Show Screws">
+        <InputSwitch v-model="plateModel.showScrews" />
       </SettingsSection>
       <hr />
       <SettingsSection title="Export width">

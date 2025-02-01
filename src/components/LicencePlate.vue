@@ -2,6 +2,7 @@
 import { computed } from "vue";
 import offices from "../data/offices.json";
 import kanaData from "../data/kana.json";
+import Screw from "./Screw.vue";
 
 const props = defineProps({
   color: {
@@ -25,6 +26,10 @@ const props = defineProps({
     default: "",
   },
   showSeal: {
+    type: Boolean,
+    default: false,
+  },
+  showScrews: {
     type: Boolean,
     default: false,
   },
@@ -110,10 +115,12 @@ const computedKana = computed(() => {
               </span>
             </div>
           </div>
-          <div v-else><!-- Screw --></div>
+          <Screw v-else-if="showScrews" style="--rotation: 30deg" />
+          <div v-else class="hole"></div>
         </div>
         <div>
-          <div><!-- Screw --></div>
+          <Screw v-if="showScrews" />
+          <div v-else class="hole"></div>
         </div>
       </div>
       <div class="topRow">
@@ -165,7 +172,7 @@ const computedKana = computed(() => {
 
 <style lang="css" scoped>
 .plateContainer {
-  --cmm: calc(1cqw / 3.3);
+  --cmm: calc(max(1px, 1cqw / 3.3));
   container-type: inline-size;
   box-shadow: calc(5 * var(--cmm)) calc(10 * var(--cmm)) calc(25 * var(--cmm))
     black;
@@ -282,6 +289,9 @@ const computedKana = computed(() => {
       > * {
         position: absolute;
         border-radius: 100%;
+      }
+
+      .hole {
         background-color: black;
         width: calc(8 * var(--cmm));
         height: calc(8 * var(--cmm));
