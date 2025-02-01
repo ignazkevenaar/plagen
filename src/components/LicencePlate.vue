@@ -188,6 +188,7 @@ const computedKana = computed(() => {
   height: 100%;
   overflow: hidden;
   color: var(--plate-foreground);
+  user-select: none;
 
   &.private {
     --plate-background: #d7d8d5;
