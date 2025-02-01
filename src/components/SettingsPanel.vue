@@ -64,18 +64,9 @@ const formattedKana = computed(() => {
 
 const exportUnits = ["cm", "mm", "in", "px"];
 
-const checkKanaOnColorChange = (newColor) => {
-  const validKana = kana[newColor === "commercial" ? "commercial" : "private"];
-  if (newColor !== "commercial") validKana.push(...kana.special);
-
-  const isKanaValid = validKana.find(
-    (k) =>
-      k.transliteration === plateModel.value.kana ||
-      k === plateModel.value.kana,
-  );
-
-  if (!isKanaValid) {
-    plateModel.value.kana = validKana[0].transliteration;
+const checkKanaOnColorChange = () => {
+  if (!formattedKana.value.find((k) => k.value === plateModel.value.kana)) {
+    plateModel.value.kana = formattedKana.value[0].value;
   }
 };
 </script>
