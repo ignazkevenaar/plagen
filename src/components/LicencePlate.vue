@@ -401,8 +401,6 @@ const computedKana = computed(() => {
     white-space: nowrap;
 
     .office {
-      transform-origin: center left;
-      filter: url("#drop-shadow");
       font-weight: 500;
       font-size: calc(48 * var(--cmm));
       font-family: "M PLUS Rounded 1c", serif;
