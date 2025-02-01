@@ -118,7 +118,7 @@ const computedKana = computed(() => {
       </div>
       <div class="topRow">
         <p
-          class="office"
+          class="office emboss"
           :class="{
             three: formattedOffice.length === 3,
             four: formattedOffice.length === 4,
@@ -128,13 +128,13 @@ const computedKana = computed(() => {
         </p>
         <p
           v-if="classification"
-          class="classification"
+          class="classification emboss"
           :class="{ wide: classification.length < 3 }"
         >
           {{ classification }}
         </p>
       </div>
-      <div class="bottomRow">
+      <div class="bottomRow emboss">
         <p class="kana" :class="{ special: isSpecialKana }">
           <span>{{ computedKana.kana ?? computedKana }}</span>
         </p>
@@ -176,62 +176,92 @@ const computedKana = computed(() => {
 
 .licencePlate {
   position: relative;
-  border: 2px solid rgba(0 0 0 / 20%);
   border-radius: calc(10 * var(--cmm));
   background-color: var(--plate-background);
   height: 100%;
+  overflow: hidden;
   color: var(--plate-foreground);
 
   &.private {
     --plate-background: #d7d8d5;
     --plate-foreground: #194a17;
+    --shadow-light: #fff;
+    --shadow-dark: #aaa;
   }
 
   &.kei {
     --plate-background: #f1c209;
     --plate-foreground: #000;
+    --shadow-light: #fee685;
+    --shadow-dark: #d08700;
   }
 
   &.commercial {
     --plate-background: #194a17;
     --plate-foreground: #d7d8d5;
+    --shadow-light: #4e7245;
+    --shadow-dark: #0d331a;
   }
 
   &.commercial-kei {
-    --plate-background: #000;
+    --plate-background: #111;
     --plate-foreground: #f1c209;
+    --shadow-light: #444;
+    --shadow-dark: #000;
   }
 
   .ridge {
     position: absolute;
+    transform: translate3d(0, 0, 0);
     inset: calc(2 * var(--cmm));
     box-shadow:
+      calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
+        var(--shadow-light),
       inset calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(2 * var(--cmm))
-        rgba(255, 255, 255, 0.5),
+        var(--shadow-light),
+      calc(0.5 * var(--cmm)) calc(0.5 * var(--cmm)) calc(1 * var(--cmm))
+        var(--shadow-dark),
       inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(2 * var(--cmm))
-        rgba(0, 0, 0, 0.25),
-      calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
-        rgba(0, 0, 0, 0.2),
-      calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(1 * var(--cmm))
-        rgba(255, 255, 255, 0.5);
-    border-radius: calc(7 * var(--cmm));
-    background-color: var(--plate-background);
+        var(--shadow-dark);
+    border-radius: calc(8 * var(--cmm));
 
     > div {
       position: absolute;
       inset: calc(4 * var(--cmm));
       box-shadow:
         calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(2 * var(--cmm))
-          rgba(255, 255, 255, 0.5),
+          var(--shadow-light),
         calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(2 * var(--cmm))
-          rgba(0, 0, 0, 0.1),
-        inset calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
-          rgba(0, 0, 0, 0.1),
-        inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(1 * var(--cmm))
-          rgba(255, 255, 255, 0.5);
-      border-radius: calc(3 * var(--cmm));
-      background-color: var(--plate-background);
+          var(--shadow-dark),
+        inset calc(0.5 * var(--cmm)) calc(0.5 * var(--cmm)) calc(1 * var(--cmm))
+          var(--shadow-dark),
+        inset calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm))
+          calc(1 * var(--cmm)) var(--shadow-light);
+      border-radius: calc(4 * var(--cmm));
     }
+  }
+
+  .emboss {
+    filter: drop-shadow(
+        calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(1 * var(--cmm))
+          var(--shadow-light)
+      )
+      drop-shadow(
+        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(0.25 * var(--cmm))
+          var(--plate-background)
+      )
+      drop-shadow(
+        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
+          var(--shadow-dark)
+      );
+  }
+
+  .reference {
+    position: absolute;
+    opacity: 0.25;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .screws {
