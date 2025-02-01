@@ -26,7 +26,7 @@ const checkValiditySerial = (event) => {
 };
 
 const checkValidityClassification = (event) => {
-  if (event.target.value.match(/^\d{0,4}$/))
+  if (event.target.value.match(/^\d{0,3}$/))
     plateModel.value.classification = event.target.value;
 };
 
