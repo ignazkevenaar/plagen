@@ -88,9 +88,9 @@ const computedKana = computed(() => {
           <div v-else class="hole"></div>
         </div>
       </div>
-      <div class="topRow">
+      <div class="topRow emboss">
         <p
-          class="office emboss"
+          class="office"
           :class="{
             three: formattedOffice.length === 3,
             four: formattedOffice.length === 4,
@@ -100,7 +100,7 @@ const computedKana = computed(() => {
         </p>
         <p
           v-if="classification"
-          class="classification emboss"
+          class="classification"
           :class="{ wide: classification.length < 3 }"
         >
           {{ classification }}
