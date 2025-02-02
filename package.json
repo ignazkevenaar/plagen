@@ -12,6 +12,7 @@
     "@mdi/js": "^7.4.47",
     "downloadjs": "^1.4.7",
     "html-to-image": "^1.11.11",
+    "jsonschema": "^1.5.0",
     "mdi-vue": "^3.0.13",
     "vue": "^3.5.13"
   },

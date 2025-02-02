@@ -10,11 +10,12 @@ import LabelSelect from "./settings/LabelSelect.vue";
 import LabelSwitch from "./settings/LabelSwitch.vue";
 import PlateColorButton from "./settings/PlateColorButton.vue";
 import AppHeader from "./AppHeader.vue";
+import TopLevelButton from "./settings/TopLevelButton.vue";
 
 const plateModel = defineModel("plate");
 const exportModel = defineModel("export");
 
-const emit = defineEmits(["generate", "reset"]);
+const emit = defineEmits(["generate", "reset", "import", "export"]);
 defineProps({
   generating: Boolean,
 });
@@ -76,6 +77,15 @@ const exportPanelOpen = ref(true);
 <template>
   <div class="flex flex-col gap-4 drop-shadow-lg">
     <AppHeader />
+
+    <div class="grid grid-cols-2 gap-4">
+      <TopLevelButton prepend-icon="import" @click="emit('import')">
+        Import
+      </TopLevelButton>
+      <TopLevelButton prepend-icon="export" @click="emit('export')">
+        Export
+      </TopLevelButton>
+    </div>
 
     <CollapsablePanel v-model="platePanelOpen">
       <template #title>Licence Plate Settings</template>

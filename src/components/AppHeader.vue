@@ -31,7 +31,7 @@ const isCherryBlossomSeason = computed(() => {
       🌸
     </span>
     <div>
-      <h1 class="text-xl leading-6">Japanese License Plate Generator</h1>
+      <h1 class="text-xl leading-6">Japanese Licence Plate Generator</h1>
       <p class="flex gap-1 text-xs opacity-65">
         <span>Version {{ version }}</span>
         <span class="opacity-50">·</span>
