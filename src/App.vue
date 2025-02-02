@@ -69,28 +69,28 @@ const render = () => {
 
 <template>
   <div
-    class="flex min-h-screen grid-cols-[auto_1fr] flex-col gap-6 bg-gray-50 p-8 text-black scheme-light-dark md:grid md:h-screen md:overflow-hidden dark:bg-gray-800 dark:text-white"
+    class="scrollbar-thin flex min-h-screen grid-cols-[auto_1fr] flex-col bg-gray-100 text-black md:grid dark:bg-gray-900 dark:text-white"
   >
-    <div class="md:overflow-hidden">
-      <SettingsPanel
-        v-model:plate="plateSettings"
-        v-model:export="exportSettings"
-        :generating="generating"
-        class="relative z-10 h-full md:w-80 md:place-self-end"
-        @generate="render()"
+    <SettingsPanel
+      v-model:plate="plateSettings"
+      v-model:export="exportSettings"
+      :generating="generating"
+      class="relative z-10 m-8 me-0 md:w-96"
+      @generate="render()"
+    />
+    <!-- Preview plate -->
+    <div class="sticky top-0 grid h-screen items-center p-8">
+      <LicencePlate
+        class="max-h-screen place-self-center"
+        :color="plateSettings.color"
+        :serial="plateSettings.serial"
+        :office="plateSettings.office"
+        :classification="plateSettings.classification"
+        :kana="plateSettings.kana"
+        :show-seal="plateSettings.showSeal"
+        :show-screws="plateSettings.showScrews"
       />
     </div>
-    <!-- Preview plate -->
-    <LicencePlate
-      class="place-self-center"
-      :color="plateSettings.color"
-      :serial="plateSettings.serial"
-      :office="plateSettings.office"
-      :classification="plateSettings.classification"
-      :kana="plateSettings.kana"
-      :show-seal="plateSettings.showSeal"
-      :show-screws="plateSettings.showScrews"
-    />
     <div
       v-if="generating"
       class="absolute -top-full -left-full h-0 w-0 overflow-hidden"

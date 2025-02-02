@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 import kana from "../data/kana.json";
 import offices from "../data/offices.json";
 
-import ColorButton from "./settings/ColorButton.vue";
-import InputSelect from "./settings/InputSelect.vue";
-import InputSwitch from "./settings/InputSwitch.vue";
-import InputText from "./settings/InputText.vue";
-import SettingsSection from "./SettingsSection.vue";
-
-const version = import.meta.env.VITE_VERSION;
+import CollapsablePanel from "./CollapsablePanel.vue";
+import LabelInput from "./settings/LabelInput.vue";
+import LabelSelect from "./settings/LabelSelect.vue";
+import LabelSwitch from "./settings/LabelSwitch.vue";
+import PlateColorButton from "./settings/PlateColorButton.vue";
+import AppHeader from "./AppHeader.vue";
 
 const plateModel = defineModel("plate");
 const exportModel = defineModel("export");
 
 const emit = defineEmits(["generate"]);
-const props = defineProps({
+defineProps({
   generating: Boolean,
 });
 
@@ -69,113 +68,150 @@ const checkKanaOnColorChange = () => {
     plateModel.value.kana = formattedKana.value[0].value;
   }
 };
+
+const platePanelOpen = ref(true);
+const exportPanelOpen = ref(true);
 </script>
 
 <template>
-  <div
-    class="flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-gray-700"
-  >
-    <div class="p-4">
-      <h1 class="text-center text-xl">JDM Plate generator</h1>
-      <div class="p-4 text-center">
-        <p class="text-xs opacity-65">
-          &copy;{{ new Date().getFullYear() }} Ignaz Kevenaar
-        </p>
-        <p>Version {{ version }}</p>
-        <a
-          href="https://github.com/ignazkevenaar/jdm-plate-generator"
-          target="_blank"
+  <div class="flex flex-col gap-4 drop-shadow-lg">
+    <AppHeader />
+
+    <CollapsablePanel v-model="platePanelOpen">
+      <template #title>Licence Plate Settings</template>
+      <template #afterTitle>
+        <button
+          class="cursor-pointer rounded-md bg-gray-100 p-1 hover:bg-gray-200 dark:bg-gray-700 hover:dark:bg-gray-600"
         >
-          View on GitHub
-        </a>
-      </div>
-    </div>
-    <div
-      class="scrollbar-thin overflow-auto border-y *:p-4 dark:border-gray-800"
-    >
-      <SettingsSection title="Color">
-        <div class="flex justify-evenly">
-          <ColorButton
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="size-6 fill-gray-500 dark:fill-gray-400"
+          >
+            <path
+              d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z"
+            />
+          </svg>
+        </button>
+      </template>
+
+      <label class="block font-semibold">
+        <span class="block text-[10pt] uppercase select-none">Plate type</span>
+        <div class="mt-1 grid grid-cols-4 gap-4">
+          <PlateColorButton
             v-model="plateModel.color"
+            label="Private"
             value="private"
-            name="color"
             background="#d7d8d5"
             foreground="#194a17"
             @update:model-value="checkKanaOnColorChange"
           />
-          <ColorButton
+          <PlateColorButton
             v-model="plateModel.color"
+            label="Kei"
             value="kei"
-            name="color"
             background="#f1c209"
             foreground="#000"
             @update:model-value="checkKanaOnColorChange"
           />
-          <ColorButton
+          <PlateColorButton
             v-model="plateModel.color"
+            label="Commercial"
             value="commercial"
-            name="color"
             background="#194a17"
             foreground="#d7d8d5"
             @update:model-value="checkKanaOnColorChange"
           />
-          <ColorButton
+          <PlateColorButton
             v-model="plateModel.color"
+            label="Comm. Kei"
             value="commercial-kei"
-            name="color"
             background="#000"
             foreground="#f1c209"
             @update:model-value="checkKanaOnColorChange"
           />
         </div>
-      </SettingsSection>
-      <SettingsSection title="Serial number">
-        <InputText
-          :model-value="plateModel.serial"
-          maxlength="4"
-          pattern="[0-9]{4}"
-          @input="checkValiditySerial($event)"
-        />
-      </SettingsSection>
-      <SettingsSection title="Office">
-        <InputSelect v-model="plateModel.office" :items="formattedOffices" />
-      </SettingsSection>
-      <SettingsSection title="Vehicle classification">
-        <InputText
+      </label>
+
+      <LabelInput
+        :model-value="plateModel.serial"
+        large
+        maxlength="4"
+        pattern="[0-9]{4}"
+        @input="checkValiditySerial($event)"
+        label="Serial number"
+        sublabel="0-9 allowed, leave out leading zeros or hyphen."
+      />
+      <LabelSelect
+        v-model="plateModel.office"
+        :options="formattedOffices"
+        label="Issuing Office"
+      />
+      <div class="grid grid-cols-2 gap-4">
+        <LabelInput
           :model-value="plateModel.classification"
           maxlength="3"
-          pattern="[0-9]{3}"
+          pattern="[0-9]{4}"
           @input="checkValidityClassification($event)"
+          label="Classification"
         />
-      </SettingsSection>
-      <SettingsSection title="Kana">
-        <InputSelect v-model="plateModel.kana" :items="formattedKana" />
-      </SettingsSection>
-      <SettingsSection title="Show Seal">
-        <InputSwitch v-model="plateModel.showSeal" />
-      </SettingsSection>
-      <SettingsSection title="Show Screws">
-        <InputSwitch v-model="plateModel.showScrews" />
-      </SettingsSection>
-      <hr />
-      <SettingsSection title="Export width">
-        <div class="flex gap-2">
-          <InputText v-model="exportModel.width" type="number" min="1" />
-          <InputSelect v-model="exportModel.unit" :items="exportUnits" />
+        <LabelSelect
+          v-model="plateModel.kana"
+          :options="formattedKana"
+          label="Kana"
+        />
+      </div>
+      <LabelSwitch v-model="plateModel.showSeal" label="Show Seal" />
+      <LabelSwitch v-model="plateModel.showScrews" label="Show Screws" />
+    </CollapsablePanel>
+    <div class="-my-2 grow"></div>
+    <CollapsablePanel v-model="exportPanelOpen">
+      <template #title>Export Settings</template>
+
+      <div class="grid grid-cols-[auto_1fr_1fr] grid-rows-2 gap-4">
+        <div class="row-span-2 -me-4 -translate-x-1 content-center pt-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="size-6 rotate-90 fill-current opacity-35"
+          >
+            <title>Width and height are linked</title>
+            <path
+              d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z"
+            />
+          </svg>
         </div>
-      </SettingsSection>
-      <SettingsSection v-if="exportModel.unit !== 'px'" title="DPI">
-        <InputText
-          v-model="exportModel.dpi"
+        <LabelInput
+          v-model.number="exportModel.width"
+          type="number"
+          min="1"
+          step="0.5"
+          label="Width"
+        />
+        <LabelInput
+          :model-value="exportModel.width / 2"
+          type="number"
+          min="1"
+          step="0.5"
+          label="Height"
+          class="col-start-2 row-start-2"
+          @update:model-value="exportModel.width = $event * 2"
+        />
+        <LabelSelect
+          v-model="exportModel.unit"
+          :options="exportUnits"
+          label="Unit"
+        />
+        <LabelInput
+          v-model.number="exportModel.dpi"
           type="number"
           min="72"
           max="2400"
+          label="DPI"
         />
-      </SettingsSection>
-    </div>
-    <div class="p-4">
+      </div>
       <button
-        class="mx-auto flex cursor-pointer items-baseline gap-2 rounded-full bg-purple-600 px-6 py-2 text-lg font-bold text-white capitalize"
+        class="block w-full rounded-md bg-black p-2 text-sm font-semibold text-white uppercase enabled:cursor-pointer"
         :disabled="generating"
         @click="emit('generate')"
       >
@@ -202,6 +238,6 @@ const checkKanaOnColorChange = () => {
           ></path>
         </svg>
       </button>
-    </div>
+    </CollapsablePanel>
   </div>
 </template>
