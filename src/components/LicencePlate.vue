@@ -3,6 +3,7 @@ import { computed } from "vue";
 import offices from "../data/offices.json";
 import kanaData from "../data/kana.json";
 import Screw from "./Screw.vue";
+import Seal from "./Seal.vue";
 
 const props = defineProps({
   color: {
@@ -55,32 +56,6 @@ const formattedOffice = computed(() => {
   return "ERR";
 });
 
-const currentPrefecture = computed(() => {
-  if (props.office === "") return undefined;
-
-  return offices.find((prefecture) =>
-    prefecture.municipalities.some((municipality) =>
-      municipality.markings.find(
-        (marking) => marking.international === props.office,
-      ),
-    ),
-  );
-});
-
-const sealCharacters = computed(() => {
-  if (currentPrefecture.value === undefined) return "";
-
-  const repeatingCharacters = ["愛", "福", "宮", "長", "大", "山"];
-
-  let output = currentPrefecture.value?.kanji.charAt(0);
-
-  if (repeatingCharacters.includes(output)) {
-    output += currentPrefecture.value?.kanji.charAt(1);
-  }
-
-  return output;
-});
-
 const isSpecialKana = computed(() =>
   kanaData.special.find((k) => k === props.kana),
 );
@@ -104,17 +79,7 @@ const computedKana = computed(() => {
       <div class="ridge"><div></div></div>
       <div class="screws">
         <div>
-          <div v-if="showSeal" class="seal">
-            <div>
-              <span :class="{ small: sealCharacters.length > 1 }">
-                <span v-text="sealCharacters[0]" />
-                <span
-                  v-if="sealCharacters.length > 1"
-                  v-text="sealCharacters[1]"
-                />
-              </span>
-            </div>
-          </div>
+          <Seal v-if="showSeal" :office="office" />
           <Screw v-else-if="showScrews" style="--rotation: 30deg" />
           <div v-else class="hole"></div>
         </div>
@@ -297,100 +262,6 @@ const computedKana = computed(() => {
         background-color: black;
         width: calc(8 * var(--cmm));
         height: calc(8 * var(--cmm));
-      }
-
-      .seal {
-        display: grid;
-        place-items: center;
-        box-shadow:
-          inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(3 * var(--cmm))
-            rgba(0, 0, 0, 0.4),
-          calc(2 * var(--cmm)) calc(2 * var(--cmm)) calc(4 * var(--cmm))
-            rgba(0, 0, 0, 0.2),
-          inset 0 0 calc(1 * var(--cmm)) calc(1 * var(--cmm)) rgba(0, 0, 0, 0.4),
-          inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(2 * var(--cmm))
-            calc(1 * var(--cmm)) rgba(0, 0, 0, 0.25),
-          inset calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
-            calc(2 * var(--cmm)) white;
-        background-image: conic-gradient(
-          from 320deg at 50% 50%,
-          #ffffffff 3%,
-          #a4a4a4ff 35%,
-          #fafafaff 52%,
-          #5f5f5fff 87%,
-          #ffffffff 100%
-        );
-        background-color: grey;
-        width: calc(28 * var(--cmm));
-        height: calc(28 * var(--cmm));
-        font-weight: 400;
-        font-family: "M PLUS Rounded 1c", serif;
-
-        > div {
-          display: grid;
-          position: relative;
-          place-items: center;
-          box-shadow:
-            calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
-              calc(0.5 * var(--cmm)) calc(0.25 * var(--cmm)) rgba(0, 0, 0, 0.75),
-            calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
-              rgba(255, 255, 255, 0.6),
-            calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
-              rgba(0, 0, 0, 0.75),
-            inset calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
-              calc(0.25 * var(--cmm)) white,
-            inset calc(-0.25 * var(--cmm)) calc(-0.25 * var(--cmm))
-              calc(1 * var(--cmm)) rgba(0, 0, 0, 1);
-          border-radius: 100%;
-          background-image: conic-gradient(
-            from 320deg at 50% 50%,
-            #ffffffff 3%,
-            #a4a4a4ff 35%,
-            #fafafaff 52%,
-            grey 87%,
-            #ffffffff 100%
-          );
-          background-color: silver;
-          width: calc(21 * var(--cmm));
-          height: calc(21 * var(--cmm));
-
-          &::before {
-            display: block;
-            position: absolute;
-            inset: calc(2 * var(--cmm));
-            box-shadow:
-              calc(-0.25 * var(--cmm)) calc(-0.25 * var(--cmm))
-                calc(0.25 * var(--cmm)) rgba(0, 0, 0, 0.25),
-              inset calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
-                calc(0.25 * var(--cmm)) white,
-              inset calc(-0.25 * var(--cmm)) calc(-0.25 * var(--cmm))
-                calc(0.25 * var(--cmm)) rgba(0, 0, 0, 0.25);
-            border-radius: 100%;
-            content: "";
-          }
-
-          span {
-            position: relative;
-            top: calc(-0.25 * var(--cmm));
-            color: silver;
-            font-size: calc(12 * var(--cmm));
-            line-height: 0;
-            text-shadow:
-              calc(0.25 * var(--cmm)) calc(0.25 * var(--cmm))
-                calc(0.25 * var(--cmm)) white,
-              calc(-0.2 * var(--cmm)) calc(-0.2 * var(--cmm))
-                calc(0.5 * var(--cmm)) black;
-
-            &.small {
-              span {
-                display: block;
-                transform: scaleY(0.8);
-                font-size: calc(8 * var(--cmm));
-                line-height: calc(7 * var(--cmm));
-              }
-            }
-          }
-        }
       }
     }
   }
