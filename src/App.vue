@@ -5,7 +5,7 @@ import { toPng } from "html-to-image";
 import SettingsPanel from "./components/SettingsPanel.vue";
 import download from "downloadjs";
 
-const plateSettings = ref({
+const defaultPlate = {
   color: "private",
   serial: "1",
   office: "TKS",
@@ -13,7 +13,9 @@ const plateSettings = ref({
   kana: "tsu",
   showSeal: true,
   showScrews: true,
-});
+};
+
+const plateSettings = ref(structuredClone(defaultPlate));
 
 const exportSettings = ref({
   width: 33,
@@ -65,6 +67,10 @@ const render = () => {
       });
   });
 };
+
+const resetPlate = () => {
+  plateSettings.value = structuredClone(defaultPlate);
+};
 </script>
 
 <template>
@@ -77,6 +83,7 @@ const render = () => {
       :generating="generating"
       class="relative z-10 m-8 me-0 md:w-96"
       @generate="render()"
+      @reset="resetPlate"
     />
     <!-- Preview plate -->
     <div class="sticky top-0 grid h-screen items-center p-8">

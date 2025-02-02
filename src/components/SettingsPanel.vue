@@ -14,7 +14,7 @@ import AppHeader from "./AppHeader.vue";
 const plateModel = defineModel("plate");
 const exportModel = defineModel("export");
 
-const emit = defineEmits(["generate"]);
+const emit = defineEmits(["generate", "reset"]);
 defineProps({
   generating: Boolean,
 });
@@ -82,10 +82,12 @@ const exportPanelOpen = ref(true);
       <template #afterTitle>
         <button
           class="cursor-pointer rounded-md bg-gray-100 p-1 hover:bg-gray-200 dark:bg-gray-700 hover:dark:bg-gray-600"
+          title="Reset licence plate"
+          @click.stop="emit('reset')"
         >
           <mdicon
-            name="delete-outline"
-            class="size-6 fill-gray-500 dark:fill-gray-400"
+            name="reload"
+            class="block size-6 -scale-x-100 fill-gray-500 dark:fill-gray-400"
           />
         </button>
       </template>
