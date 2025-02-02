@@ -69,8 +69,17 @@ const render = () => {
 
 <template>
   <div
-    class="flex min-h-screen grid-cols-[1fr_auto] flex-col gap-6 bg-gray-50 p-8 text-black scheme-light-dark md:grid md:h-screen md:overflow-hidden dark:bg-gray-800 dark:text-white"
+    class="flex min-h-screen grid-cols-[auto_1fr] flex-col gap-6 bg-gray-50 p-8 text-black scheme-light-dark md:grid md:h-screen md:overflow-hidden dark:bg-gray-800 dark:text-white"
   >
+    <div class="md:overflow-hidden">
+      <SettingsPanel
+        v-model:plate="plateSettings"
+        v-model:export="exportSettings"
+        :generating="generating"
+        class="relative z-10 h-full md:w-80 md:place-self-end"
+        @generate="render()"
+      />
+    </div>
     <!-- Preview plate -->
     <LicencePlate
       class="place-self-center"
@@ -96,15 +105,6 @@ const render = () => {
         :show-seal="plateSettings.showSeal"
         :show-screws="plateSettings.showScrews"
         :style="{ width: `${Math.round(plateWidthPx)}px !important` }"
-      />
-    </div>
-    <div class="md:overflow-hidden">
-      <SettingsPanel
-        v-model:plate="plateSettings"
-        v-model:export="exportSettings"
-        :generating="generating"
-        class="relative z-10 h-full md:w-80 md:place-self-end"
-        @generate="render()"
       />
     </div>
   </div>

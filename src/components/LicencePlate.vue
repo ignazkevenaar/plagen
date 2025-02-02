@@ -173,12 +173,13 @@ const computedKana = computed(() => {
 <style lang="css" scoped>
 .plateContainer {
   --cmm: calc(max(1px, 1cqw / 3.3));
+  filter: drop-shadow(
+    calc(5 * var(--cmm)) calc(10 * var(--cmm)) calc(25 * var(--cmm)) black
+  );
   container-type: inline-size;
-  box-shadow: calc(5 * var(--cmm)) calc(10 * var(--cmm)) calc(25 * var(--cmm))
-    black;
-  border-radius: calc(10 * var(--cmm));
   aspect-ratio: 2;
   width: 100%;
+  max-width: 150cqh;
 }
 
 .licencePlate {
