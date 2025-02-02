@@ -83,15 +83,10 @@ const exportPanelOpen = ref(true);
         <button
           class="cursor-pointer rounded-md bg-gray-100 p-1 hover:bg-gray-200 dark:bg-gray-700 hover:dark:bg-gray-600"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
+          <mdicon
+            name="delete-outline"
             class="size-6 fill-gray-500 dark:fill-gray-400"
-          >
-            <path
-              d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z"
-            />
-          </svg>
+          />
         </button>
       </template>
 
@@ -170,16 +165,11 @@ const exportPanelOpen = ref(true);
 
       <div class="grid grid-cols-[auto_1fr_1fr] grid-rows-2 gap-4">
         <div class="row-span-2 -me-4 -translate-x-1 content-center pt-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            class="size-6 rotate-90 fill-current opacity-35"
-          >
-            <title>Width and height are linked</title>
-            <path
-              d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z"
-            />
-          </svg>
+          <mdicon
+            name="link"
+            class="relative block size-6 rotate-90 fill-current opacity-35"
+            title="Width and height are linked"
+          ></mdicon>
         </div>
         <LabelInput
           v-model.number="exportModel.width"
