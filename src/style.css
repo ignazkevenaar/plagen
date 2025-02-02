@@ -2,6 +2,20 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color-gray-50: oklch(0.984 0.00225 305);
+  --color-gray-100: oklch(0.968 0.00525 305);
+  --color-gray-200: oklch(0.929 0.00975 305);
+  --color-gray-300: oklch(0.869 0.0165 305);
+  --color-gray-400: oklch(0.704 0.03 305);
+  --color-gray-500: oklch(0.554 0.0345 305);
+  --color-gray-600: oklch(0.446 0.03225 305);
+  --color-gray-700: oklch(0.372 0.033 305);
+  --color-gray-800: oklch(0.279 0.03075 305);
+  --color-gray-900: oklch(0.208 0.0315 305);
+  --color-gray-950: oklch(0.129 0.0315 305);
+}
+
 @utility scrollbar-thin {
   scrollbar-width: thin;
 }
