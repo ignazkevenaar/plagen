@@ -19,3 +19,11 @@
 @utility scrollbar-thin {
   scrollbar-width: thin;
 }
+
+@utility mask-none {
+  mask-image: none;
+}
+
+@utility mask-bottom {
+  mask-image: linear-gradient(black, black 90%, transparent);
+}

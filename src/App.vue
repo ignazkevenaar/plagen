@@ -165,7 +165,7 @@ const onDrop = (event) => {
 
 <template>
   <div
-    class="scrollbar-thin flex min-h-screen grid-cols-[auto_1fr] flex-col bg-gray-100 text-black md:grid dark:bg-gray-900 dark:text-white"
+    class="flex min-h-screen grid-cols-[auto_1fr] flex-col bg-gray-100 text-black md:grid dark:bg-gray-900 dark:text-white"
     @dragover.native="onDragOver"
     @drop.native="onDrop"
   >
@@ -173,14 +173,16 @@ const onDrop = (event) => {
       v-model:plate="plateSettings"
       v-model:export="exportSettings"
       :generating="generating"
-      class="relative z-10 m-8 me-0 md:w-96"
+      class="relative z-10 m-4 md:m-8 md:me-0 md:w-96"
       @generate="render()"
       @reset="resetPlate"
       @import="importConfig"
       @export="exportConfig"
     />
     <!-- Preview plate -->
-    <div class="sticky top-0 grid h-screen items-center p-8">
+    <div
+      class="mask-bottom md:mask-none sticky top-0 z-20 -order-1 grid items-center bg-gray-900 p-8 md:order-1 md:h-screen md:bg-transparent"
+    >
       <LicencePlate
         class="max-h-screen place-self-center"
         :color="plateSettings.color"
@@ -211,7 +213,7 @@ const onDrop = (event) => {
     <input type="file" ref="fileInput" class="hidden" />
     <div
       v-if="draggingOver"
-      class="absolute inset-0 z-20 grid place-items-center bg-gray-800/90 text-2xl md:text-3xl lg:text-6xl"
+      class="absolute inset-0 z-30 grid place-items-center bg-gray-800/90 text-2xl md:text-3xl lg:text-6xl"
     >
       <span>
         Drop
