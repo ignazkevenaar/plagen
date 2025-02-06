@@ -1,82 +1,44 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-
-import kana from "../data/kana.json";
-import offices from "../data/offices.json";
+import { ref } from "vue";
 
 import CollapsablePanel from "./CollapsablePanel.vue";
 import LabelInput from "./settings/LabelInput.vue";
 import LabelSelect from "./settings/LabelSelect.vue";
-import LabelSwitch from "./settings/LabelSwitch.vue";
-import PlateColorButton from "./settings/PlateColorButton.vue";
 import AppHeader from "./AppHeader.vue";
 import TopLevelButton from "./settings/TopLevelButton.vue";
+import PlateSettings from "./PlateSettings.vue";
 
-const plateModel = defineModel("plate");
 const exportModel = defineModel("export");
 
-const emit = defineEmits(["generate", "reset", "import", "export"]);
 defineProps({
   generating: Boolean,
+  plates: Array,
+  previewedPlateIndex: Number,
 });
 
-const checkValiditySerial = (event) => {
-  if (event.target.value.match(/^\d{0,4}$/))
-    plateModel.value.serial = event.target.value;
-};
-
-const checkValidityClassification = (event) => {
-  if (event.target.value.match(/^\d{0,3}$/))
-    plateModel.value.classification = event.target.value;
-};
-
-const formattedOffices = computed(() =>
-  offices.flatMap((prefecture) =>
-    prefecture.municipalities.flatMap((municipality) =>
-      municipality.markings.flatMap((marking) => ({
-        value: marking.international,
-        text: `${prefecture.transliteration} - ${municipality.name} - ${marking.transliteration} / ${marking.kanji}`,
-      })),
-    ),
-  ),
-);
-
-const formattedKana = computed(() => {
-  if (plateModel.value?.color === "commercial") {
-    return kana.commercial.map((kana) => ({
-      value: kana.transliteration,
-      text: `${kana.kana} - ${kana.transliteration}`,
-    }));
-  }
-
-  const output = kana.private.map((kana) => ({
-    value: kana.transliteration,
-    text: `${kana.kana} - ${kana.transliteration}`,
-  }));
-
-  const specialoutput = kana.special.map((character) => ({
-    value: character,
-    text: character,
-  }));
-
-  return [...output, ...specialoutput];
-});
+const emit = defineEmits([
+  "generate",
+  "reset",
+  "import",
+  "export",
+  "update:plate",
+  "add:plate",
+  "delete:plate",
+  "reset:plate",
+  "preview:plate",
+]);
 
 const exportUnits = ["cm", "mm", "in", "px"];
-
-const checkKanaOnColorChange = () => {
-  if (!formattedKana.value.find((k) => k.value === plateModel.value.kana)) {
-    plateModel.value.kana = formattedKana.value[0].value;
-  }
-};
-
-const platePanelOpen = ref(true);
 const exportPanelOpen = ref(true);
 </script>
 
 <template>
   <div class="flex flex-col gap-4 drop-shadow-lg">
     <AppHeader />
+
+    <div class="rounded-md border p-2 empty:hidden">
+      <slot name="debug"></slot>
+    </div>
 
     <div class="grid grid-cols-2 gap-4">
       <TopLevelButton prepend-icon="import" @click="emit('import')">
@@ -87,91 +49,30 @@ const exportPanelOpen = ref(true);
       </TopLevelButton>
     </div>
 
-    <CollapsablePanel v-model="platePanelOpen">
-      <template #title>Licence Plate Settings</template>
-      <template #afterTitle>
-        <button
-          class="cursor-pointer rounded-md bg-gray-100 p-1 hover:bg-gray-200 dark:bg-gray-700 hover:dark:bg-gray-600"
-          title="Reset licence plate"
-          @click.stop="emit('reset')"
-        >
-          <mdicon
-            name="reload"
-            class="block size-6 -scale-x-100 fill-gray-500 dark:fill-gray-400"
-          />
-        </button>
-      </template>
-
-      <label class="block font-semibold">
-        <span class="block text-[10pt] uppercase select-none">Plate type</span>
-        <div class="mt-1 grid grid-cols-4 gap-4">
-          <PlateColorButton
-            v-model="plateModel.color"
-            label="Private"
-            value="private"
-            background="#d7d8d5"
-            foreground="#194a17"
-            @update:model-value="checkKanaOnColorChange"
-          />
-          <PlateColorButton
-            v-model="plateModel.color"
-            label="Kei"
-            value="kei"
-            background="#f1c209"
-            foreground="#000"
-            @update:model-value="checkKanaOnColorChange"
-          />
-          <PlateColorButton
-            v-model="plateModel.color"
-            label="Commercial"
-            value="commercial"
-            background="#194a17"
-            foreground="#d7d8d5"
-            @update:model-value="checkKanaOnColorChange"
-          />
-          <PlateColorButton
-            v-model="plateModel.color"
-            label="Comm. Kei"
-            value="commercial-kei"
-            background="#000"
-            foreground="#f1c209"
-            @update:model-value="checkKanaOnColorChange"
-          />
-        </div>
-      </label>
-
-      <LabelInput
-        :model-value="plateModel.serial"
-        large
-        maxlength="4"
-        pattern="[0-9]{4}"
-        @input="checkValiditySerial($event)"
-        label="Serial number"
-        sublabel="0-9 allowed, leave out leading zeros or hyphen."
+    <div class="space-y-2">
+      <PlateSettings
+        v-for="(plate, plateIndex) in plates"
+        :key="plateIndex"
+        :model-value="plate"
+        :index="plateIndex"
+        :show-reset-button="plates?.length <= 1"
+        :is-previewing="previewedPlateIndex === plateIndex"
+        @update:model-value="emit('update:plate', plateIndex, $event)"
+        @reset="emit('reset:plate', plateIndex)"
+        @delete="emit('delete:plate', plateIndex)"
+        @preview="emit('preview:plate', plateIndex)"
       />
-      <LabelSelect
-        v-model="plateModel.office"
-        :options="formattedOffices"
-        label="Issuing Office"
-      />
-      <div class="grid grid-cols-2 gap-4">
-        <LabelInput
-          :model-value="plateModel.classification"
-          maxlength="3"
-          pattern="[0-9]{4}"
-          @input="checkValidityClassification($event)"
-          label="Classification"
-        />
-        <LabelSelect
-          v-model="plateModel.kana"
-          :options="formattedKana"
-          label="Kana"
-        />
-      </div>
-      <LabelSwitch v-model="plateModel.showSeal" label="Show Seal" />
-      <LabelSwitch v-model="plateModel.showScrews" label="Show Screws" />
-    </CollapsablePanel>
+    </div>
+
+    <TopLevelButton
+      prepend-icon="plus-circle-outline"
+      @click="emit('add:plate')"
+    >
+      Add Plate
+    </TopLevelButton>
+
     <div class="-my-2 grow"></div>
+
     <CollapsablePanel v-model="exportPanelOpen">
       <template #title>Export Settings</template>
 

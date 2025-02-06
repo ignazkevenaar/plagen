@@ -1,5 +1,9 @@
+export { mdiEye } from "@mdi/js";
+export { mdiEyeClosed } from "@mdi/js";
 export { mdiExport } from "@mdi/js";
+export { mdiDeleteOutline } from "@mdi/js";
 export { mdiGithub } from "@mdi/js";
 export { mdiImport } from "@mdi/js";
 export { mdiLink } from "@mdi/js";
+export { mdiPlusCircleOutline } from "@mdi/js";
 export { mdiReload } from "@mdi/js";

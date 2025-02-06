@@ -19,7 +19,9 @@ const defaultPlate = {
   showScrews: true,
 };
 
-const plateSettings = ref(structuredClone(defaultPlate));
+const plates = ref([]);
+const previewedPlateIndex = ref(0);
+const previewedPlate = computed(() => plates.value[previewedPlateIndex.value]);
 
 const exportSettings = ref({
   width: 33,
@@ -56,11 +58,11 @@ const render = () => {
 
         const filename = [
           "plate",
-          plateSettings.value.serial,
-          plateSettings.value.kana,
-          plateSettings.value.classification,
-          plateSettings.value.office,
-          plateSettings.value.color,
+          previewedPlate.value.serial,
+          previewedPlate.value.kana,
+          previewedPlate.value.classification,
+          previewedPlate.value.office,
+          previewedPlate.value.color,
           sizePart,
         ].join("-");
 
@@ -75,10 +77,6 @@ const render = () => {
   });
 };
 
-const resetPlate = () => {
-  plateSettings.value = structuredClone(defaultPlate);
-};
-
 const importConfig = () => {
   fileInput.value.click();
 };
@@ -86,7 +84,7 @@ const importConfig = () => {
 const exportConfig = () => {
   const config = {
     version,
-    licencePlate: plateSettings.value,
+    licencePlates: plates.value,
     settings: {
       export: exportSettings.value,
     },
@@ -117,7 +115,7 @@ const parseFile = async (fileName) => {
   }
 
   exportSettings.value = input.settings.export;
-  plateSettings.value = input.licencePlate;
+  plates.value = input.licencePlates;
 };
 
 // For input[type=file] only
@@ -161,6 +159,29 @@ const onDrop = (event) => {
     }
   });
 };
+
+const updatePlate = (plateIndex, plate) => {
+  plates.value[plateIndex] = plate;
+};
+
+const resetPlate = (plateIndex) => {
+  updatePlate(plateIndex, structuredClone(defaultPlate));
+};
+
+const deletePlate = (plateIndex) => {
+  plates.value.splice(plateIndex, 1);
+
+  if (plateIndex > 0 && plateIndex <= previewedPlateIndex.value) {
+    previewedPlateIndex.value -= 1;
+  }
+};
+
+const addPlate = () => {
+  plates.value.push(structuredClone(defaultPlate));
+  previewedPlateIndex.value = plates.value.length - 1;
+};
+
+onMounted(() => addPlate());
 </script>
 
 <template>
@@ -170,28 +191,36 @@ const onDrop = (event) => {
     @drop.native="onDrop"
   >
     <SettingsPanel
-      v-model:plate="plateSettings"
+      v-model:plates="plates"
       v-model:export="exportSettings"
       :generating="generating"
+      :previewed-plate-index="previewedPlateIndex"
       class="relative z-10 m-4 md:m-8 md:me-0 md:w-96"
       @generate="render()"
-      @reset="resetPlate"
       @import="importConfig"
       @export="exportConfig"
+      @switch-open="previewedPlateIndex = $event"
+      @update:plate="updatePlate"
+      @reset:plate="resetPlate"
+      @delete:plate="deletePlate"
+      @add:plate="addPlate"
+      @preview:plate="previewedPlateIndex = $event"
     />
+
     <!-- Preview plate -->
     <div
       class="mask-bottom md:mask-none sticky top-0 z-20 -order-1 grid items-center bg-gray-900 p-8 md:order-1 md:h-screen md:bg-transparent"
     >
       <LicencePlate
+        v-if="previewedPlate"
         class="max-h-screen place-self-center"
-        :color="plateSettings.color"
-        :serial="plateSettings.serial"
-        :office="plateSettings.office"
-        :classification="plateSettings.classification"
-        :kana="plateSettings.kana"
-        :show-seal="plateSettings.showSeal"
-        :show-screws="plateSettings.showScrews"
+        :color="previewedPlate.color"
+        :serial="previewedPlate.serial"
+        :office="previewedPlate.office"
+        :classification="previewedPlate.classification"
+        :kana="previewedPlate.kana"
+        :show-seal="previewedPlate.showSeal"
+        :show-screws="previewedPlate.showScrews"
       />
     </div>
     <div
@@ -200,13 +229,13 @@ const onDrop = (event) => {
     >
       <LicencePlate
         ref="plateElement"
-        :color="plateSettings.color"
-        :serial="plateSettings.serial"
-        :office="plateSettings.office"
-        :classification="plateSettings.classification"
-        :kana="plateSettings.kana"
-        :show-seal="plateSettings.showSeal"
-        :show-screws="plateSettings.showScrews"
+        :color="previewedPlate.color"
+        :serial="previewedPlate.serial"
+        :office="previewedPlate.office"
+        :classification="previewedPlate.classification"
+        :kana="previewedPlate.kana"
+        :show-seal="previewedPlate.showSeal"
+        :show-screws="previewedPlate.showScrews"
         :style="{ width: `${Math.round(plateWidthPx)}px !important` }"
       />
     </div>
