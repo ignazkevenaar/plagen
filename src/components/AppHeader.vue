@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import logo from "../assets/logo.svg?raw";
 
 const version = import.meta.env.VITE_VERSION;
 
@@ -11,7 +12,7 @@ const isCherryBlossomSeason = computed(() => {
 
 <template>
   <div
-    class="relative z-0 flex min-h-10 items-center justify-between overflow-hidden rounded-xl border p-2 select-none"
+    class="relative z-0 flex min-h-10 items-center justify-between gap-2 overflow-hidden rounded-xl border p-2 select-none"
     :class="
       isCherryBlossomSeason
         ? 'border-pink-300 bg-radial-[circle_at_25%_25%] from-pink-200 to-white dark:border-pink-900 dark:from-pink-900 dark:to-gray-800'
@@ -30,8 +31,13 @@ const isCherryBlossomSeason = computed(() => {
     >
       🌸
     </span>
-    <div>
-      <h1 class="text-xl leading-6">Japanese Licence Plate Generator</h1>
+    <div class="flex grow flex-col items-center gap-1">
+      <!-- <h1 class="text-xl leading-6">Japanese Licence Plate Generator</h1> -->
+      <div
+        v-html="logo"
+        class="*:h-8 *:w-auto *:fill-amber-600 *:dark:fill-yellow-400"
+        title="PlaGen — Japanese Licence Plate Generator"
+      ></div>
       <p class="flex gap-1 text-xs opacity-65">
         <span>Version {{ version }}</span>
         <span class="opacity-50">·</span>
