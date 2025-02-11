@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.4.0 - 2025-02-11
+
+## Changed
+
+- Improve letter spacing
+- Fix issue with text position in Firefox due to empty filter
+- Redesign UI
+
+## Added
+
+- Emboss effect to letters
+- Add switchable screws
+- Add JSON export and import
+- Add support for multiple plates
+- Add branding
+
 ## 0.3.0 - 2025-01-27
 
 ## Changed
