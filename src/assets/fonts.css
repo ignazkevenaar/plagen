@@ -1,16 +1,10 @@
 /* To optimize font loading, only the actual character subset used in each font is downloaded and bundled */
 
 /* Offices and seal */
-@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500&display=swap&text=愛知県尾張小牧一宮春日井名古屋豊橋三河岡崎田秋青森八戸千葉成習志野柏袖ヶ浦媛福筑北九州久留米島会津郡山いわき岐阜飛騨群馬前高広海道旭川函館見釧路室蘭帯札幌兵庫姫神茨城水土つくば石金沢岩手平泉盛香鹿児奄美奈相模湘南横浜熊本京都府重鈴仙台長松諏訪佐世保良新潟大分倉敷沖縄阪和堺なに賀埼玉部越谷口所滋根嶋静沼富士伊豆栃木とちぎ宇那須徳東足立王子多摩練杉並品鳥取歌形庄内下関梨");
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap&text=愛知県尾張小牧一宮春日井名古屋豊橋三河岡崎田秋青森八戸千葉成習志野柏袖ヶ浦媛福筑北九州久留米島会津郡山いわき岐阜飛騨群馬前高広海道旭川函館見釧路室蘭帯札幌兵庫姫神茨城水土つくば石金沢岩手平泉盛香鹿児奄美奈相模湘南横浜熊本京都府重鈴仙台長松諏訪佐世保良新潟大分倉敷沖縄阪和堺なに賀埼玉部越谷口所滋根嶋静沼富士伊豆栃木とちぎ宇那須徳東足立王子多摩練杉並品鳥取歌形庄内下関梨");
 
 /* Kana */
 @import url("https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@700&display=swap&text=さすせそたちつてとなにぬねのはひふほまみむめもやゆよらりるろれわあいうえかきくけこを");
 
 /* Special SOFA letters */
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@600&display=swap&text=YAKMGHE");
-
-/* Locally hosted font for serial number and vehicle classification */
-@font-face {
-  src: url("/font/TrmFontJB.ttf") format("truetype");
-  font-family: "TrmFontJB";
-}
