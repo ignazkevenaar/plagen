@@ -4,6 +4,8 @@ import offices from "../data/offices.json";
 import kanaData from "../data/kana.json";
 import Screw from "./Screw.vue";
 import Seal from "./Seal.vue";
+import SerialFont from "./SerialFont.vue";
+import ClassificationFont from "./ClassificationFont.vue";
 
 const props = defineProps({
   color: {
@@ -103,7 +105,18 @@ const computedKana = computed(() => {
           class="classification"
           :class="{ wide: classification.length < 3 }"
         >
-          {{ classification }}
+          <ClassificationFont
+            v-if="classification.length >= 1"
+            :modelValue="classification?.[0]"
+          />
+          <ClassificationFont
+            v-if="classification.length >= 2"
+            :modelValue="classification?.[1]"
+          />
+          <ClassificationFont
+            v-if="classification.length >= 3"
+            :modelValue="classification?.[2]"
+          />
         </p>
       </div>
       <div class="bottomRow emboss">
@@ -112,10 +125,10 @@ const computedKana = computed(() => {
         </p>
         <div class="serial">
           <div class="number" :class="{ dot: serial.length < 4 }">
-            <span>{{ serial?.[serial.length - 4] }}</span>
+            <SerialFont :modelValue="serial?.[serial.length - 4]" />
           </div>
           <div class="number" :class="{ dot: serial.length < 3 }">
-            <span>{{ serial?.[serial.length - 3] }}</span>
+            <SerialFont :modelValue="serial?.[serial.length - 3]" />
           </div>
           <div
             class="separator"
@@ -124,10 +137,10 @@ const computedKana = computed(() => {
             <span></span>
           </div>
           <div class="number" :class="{ dot: serial.length < 2 }">
-            <span>{{ serial?.[serial.length - 2] }}</span>
+            <SerialFont :modelValue="serial?.[serial.length - 2]" />
           </div>
           <div class="number" :class="{ dot: serial.length < 1 }">
-            <span>{{ serial?.[serial.length - 1] }}</span>
+            <SerialFont :modelValue="serial?.[serial.length - 1]" />
           </div>
         </div>
       </div>
@@ -276,7 +289,7 @@ const computedKana = computed(() => {
   }
 
   .topRow {
-    top: calc(13.5 * var(--cmm));
+    top: calc(15 * var(--cmm));
     left: calc(2.5 * var(--cmm));
     justify-content: space-evenly;
     width: calc(190 * var(--cmm));
@@ -284,10 +297,12 @@ const computedKana = computed(() => {
     white-space: nowrap;
 
     .office {
+      position: relative;
+      top: calc(-2 * var(--cmm));
       font-weight: 500;
       font-size: calc(48 * var(--cmm));
-      font-family: "M PLUS Rounded 1c", serif;
-      letter-spacing: calc(-4 * var(--cmm));
+      font-family: "Kiwi Maru", serif;
+      letter-spacing: calc(-3 * var(--cmm));
 
       &.three {
         transform: scaleY(1.35);
@@ -304,15 +319,20 @@ const computedKana = computed(() => {
     }
 
     .classification {
+      display: flex;
       position: relative;
-      top: calc(4 * var(--cmm));
-      font-size: calc(49 * var(--cmm));
-      font-family: "TrmFontJB";
-      letter-spacing: calc(-2 * var(--cmm));
+      gap: calc(2 * var(--cmm));
+
+      & > * {
+        fill: currentColor;
+        width: calc(25 * var(--cmm));
+        height: calc(40 * var(--cmm));
+      }
 
       &.wide {
-        transform: scaleY(0.75);
-        font-size: calc(65 * var(--cmm));
+        & > * {
+          width: calc(25 * 1.35 * var(--cmm));
+        }
       }
     }
   }
@@ -320,14 +340,10 @@ const computedKana = computed(() => {
   .bottomRow {
     display: flex;
     position: absolute;
-    bottom: calc(12 * var(--cmm));
+    bottom: calc(15 * var(--cmm));
     justify-content: space-between;
     inset-inline-end: calc(15 * var(--cmm));
     inset-inline-start: calc(20 * var(--cmm));
-    height: calc(85 * var(--cmm));
-    font-weight: 600;
-    font-size: calc(95 * var(--cmm));
-    line-height: calc(85 * var(--cmm));
 
     .kana {
       display: flex;
@@ -354,29 +370,30 @@ const computedKana = computed(() => {
 
     .serial {
       display: flex;
-      gap: calc(7.5 * var(--cmm));
+      gap: calc(5 * var(--cmm));
       height: calc(80 * var(--cmm));
-      font-family: "TrmFontJB";
-      letter-spacing: calc(3 * var(--cmm));
 
       .number {
         display: grid;
         place-items: center;
-        width: calc(47 * var(--cmm));
+        width: calc(50 * var(--cmm));
 
-        &:not(.dot) span {
-          position: relative;
-          top: calc(4 * var(--cmm));
-          left: calc(-4 * var(--cmm));
+        svg {
+          fill: currentColor;
         }
 
         &.dot {
-          span {
+          svg {
+            display: none;
+          }
+
+          &::after {
             display: block;
             border-radius: 100%;
             background-color: currentColor;
             width: calc(14 * var(--cmm));
             height: calc(14 * var(--cmm));
+            content: "";
           }
         }
       }

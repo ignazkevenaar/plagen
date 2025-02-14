@@ -70,7 +70,7 @@ const sealCharacters = computed(() => {
   width: calc(28 * var(--cmm));
   height: calc(28 * var(--cmm));
   font-weight: 400;
-  font-family: "M PLUS Rounded 1c", serif;
+  font-family: "Kiwi Maru", serif;
 
   .innerSeal {
     display: grid;
