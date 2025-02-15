@@ -34,6 +34,18 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  alphaMask: {
+    type: Boolean,
+    default: false,
+  },
+  lightnessMask: {
+    type: Boolean,
+    default: false,
+  },
+  applyMask: {
+    type: String,
+    default: undefined,
+  },
 });
 
 const showSerialSeparator = computed(() => {
@@ -71,13 +83,25 @@ const computedKana = computed(() => {
     (k) => k.transliteration === props.kana || k === props.kana,
   );
 });
+
+const showEmbossing = computed(() => {
+  if (props.alphaMask || props.lightnessMask) return false;
+  return true;
+});
 </script>
 
 <template>
   <div class="plateContainer">
-    <div class="licencePlate" :class="color">
-      <div class="ridge"><div></div></div>
-      <div class="screws">
+    <div
+      class="licencePlate"
+      :class="[
+        alphaMask ? 'alphaMask' : lightnessMask ? 'lightMask' : color,
+        applyMask ? 'masked' : '',
+      ]"
+      :style="{ 'mask-image': applyMask ? `url(${applyMask})` : null }"
+    >
+      <div class="ridge" v-if="showEmbossing"><div></div></div>
+      <div v-if="!alphaMask && !lightnessMask" class="screws">
         <div>
           <Seal v-if="showSeal" :office="office" />
           <Screw v-else-if="showScrews" style="--rotation: 30deg" />
@@ -88,7 +112,7 @@ const computedKana = computed(() => {
           <div v-else class="hole"></div>
         </div>
       </div>
-      <div class="topRow emboss">
+      <div class="topRow" :class="{ emboss: showEmbossing }">
         <p
           class="office"
           :class="{
@@ -106,7 +130,7 @@ const computedKana = computed(() => {
           {{ classification }}
         </p>
       </div>
-      <div class="bottomRow emboss">
+      <div class="bottomRow" :class="{ emboss: showEmbossing }">
         <p class="kana" :class="{ special: isSpecialKana }">
           <span>{{ computedKana.kana ?? computedKana }}</span>
         </p>
@@ -149,6 +173,8 @@ const computedKana = computed(() => {
 
 .licencePlate {
   position: relative;
+  mask-mode: luminance;
+  mask-size: 100%;
   border-radius: calc(10 * var(--cmm));
   background-color: var(--plate-background);
   height: 100%;
@@ -182,6 +208,21 @@ const computedKana = computed(() => {
     --plate-foreground: #f1c209;
     --shadow-light: #444;
     --shadow-dark: #000;
+  }
+
+  &.alphaMask {
+    --plate-background: #fff;
+    --plate-foreground: #000;
+    border-radius: 0;
+  }
+
+  &.lightMask {
+    --plate-background: #000;
+    --plate-foreground: #000;
+  }
+
+  &.masked {
+    --plate-foreground: var(--plate-background);
   }
 
   .ridge {

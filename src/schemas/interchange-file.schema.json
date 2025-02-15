@@ -51,6 +51,9 @@
             },
             "dpi": {
               "type": "number"
+            },
+            "jiko-shiki": {
+              "type": "boolean"
             }
           }
         }

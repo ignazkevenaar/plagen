@@ -4,6 +4,7 @@ import { ref } from "vue";
 import CollapsablePanel from "./CollapsablePanel.vue";
 import LabelInput from "./settings/LabelInput.vue";
 import LabelSelect from "./settings/LabelSelect.vue";
+import LabelSwitch from "./settings/LabelSwitch.vue";
 import AppHeader from "./AppHeader.vue";
 import TopLevelButton from "./settings/TopLevelButton.vue";
 import PlateSettings from "./PlateSettings.vue";
@@ -125,6 +126,7 @@ const collapseAllPlatePanels = () => {
           label="DPI"
         />
       </div>
+      <LabelSwitch v-model="exportModel.jikoShiki" label="Jikō-Shiki" />
       <TopLevelButton
         prepend-icon="download-circle-outline"
         :loading="generating"
