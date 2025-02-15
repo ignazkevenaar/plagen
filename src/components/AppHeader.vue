@@ -32,14 +32,19 @@ const isCherryBlossomSeason = computed(() => {
       🌸
     </span>
     <div class="flex grow flex-col items-center gap-1">
-      <!-- <h1 class="text-xl leading-6">Japanese Licence Plate Generator</h1> -->
       <div
         v-html="logo"
         class="*:h-8 *:w-auto *:fill-amber-600 *:dark:fill-yellow-400"
         title="PlaGen — Japanese Licence Plate Generator"
       ></div>
       <p class="flex gap-1 text-xs opacity-65">
-        <span>Version {{ version }}</span>
+        <a
+          href="https://github.com/ignazkevenaar/plagen/blob/main/CHANGELOG.md"
+          target="_blank"
+          class="hover:underline"
+        >
+          Version {{ version }}
+        </a>
         <span class="opacity-50">·</span>
         <span>&copy;{{ new Date().getFullYear() }} Ignaz Kevenaar</span>
       </p>
