@@ -50,9 +50,9 @@ const sealCharacters = computed(() => {
   place-items: center;
   box-shadow:
     inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(3 * var(--cmm))
-      rgba(0, 0, 0, 0.4),
-    calc(2 * var(--cmm)) calc(2 * var(--cmm)) calc(4 * var(--cmm))
-      rgba(0, 0, 0, 0.2),
+      color-mix(in srgb, var(--shadow-dark), black 50%),
+    calc(2 * var(--cmm)) calc(2 * var(--cmm)) calc(2 * var(--cmm))
+      color-mix(in srgb, var(--shadow-dark), transparent 50%),
     inset 0 0 calc(1 * var(--cmm)) calc(1 * var(--cmm)) rgba(0, 0, 0, 0.4),
     inset calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(2 * var(--cmm))
       calc(1 * var(--cmm)) rgba(0, 0, 0, 0.25),

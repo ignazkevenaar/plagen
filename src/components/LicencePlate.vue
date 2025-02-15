@@ -230,16 +230,16 @@ const computedKana = computed(() => {
 
   .emboss {
     filter: drop-shadow(
-        calc(-1 * var(--cmm)) calc(-1 * var(--cmm)) calc(1 * var(--cmm))
+        calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
           var(--shadow-light)
       )
       drop-shadow(
-        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(0.25 * var(--cmm))
+        calc(0.5 * var(--cmm)) calc(0.5 * var(--cmm)) calc(0.25 * var(--cmm))
           var(--plate-background)
       )
       drop-shadow(
         calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
-          var(--shadow-dark)
+          color-mix(in srgb, var(--shadow-dark), transparent 50%)
       );
   }
 
