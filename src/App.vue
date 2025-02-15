@@ -27,9 +27,14 @@ const exportSettings = ref({
   width: 33,
   unit: "cm",
   dpi: 600,
+  jikoShiki: true,
 });
 
 const generating = ref(false);
+const generatingAlphaMask = ref(false);
+const generatingLightnessMask = ref(false);
+const generatedMask = ref(null);
+
 const plateElement = ref(null);
 const fileInput = ref(null);
 const draggingOver = ref(false);
@@ -47,34 +52,59 @@ const plateWidthPx = computed(() => {
   return 0;
 });
 
-const render = () => {
+const render = async () => {
   generating.value = true;
-  nextTick(() => {
-    toPng(plateElement.value.$el.children[0])
-      .then((dataUrl) => {
-        let sizePart = `${exportSettings.value.width}${exportSettings.value.unit}`;
-        if (exportSettings.value.unit !== "px")
-          sizePart += `@${exportSettings.value.dpi}dpi`;
 
-        const filename = [
-          "plate",
-          previewedPlate.value.serial,
-          previewedPlate.value.kana,
-          previewedPlate.value.classification,
-          previewedPlate.value.office,
-          previewedPlate.value.color,
-          sizePart,
-        ].join("-");
+  if (exportSettings.value.jikoShiki) {
+    generatingAlphaMask.value = true;
+  }
 
-        download(dataUrl, `${filename}.png`);
-      })
-      .catch((error) => {
-        console.error("oops, something went wrong!", error);
-      })
-      .finally(() => {
-        generating.value = false;
-      });
-  });
+  const getFileName = () => {
+    let sizePart = `${exportSettings.value.width}${exportSettings.value.unit}`;
+    if (exportSettings.value.unit !== "px")
+      sizePart += `@${exportSettings.value.dpi}dpi`;
+
+    const parts = [
+      "plate",
+      previewedPlate.value.serial,
+      previewedPlate.value.kana,
+      previewedPlate.value.classification,
+      previewedPlate.value.office,
+      previewedPlate.value.color,
+      sizePart,
+    ];
+
+    if (generatingLightnessMask.value) {
+      parts.push("mask");
+    }
+
+    return parts.join("-");
+  };
+
+  const renderOnNextTick = async () => {
+    return nextTick(() => {
+      return toPng(plateElement.value.$el.children[0]);
+    });
+  };
+
+  let dataURL = await renderOnNextTick();
+
+  if (generatingAlphaMask.value) {
+    generatedMask.value = dataURL;
+    generatingAlphaMask.value = false;
+  }
+
+  if (exportSettings.value.jikoShiki) {
+    generatingLightnessMask.value = true;
+    dataURL = await renderOnNextTick();
+    download(dataURL, `${getFileName()}.png`);
+    generatingLightnessMask.value = false;
+  }
+
+  dataURL = await renderOnNextTick();
+  download(dataURL, `${getFileName()}.png`);
+  generating.value = false;
+  generatedMask.value = null;
 };
 
 const importConfig = () => {
@@ -236,6 +266,9 @@ onMounted(() => addPlate());
         :kana="previewedPlate.kana"
         :show-seal="previewedPlate.showSeal"
         :show-screws="previewedPlate.showScrews"
+        :alpha-mask="generatingAlphaMask"
+        :lightness-mask="generatingLightnessMask"
+        :apply-mask="generatedMask"
         :style="{ width: `${Math.round(plateWidthPx)}px !important` }"
       />
     </div>
