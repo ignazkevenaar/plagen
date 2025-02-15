@@ -121,6 +121,29 @@ const miniOffice = computed(
       (office) => office.international === props.modelValue.office,
     )?.kanji,
 );
+
+const plateColors = {
+  private: {
+    background: "#d7d8d5",
+    foreground: "#194a17",
+  },
+  kei: {
+    background: "#f1c209",
+    foreground: "#000",
+  },
+  commercial: {
+    background: "#194a17",
+    foreground: "#d7d8d5",
+  },
+  "commercial-kei": {
+    background: "#111",
+    foreground: "#f1c209",
+  },
+};
+
+const miniColor = computed(
+  () => plateColors[props.modelValue.color].background,
+);
 </script>
 
 <template>
@@ -146,6 +169,10 @@ const miniOffice = computed(
       </template>
       <div v-else class="flex items-center gap-2">
         <span>#{{ index }}</span>
+        <span
+          class="size-3 rounded-full border border-current"
+          :style="{ background: miniColor }"
+        />
         <div>
           {{ miniKana }}
         </div>
@@ -180,32 +207,32 @@ const miniOffice = computed(
           :model-value="modelValue.color"
           label="Private"
           value="private"
-          background="#d7d8d5"
-          foreground="#194a17"
+          :background="plateColors.private.background"
+          :foreground="plateColors.private.foreground"
           @update:model-value="applyColorChange"
         />
         <PlateColorButton
           :model-value="modelValue.color"
           label="Kei"
           value="kei"
-          background="#f1c209"
-          foreground="#000"
+          :background="plateColors.kei.background"
+          :foreground="plateColors.kei.foreground"
           @update:model-value="applyColorChange"
         />
         <PlateColorButton
           :model-value="modelValue.color"
           label="Commercial"
           value="commercial"
-          background="#194a17"
-          foreground="#d7d8d5"
+          :background="plateColors.commercial.background"
+          :foreground="plateColors.commercial.foreground"
           @update:model-value="applyColorChange"
         />
         <PlateColorButton
           :model-value="modelValue.color"
           label="Comm. Kei"
           value="commercial-kei"
-          background="#000"
-          foreground="#f1c209"
+          :background="plateColors['commercial-kei'].background"
+          :foreground="plateColors['commercial-kei'].foreground"
           @update:model-value="applyColorChange"
         />
       </div>
