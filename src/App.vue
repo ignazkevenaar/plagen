@@ -155,7 +155,7 @@ const onDrop = (event) => {
   [...event.dataTransfer.items].forEach((item) => {
     if (item.kind === "file") {
       const file = item.getAsFile();
-      parseFile(file);
+      if (file.type === "application/json") parseFile(file);
     }
   });
 };
