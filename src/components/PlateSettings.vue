@@ -76,10 +76,9 @@ const applyColorChange = (newColor) => {
   const updatedValue = { ...props.modelValue, color: newColor };
 
   // Check if kana is still valid for this color
-  if (
-    !getValidKanaForColor(newColor).find((k) => k.value === updatedValue.kana)
-  ) {
-    updatedValue.kana = formattedKana.value[0].value;
+  const validKanaForNewColor = getValidKanaForColor(newColor);
+  if (!validKanaForNewColor.find((k) => k.value === updatedValue.kana)) {
+    updatedValue.kana = validKanaForNewColor[0].value;
   }
 
   emit("update:modelValue", updatedValue);
