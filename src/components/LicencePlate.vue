@@ -162,6 +162,7 @@ const computedKana = computed(() => {
 
 .licencePlate {
   position: relative;
+  mask-image: linear-gradient(rgb(0 0 0 / 100%), transparent);
   border-radius: calc(10 * var(--cmm));
   background-color: var(--plate-background);
   height: 100%;
