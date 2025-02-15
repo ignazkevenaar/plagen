@@ -242,12 +242,12 @@ onMounted(() => addPlate());
     <input type="file" ref="fileInput" class="hidden" />
     <div
       v-if="draggingOver"
-      class="absolute inset-0 z-30 grid place-items-center bg-gray-800/90 text-2xl md:text-3xl lg:text-6xl"
+      class="fixed inset-0 z-30 grid place-items-center bg-gray-100/90 text-2xl md:text-3xl lg:text-6xl dark:bg-gray-800/90"
     >
       <span>
         Drop
         <code
-          class="inline-block rounded-md bg-stone-700/50 p-3 font-mono text-pink-500"
+          class="inline-block rounded-md bg-gray-300/75 p-3 font-mono text-pink-500 dark:bg-gray-700/50"
           >.json</code
         >
         file to import
