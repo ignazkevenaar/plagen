@@ -12,7 +12,7 @@ defineProps({
   >
     <svg
       v-if="loading"
-      class="size-5 animate-spin text-white"
+      class="size-5 animate-spin"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
