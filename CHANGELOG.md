@@ -1,14 +1,28 @@
 # Changelog
 
+## 0.4.1 - 2025-02-15
+
+### Added
+
+- Add small check for type of dropped file
+
+### Changed
+
+- Update GitHub link to new repo URL
+- Fix validating kana when switching plate color
+- Fix position and background color of file drop area
+- Fix changelog heading indent levels
+- Fix project name in package.json
+
 ## 0.4.0 - 2025-02-11
 
-## Changed
+### Changed
 
 - Improve letter spacing
 - Fix issue with text position in Firefox due to empty filter
 - Redesign UI
 
-## Added
+### Added
 
 - Emboss effect to letters
 - Add switchable screws
@@ -18,36 +32,36 @@
 
 ## 0.3.0 - 2025-01-27
 
-## Changed
+### Changed
 
 - Improve layout responsiveness
 - Improve kana appearance
 - Switch to build-time font bundling
 - Implement switching to valid kana when changing plate color
 
-## Added
+### Added
 
 - Add download PNG button
 - Add setting for showing seal
 - Add settings for export size
 
-## Removed
+### Removed
 
 - Debugging leftovers
 
 ## 0.2.0 - 2025-01-26
 
-## Changed
+### Changed
 
 - Bump Tailwind CSS to 4
 - Improve styles for Tailwind CSS preflight
 
-## Added
+### Added
 
 - Add window title
 - Add Favicon
 
-## Removed
+### Removed
 
 - Remove unused component
 
