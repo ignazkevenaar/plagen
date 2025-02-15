@@ -46,7 +46,7 @@ const isCherryBlossomSeason = computed(() => {
     </div>
 
     <a
-      href="https://github.com/ignazkevenaar/jdm-plate-generator"
+      href="https://github.com/ignazkevenaar/plagen"
       target="_blank"
       title="View on GitHub"
       class="block cursor-pointer rounded-md bg-gray-100 p-1 hover:bg-gray-200 dark:bg-gray-700 hover:dark:bg-gray-600"
