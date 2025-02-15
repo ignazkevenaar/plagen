@@ -173,7 +173,7 @@ const miniOffice = computed(
       />
     </template>
 
-    <label class="block font-semibold">
+    <div class="block font-semibold">
       <span class="block text-[10pt] uppercase select-none">Plate type</span>
       <div class="mt-1 grid grid-cols-4 gap-4">
         <PlateColorButton
@@ -209,7 +209,7 @@ const miniOffice = computed(
           @update:model-value="applyColorChange"
         />
       </div>
-    </label>
+    </div>
 
     <LabelInput
       :model-value="modelValue.serial"
