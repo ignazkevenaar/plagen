@@ -171,8 +171,8 @@ const resetPlate = (plateIndex) => {
 const deletePlate = (plateIndex) => {
   plates.value.splice(plateIndex, 1);
 
-  if (plateIndex > 0 && plateIndex <= previewedPlateIndex.value) {
-    previewedPlateIndex.value -= 1;
+  if (plateIndex <= previewedPlateIndex.value) {
+    previewedPlateIndex.value = Math.max(previewedPlateIndex.value - 1, 0);
   }
 };
 
