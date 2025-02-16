@@ -30,6 +30,11 @@ const emit = defineEmits([
 
 const exportUnits = ["cm", "mm", "in", "px"];
 const exportPanelOpen = ref(true);
+
+const platePanels = ref([]);
+const collapseAllPlatePanels = () => {
+  platePanels.value.forEach((panel) => panel.collapse());
+};
 </script>
 
 <template>
@@ -40,19 +45,26 @@ const exportPanelOpen = ref(true);
       <slot name="debug"></slot>
     </div>
 
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-[1fr_1fr_auto] gap-2">
       <TopLevelButton prepend-icon="import" @click="emit('import')">
         Import
       </TopLevelButton>
       <TopLevelButton prepend-icon="export" @click="emit('export')">
         Export
       </TopLevelButton>
+      <TopLevelButton
+        title="Collapse all"
+        prepend-icon="arrow-collapse"
+        @click="collapseAllPlatePanels"
+        class="aspect-square"
+      />
     </div>
 
     <div class="space-y-2">
       <PlateSettings
         v-for="(plate, plateIndex) in plates"
         :key="plateIndex"
+        ref="platePanels"
         :model-value="plate"
         :index="plateIndex"
         :show-reset-button="plates?.length <= 1"

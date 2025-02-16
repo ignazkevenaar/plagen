@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 import kana from "../data/kana.json";
 import offices from "../data/offices.json";
@@ -144,10 +144,15 @@ const plateColors = {
 const miniColor = computed(
   () => plateColors[props.modelValue.color].background,
 );
+
+const collapsablePanel = ref(null);
+defineExpose({
+  collapse: () => collapsablePanel.value.collapse(),
+});
 </script>
 
 <template>
-  <CollapsablePanel v-model="openModel">
+  <CollapsablePanel v-model="openModel" ref="collapsablePanel">
     <template #beforeTitle>
       <button
         class="cursor-pointer rounded-md bg-gray-100 p-1 hover:bg-gray-200 dark:bg-gray-700 hover:dark:bg-gray-600"

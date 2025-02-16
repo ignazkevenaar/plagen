@@ -1,3 +1,4 @@
+export { mdiArrowCollapse } from "@mdi/js";
 export { mdiDeleteOutline } from "@mdi/js";
 export { mdiDownloadCircleOutline } from "@mdi/js";
 export { mdiExport } from "@mdi/js";

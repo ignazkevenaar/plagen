@@ -1,5 +1,13 @@
 <script setup>
 const model = defineModel({ default: false });
+
+const collapse = () => {
+  model.value = false;
+};
+
+defineExpose({
+  collapse,
+});
 </script>
 
 <template>
