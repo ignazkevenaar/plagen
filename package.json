@@ -11,19 +11,19 @@
   "dependencies": {
     "@mdi/js": "^7.4.47",
     "downloadjs": "^1.4.7",
-    "html-to-image": "^1.11.11",
+    "html-to-image": "1.11.11",
     "jsonschema": "^1.5.0",
     "mdi-vue": "^3.0.13",
-    "vue": "^3.5.13"
+    "vue": "^3.5.25"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.0.0",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "prettier": "^3.4.2",
+    "@tailwindcss/vite": "^4.1.17",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "prettier": "^3.7.4",
     "prettier-plugin-css-order": "^2.1.2",
-    "prettier-plugin-tailwindcss": "^0.6.10",
-    "tailwindcss": "^4.0.0",
-    "vite": "^6.0.5",
-    "vite-plugin-webfont-dl": "^3.10.4"
+    "prettier-plugin-tailwindcss": "^0.7.0",
+    "tailwindcss": "^4.1.0",
+    "vite": "^7.2.6",
+    "vite-plugin-webfont-dl": "^3.11.1"
   }
 }
