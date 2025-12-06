@@ -27,7 +27,7 @@ const update = (key, value) => {
 };
 
 const checkValiditySerial = (event) => {
-  if (event.target.value.match(/^\d{0,4}$/))
+  if (event.target.value.match(/^\d{0,5}$/))
     update("serial", event.target.value);
 };
 
@@ -60,12 +60,17 @@ const getValidKanaForColor = (color) => {
     text: `${kana.kana} - ${kana.transliteration}`,
   }));
 
-  const specialoutput = kana.special.map((character) => ({
+  const specialOutput = kana.special.map((character) => ({
     value: character,
     text: character,
   }));
 
-  return [...output, ...specialoutput];
+  const initialDOutput = kana["initial-d"].map((kana) => ({
+    value: kana.transliteration,
+    text: `${kana.kana} - ${kana.transliteration}`,
+  }));
+
+  return [...output, ...specialOutput, ...initialDOutput];
 };
 
 const formattedKana = computed(() =>
@@ -98,13 +103,17 @@ const miniKana = computed(() => {
 
 const miniSerial = computed(() => {
   const serialString = props.modelValue.serial.toString();
-  let s = serialString.padStart(4, "·");
-  s = [
+
+  if (serialString.length === 5) {
+    return [serialString.slice(0, 2), "-", serialString.slice(2, 5)].join("");
+  }
+
+  const s = serialString.padStart(4, "·");
+  return [
     s.slice(0, 2),
     serialString.length === 4 ? "-" : " ",
     s.slice(2, 4),
   ].join("");
-  return s;
 });
 
 const flatOffices = computed(() =>
@@ -246,8 +255,8 @@ defineExpose({
     <LabelInput
       :model-value="modelValue.serial"
       large
-      maxlength="4"
-      pattern="[0-9]{4}"
+      maxlength="5"
+      pattern="[0-9]{5}"
       @input="checkValiditySerial($event)"
       label="Serial number"
       sublabel="0-9 allowed, leave out leading zeros or hyphen."

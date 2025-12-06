@@ -67,6 +67,7 @@ const computedKana = computed(() => {
     ...kanaData.private,
     ...kanaData.commercial,
     ...kanaData.special,
+    ...kanaData["initial-d"],
   ];
 
   return flatKana.find(
@@ -119,18 +120,33 @@ const computedKana = computed(() => {
           />
         </p>
       </div>
-      <div class="bottomRow emboss">
+      <div class="bottomRow emboss" :class="{ long: serial.length === 5 }">
         <p class="kana" :class="{ special: isSpecialKana }">
           <span>{{ computedKana.kana ?? computedKana }}</span>
         </p>
         <div class="serial">
+          <div
+            v-if="serial.length === 5"
+            class="number"
+            :class="{ dot: serial.length < 5 }"
+          >
+            <SerialFont :modelValue="serial?.[serial.length - 5]" />
+          </div>
           <div class="number" :class="{ dot: serial.length < 4 }">
             <SerialFont :modelValue="serial?.[serial.length - 4]" />
+          </div>
+          <div
+            v-if="serial.length === 5"
+            class="separator"
+            :style="{ opacity: showSerialSeparator ? 1 : 0 }"
+          >
+            <span></span>
           </div>
           <div class="number" :class="{ dot: serial.length < 3 }">
             <SerialFont :modelValue="serial?.[serial.length - 3]" />
           </div>
           <div
+            v-if="serial.length !== 5"
             class="separator"
             :style="{ opacity: showSerialSeparator ? 1 : 0 }"
           >
@@ -298,7 +314,7 @@ const computedKana = computed(() => {
 
     .office {
       position: relative;
-      top: calc(-2 * var(--cmm));
+      top: calc(-3 * var(--cmm));
       font-weight: 500;
       font-size: calc(48 * var(--cmm));
       font-family: "Kiwi Maru", serif;
@@ -307,14 +323,12 @@ const computedKana = computed(() => {
       &.three {
         transform: scaleY(1.35);
         font-size: calc(34 * var(--cmm));
-        letter-spacing: normal;
       }
 
       &.four {
-        transform: scaleY(1.75);
+        transform: scaleY(1.65);
         font-weight: 500;
-        font-size: calc(26 * var(--cmm));
-        letter-spacing: normal;
+        font-size: calc(28 * var(--cmm));
       }
     }
 
@@ -344,6 +358,18 @@ const computedKana = computed(() => {
     justify-content: space-between;
     inset-inline-end: calc(15 * var(--cmm));
     inset-inline-start: calc(20 * var(--cmm));
+
+    &.long {
+      inset-inline-start: calc(15 * var(--cmm));
+
+      .serial {
+        gap: 0;
+
+        .number {
+          margin-inline: calc(-1 * var(--cmm));
+        }
+      }
+    }
 
     .kana {
       display: flex;

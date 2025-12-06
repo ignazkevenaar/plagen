@@ -49,5 +49,11 @@
     { "kana": "こ", "transliteration": "ko" },
     { "kana": "を", "transliteration": "wo" }
   ],
-  "special": ["Y", "A", "K", "M", "G", "H", "E"]
+  "special": ["Y", "A", "K", "M", "G", "H", "E"],
+  "initial-d": [
+    { "kana": "が", "transliteration": "ga" },
+    { "kana": "へ", "transliteration": "he" },
+    { "kana": "お", "transliteration": "o" },
+    { "kana": "を", "transliteration": "wo" }
+  ]
 }
