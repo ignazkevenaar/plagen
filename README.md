@@ -8,4 +8,3 @@ A small tool to create Japanese licence plates to use in video games or car mode
 - Mask generation
 - Temporary plates
 - Dealership plates
-- Better numbers font
