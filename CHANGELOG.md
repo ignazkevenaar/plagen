@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.5.0 - 2025-12-06
+
+### Added
+
+- Add 5-number plate support and Initial-D kana
+- Add collapse all button
+- Add mini color dot to minimized plate settings
+- Add link to version number for viewing changelog
+
+### Changed
+
+- Custom font for serial number
+- Custom font for vehicle classification
+- Improve embossing effect
+- Fix incorrect preview plate index after deleting
+- Fix color of button spinner
+- Fix bug where plate color would reset when clicking on label text
+
 ## 0.4.1 - 2025-02-15
 
 ### Added
