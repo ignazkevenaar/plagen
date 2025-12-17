@@ -18,7 +18,7 @@
           "serial": {
             "type": "string"
           },
-          "office": {
+          "location": {
             "type": "string"
           },
           "classification": {

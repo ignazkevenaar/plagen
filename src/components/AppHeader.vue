@@ -34,7 +34,7 @@ const isCherryBlossomSeason = computed(() => {
     <div class="flex grow flex-col items-center gap-1">
       <div
         v-html="logo"
-        class="*:h-8 *:w-auto *:fill-amber-600 *:dark:fill-yellow-400"
+        class="*:h-8 *:w-auto *:fill-accent-light *:dark:fill-accent-dark"
         title="PlaGen — Japanese Licence Plate Generator"
       ></div>
       <p class="flex gap-1 text-xs opacity-65">

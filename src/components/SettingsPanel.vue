@@ -56,7 +56,7 @@ const collapseAllPlatePanels = () => {
         title="Collapse all"
         prepend-icon="arrow-collapse"
         @click="collapseAllPlatePanels"
-        class="aspect-square"
+        class="aspect-square px-2!"
       />
     </div>
 

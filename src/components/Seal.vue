@@ -1,44 +1,19 @@
 <script setup>
 import { computed } from "vue";
-import offices from "../data/offices.json";
+import { useLocations } from "../composables/locations";
 
 const props = defineProps({
-  office: String,
+  location: String,
 });
 
-const currentPrefecture = computed(() => {
-  if (props.office === "") return undefined;
-
-  return offices.find((prefecture) =>
-    prefecture.municipalities.some((municipality) =>
-      municipality.markings.find(
-        (marking) => marking.international === props.office,
-      ),
-    ),
-  );
-});
-
-const sealCharacters = computed(() => {
-  if (currentPrefecture.value === undefined) return "";
-
-  const repeatingCharacters = ["愛", "福", "宮", "長", "大", "山"];
-
-  let output = currentPrefecture.value?.kanji.charAt(0);
-
-  if (repeatingCharacters.includes(output)) {
-    output += currentPrefecture.value?.kanji.charAt(1);
-  }
-
-  return output;
-});
+const { currentSealCharacters } = useLocations(() => props.location);
 </script>
 
 <template>
   <div class="seal">
     <div class="innerSeal">
-      <span :class="{ small: sealCharacters.length > 1 }">
-        <span v-text="sealCharacters[0]" />
-        <span v-if="sealCharacters.length > 1" v-text="sealCharacters[1]" />
+      <span :class="{ small: currentSealCharacters.length > 1 }">
+        <span v-for="c in currentSealCharacters" :key="c" v-text="c" />
       </span>
     </div>
   </div>

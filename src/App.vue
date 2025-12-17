@@ -12,7 +12,7 @@ const version = import.meta.env.VITE_VERSION;
 const defaultPlate = {
   color: "private",
   serial: "1",
-  office: "TKS",
+  location: "TKS",
   classification: "33",
   kana: "tsu",
   showSeal: true,
@@ -61,7 +61,7 @@ const render = () => {
           previewedPlate.value.serial,
           previewedPlate.value.kana,
           previewedPlate.value.classification,
-          previewedPlate.value.office,
+          previewedPlate.value.location,
           previewedPlate.value.color,
           sizePart,
         ].join("-");
@@ -216,7 +216,7 @@ onMounted(() => addPlate());
         class="max-h-screen place-self-center"
         :color="previewedPlate.color"
         :serial="previewedPlate.serial"
-        :office="previewedPlate.office"
+        :location="previewedPlate.location"
         :classification="previewedPlate.classification"
         :kana="previewedPlate.kana"
         :show-seal="previewedPlate.showSeal"
@@ -231,7 +231,7 @@ onMounted(() => addPlate());
         ref="plateElement"
         :color="previewedPlate.color"
         :serial="previewedPlate.serial"
-        :office="previewedPlate.office"
+        :location="previewedPlate.location"
         :classification="previewedPlate.classification"
         :kana="previewedPlate.kana"
         :show-seal="previewedPlate.showSeal"
