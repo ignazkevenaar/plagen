@@ -2,8 +2,7 @@
 import { computed, ref } from "vue";
 
 import kana from "../data/kana.json";
-import offices from "../data/offices.json";
-
+import { useLocations } from "../composables/locations";
 import CollapsablePanel from "./CollapsablePanel.vue";
 import IconButton from "./settings/IconButton.vue";
 import Label from "./settings/Label.vue";
@@ -11,8 +10,8 @@ import LabelInput from "./settings/LabelInput.vue";
 import LabelSelect from "./settings/LabelSelect.vue";
 import LabelSwitch from "./settings/LabelSwitch.vue";
 import PlateColorButton from "./settings/PlateColorButton.vue";
-import Button from "./settings/Button.vue";
 import FadeTransition from "./FadeTransition.vue";
+import LocationSelector from "./locationselector/LocationSelector.vue";
 
 const props = defineProps({
   modelValue: Object,
@@ -39,16 +38,33 @@ const checkValidityClassification = (event) => {
     update("classification", event.target.value);
 };
 
-const formattedOffices = computed(() =>
-  offices.flatMap((prefecture) =>
-    prefecture.municipalities.flatMap((municipality) =>
-      municipality.markings.flatMap((marking) => ({
-        value: marking.international,
-        text: `${prefecture.transliteration} - ${municipality.name} - ${marking.transliteration} / ${marking.kanji}`,
-      })),
-    ),
-  ),
+const { flatLocations, currentLocationName } = useLocations(
+  () => props.modelValue.location,
 );
+const formattedOffices = computed(() => {
+  const regionSet = new Set();
+  const output = [];
+
+  flatLocations.value.map((place) => {
+    if (!regionSet.has(place.region.transliteration)) {
+      regionSet.add(place.region.transliteration);
+      output.push({
+        name: place.region.transliteration,
+        options: [],
+      });
+    }
+
+    let text = `${place.prefecture.transliteration} - ${place.transliteration} / ${place.name}`;
+    if (place.old === true) text += " (old)"; // Strict check because old can be an array.
+
+    output[output.length - 1].options.push({
+      value: place.international,
+      text,
+    });
+  });
+
+  return output;
+});
 
 const getValidKanaForColor = (color) => {
   if (color === "commercial") {
@@ -119,21 +135,6 @@ const miniSerial = computed(() => {
   ].join("");
 });
 
-const flatOffices = computed(() =>
-  offices.flatMap((prefecture) =>
-    prefecture.municipalities.flatMap(
-      (municipalities) => municipalities.markings,
-    ),
-  ),
-);
-
-const miniOffice = computed(
-  () =>
-    flatOffices.value.find(
-      (office) => office.international === props.modelValue.office,
-    )?.kanji,
-);
-
 const plateColors = {
   private: {
     background: "#d7d8d5",
@@ -157,6 +158,8 @@ const collapsablePanel = ref(null);
 defineExpose({
   collapse: () => collapsablePanel.value.collapse(),
 });
+
+const locationSelectorOpen = ref(false);
 </script>
 
 <template>
@@ -195,7 +198,7 @@ defineExpose({
           >
             {{ miniSerial }}
           </div>
-          <div>{{ miniOffice }}</div>
+          <div>{{ currentLocationName }}</div>
           <div>{{ modelValue.classification }}</div>
         </div>
       </FadeTransition>
@@ -262,11 +265,20 @@ defineExpose({
       sublabel="0-9 allowed, leave out leading zeros or hyphen."
     />
     <LabelSelect
-      :model-value="modelValue.office"
+      :model-value="modelValue.location"
       :options="formattedOffices"
-      label="Issuing Office"
-      @update:model-value="update('office', $event)"
-    />
+      grouped
+      label="Location"
+      @update:model-value="update('location', $event)"
+      class="flex-1"
+    >
+      <template #append>
+        <IconButton
+          icon="dotsHorizontal"
+          @click="locationSelectorOpen = true"
+        />
+      </template>
+    </LabelSelect>
     <div class="grid grid-cols-2 gap-4">
       <LabelInput
         :model-value="modelValue.classification"
@@ -282,15 +294,24 @@ defineExpose({
         @update:model-value="update('kana', $event)"
       />
     </div>
-    <LabelSwitch
-      :model-value="modelValue.showSeal"
-      @update:model-value="update('showSeal', $event)"
-      label="Show Seal"
-    />
-    <LabelSwitch
-      :model-value="modelValue.showScrews"
-      @update:model-value="update('showScrews', $event)"
-      label="Show Screws"
-    />
+    <div class="grid grid-cols-2 gap-4">
+      <LabelSwitch
+        :model-value="modelValue.showSeal"
+        @update:model-value="update('showSeal', $event)"
+        label="Show Seal"
+      />
+      <LabelSwitch
+        :model-value="modelValue.showScrews"
+        @update:model-value="update('showScrews', $event)"
+        label="Show Screws"
+      />
+    </div>
+
+    <template #append-inner>
+      <LocationSelector
+        v-model:dialog="locationSelectorOpen"
+        v-model="modelValue.location"
+      />
+    </template>
   </CollapsablePanel>
 </template>

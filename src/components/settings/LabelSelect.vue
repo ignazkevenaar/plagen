@@ -5,6 +5,7 @@ const model = defineModel();
 
 const props = defineProps({
   options: Array,
+  grouped: Boolean,
   label: String,
   sublabel: String,
   large: Boolean,
@@ -13,25 +14,41 @@ const props = defineProps({
 
 <template>
   <Label :label="label" :sublabel="sublabel">
-    <span class="block text-[10pt] uppercase select-none">{{ label }}</span>
-    <span class="mb-1 block text-[10pt] font-normal opacity-60 select-none">
-      {{ sublabel }}
-    </span>
-    <div class="selectContainer">
-      <select
-        v-model="model"
-        v-bind="$attrs"
-        class="w-full appearance-none rounded-md bg-gray-100 p-1 dark:bg-gray-900"
-        :class="large ? 'text-3xl font-normal' : ''"
-      >
-        <option
-          v-for="option in options"
-          :value="option.value ?? option"
-          :key="option.value ?? option"
+    <div class="flex gap-2">
+      <div class="selectContainer">
+        <select
+          v-model="model"
+          v-bind="$attrs"
+          class="w-full appearance-none rounded-md bg-gray-100 p-1 dark:bg-gray-900"
+          :class="large ? 'text-3xl font-normal' : ''"
         >
-          {{ option.text ?? option }}
-        </option>
-      </select>
+          <template v-if="grouped">
+            <optgroup
+              v-for="group in options"
+              :key="group.name"
+              :label="group.name"
+            >
+              <option
+                v-for="option in group.options"
+                :value="option.value ?? option"
+                :key="option.value ?? option"
+              >
+                {{ option.text ?? option }}
+              </option>
+            </optgroup>
+          </template>
+          <template v-else>
+            <option
+              v-for="option in options"
+              :value="option.value ?? option"
+              :key="option.value ?? option"
+            >
+              {{ option.text ?? option }}
+            </option>
+          </template>
+        </select>
+      </div>
+      <slot name="append"></slot>
     </div>
   </Label>
 </template>

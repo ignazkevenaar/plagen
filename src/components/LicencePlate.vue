@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from "vue";
-import offices from "../data/offices.json";
 import kanaData from "../data/kana.json";
 import Screw from "./Screw.vue";
 import Seal from "./Seal.vue";
 import SerialFont from "./SerialFont.vue";
 import ClassificationFont from "./ClassificationFont.vue";
+import { useLocations } from "../composables/locations";
 
 const props = defineProps({
   color: {
@@ -16,7 +16,7 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  office: {
+  location: {
     type: String,
     default: "",
   },
@@ -38,24 +38,10 @@ const props = defineProps({
   },
 });
 
+const { currentLocationName } = useLocations(() => props.location);
+
 const showSerialSeparator = computed(() => {
   return props.serial.length >= 4;
-});
-
-const flatOffices = computed(() =>
-  offices.flatMap((prefecture) =>
-    prefecture.municipalities.flatMap(
-      (municipalities) => municipalities.markings,
-    ),
-  ),
-);
-
-const formattedOffice = computed(() => {
-  const found = flatOffices.value.find(
-    (office) => office.international === props.office,
-  );
-  if (found) return found.kanji;
-  return "ERR";
 });
 
 const isSpecialKana = computed(() =>
@@ -82,7 +68,7 @@ const computedKana = computed(() => {
       <div class="ridge"><div></div></div>
       <div class="screws">
         <div>
-          <Seal v-if="showSeal" :office="office" />
+          <Seal v-if="showSeal" :location="location" />
           <Screw v-else-if="showScrews" style="--rotation: 30deg" />
           <div v-else class="hole"></div>
         </div>
@@ -93,13 +79,13 @@ const computedKana = computed(() => {
       </div>
       <div class="topRow emboss">
         <p
-          class="office"
+          class="location"
           :class="{
-            three: formattedOffice.length === 3,
-            four: formattedOffice.length === 4,
+            three: currentLocationName.length === 3,
+            four: currentLocationName.length >= 4,
           }"
         >
-          {{ formattedOffice }}
+          {{ currentLocationName }}
         </p>
         <p
           v-if="classification"
@@ -304,7 +290,7 @@ const computedKana = computed(() => {
     height: calc(40 * var(--cmm));
     white-space: nowrap;
 
-    .office {
+    .location {
       position: relative;
       top: calc(-3 * var(--cmm));
       font-weight: 500;

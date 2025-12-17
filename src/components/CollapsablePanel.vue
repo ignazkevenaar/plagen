@@ -42,5 +42,6 @@ defineExpose({
         </div>
       </div>
     </expand-transition>
+    <slot name="append-inner"></slot>
   </div>
 </template>

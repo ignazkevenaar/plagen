@@ -1,7 +1,7 @@
 /* To optimize font loading, only the actual character subset used in each font is downloaded and bundled */
 
 /* Offices and seal */
-@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap&text=愛知県尾張小牧一宮春日井名古屋豊橋三河岡崎田秋青森八戸千葉成習志野柏袖ヶ浦媛福筑北九州久留米島会津郡山いわき岐阜飛騨群馬前高広海道旭川函館見釧路室蘭帯札幌兵庫姫神茨城水土つくば石金沢岩手平泉盛香鹿児奄美奈相模湘南横浜熊本京都府重鈴仙台長松諏訪佐世保良新潟大分倉敷沖縄阪和堺なに賀埼玉部越谷口所滋根嶋静沼富士伊豆栃木とちぎ宇那須徳東足立王子多摩練杉並品鳥取歌形庄内下関梨");
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap&text=北海道札幌函館旭川室蘭苫小牧釧路知床帯広見青森県弘前八戸岩手盛岡平泉宮城仙台秋田山形庄内福島会津郡白河いわき茨水土浦つくば栃木宇都那須とちぎ群馬橋高崎埼玉大口所沢越熊谷春日部千葉成習志野市船袖ヶ原柏松東京品世練杉並板足立江葛飾王子多摩神奈横浜湘南相模梨富士新潟長上本諏訪石金井岐阜飛騨静沼伊豆愛名古屋豊三尾張一重鈴鹿四勢滋賀府阪なに和堺良鳥歌兵庫姫取根嶋出雲倉敷下関徳香媛九州久留米筑佐保分児奄美沖縄繩");
 
 /* Kana */
 @import url("https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@700&display=swap&text=さすせそたちつてとなにぬねのはひふほまみむめもやゆよらりるろれわあいうえかきくけこをおが");

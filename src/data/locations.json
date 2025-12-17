@@ -1,0 +1,1361 @@
+[
+  {
+    "name": "北海道地方",
+    "transliteration": "Hokkaido region",
+    "prefectures": [
+      {
+        "name": "北海道",
+        "places": [
+          {
+            "name": "札幌",
+            "old": [
+              {
+                "name": "札",
+                "international": "SP"
+              }
+            ],
+            "transliteration": "Sapporo",
+            "international": "SPS"
+          },
+          {
+            "name": "函館",
+            "old": [
+              {
+                "name": "函",
+                "international": "HD"
+              }
+            ],
+            "transliteration": "Hakodate",
+            "international": "HDH"
+          },
+          {
+            "name": "旭川",
+            "old": [
+              {
+                "name": "旭",
+                "international": "AK"
+              }
+            ],
+            "transliteration": "Asahikawa",
+            "international": "AKA"
+          },
+          {
+            "name": "室蘭",
+            "old": [
+              {
+                "name": "室",
+                "international": "MR"
+              }
+            ],
+            "transliteration": "Muroran",
+            "international": "MRM"
+          },
+          {
+            "name": "苫小牧",
+            "transliteration": "Tomakomai",
+            "local": true,
+            "international": "MRT"
+          },
+          {
+            "name": "釧路",
+            "old": [
+              {
+                "name": "釧",
+                "international": "KR"
+              }
+            ],
+            "transliteration": "Kushiro",
+            "international": "KRK"
+          },
+          {
+            "name": "知床",
+            "transliteration": "Shiretoko",
+            "local": true,
+            "international": "KIS"
+          },
+          {
+            "name": "帯広",
+            "old": [
+              {
+                "name": "帯",
+                "international": "OH"
+              }
+            ],
+            "transliteration": "Obihiro",
+            "international": "OHO"
+          },
+          {
+            "name": "北見",
+            "old": [
+              {
+                "name": "北",
+                "international": "KI"
+              }
+            ],
+            "transliteration": "Kitami",
+            "international": "KIK"
+          }
+        ],
+        "transliteration": "Hokkaido"
+      }
+    ]
+  },
+  {
+    "name": "東北地方",
+    "transliteration": "Tohoku region",
+    "prefectures": [
+      {
+        "name": "青森県",
+        "places": [
+          {
+            "name": "青森",
+            "old": [
+              {
+                "name": "青",
+                "international": "AM"
+              }
+            ],
+            "transliteration": "Aomori",
+            "international": "AMA"
+          },
+          {
+            "name": "弘前",
+            "transliteration": "Hirosaki",
+            "local": true,
+            "international": "AMS"
+          },
+          {
+            "name": "八戸",
+            "transliteration": "Hachinohe",
+            "international": "AMH"
+          }
+        ],
+        "transliteration": "Aomori Prefecture"
+      },
+      {
+        "name": "岩手県",
+        "places": [
+          {
+            "name": "岩手",
+            "old": [
+              {
+                "name": "岩",
+                "international": "IT"
+              }
+            ],
+            "transliteration": "Iwate",
+            "international": "ITI"
+          },
+          {
+            "name": "盛岡",
+            "transliteration": "Morioka",
+            "local": true,
+            "international": "ITM"
+          },
+          {
+            "name": "平泉",
+            "transliteration": "Hiraizumi",
+            "local": true,
+            "international": "ITH"
+          }
+        ],
+        "transliteration": "Iwate Prefecture"
+      },
+      {
+        "name": "宮城県",
+        "places": [
+          {
+            "name": "宮城",
+            "old": [
+              {
+                "name": "宮",
+                "international": "MG"
+              }
+            ],
+            "transliteration": "Miyagi",
+            "international": "MGM"
+          },
+          {
+            "name": "仙台",
+            "transliteration": "Sendai",
+            "local": true,
+            "international": "MGS"
+          }
+        ],
+        "transliteration": "Miyagi Prefecture"
+      },
+      {
+        "name": "秋田県",
+        "places": [
+          {
+            "name": "秋田",
+            "old": [
+              {
+                "name": "秋",
+                "international": "AT"
+              }
+            ],
+            "transliteration": "Akita",
+            "international": "ATA"
+          }
+        ],
+        "transliteration": "Akita Prefecture"
+      },
+      {
+        "name": "山形県",
+        "places": [
+          {
+            "name": "山形",
+            "transliteration": "Yamagata",
+            "international": "YA"
+          },
+          {
+            "name": "庄内",
+            "transliteration": "Shonai",
+            "international": "YAS"
+          }
+        ],
+        "transliteration": "Yamagata Prefecture"
+      },
+      {
+        "name": "福島県",
+        "places": [
+          {
+            "name": "福島",
+            "transliteration": "Fukushima",
+            "international": "FS"
+          },
+          {
+            "name": "会津",
+            "transliteration": "Aizu",
+            "local": true,
+            "international": "FSA"
+          },
+          {
+            "name": "郡山",
+            "transliteration": "Koriyama",
+            "local": true,
+            "international": "FSK"
+          },
+          {
+            "name": "白河",
+            "transliteration": "Shirakawa",
+            "local": true,
+            "international": "FSS"
+          },
+          {
+            "name": "いわき",
+            "transliteration": "Iwaki",
+            "international": "FSI"
+          }
+        ],
+        "transliteration": "Fukushima Prefecture"
+      }
+    ]
+  },
+  {
+    "name": "関東地方",
+    "transliteration": "Kanto region",
+    "prefectures": [
+      {
+        "name": "茨城県",
+        "places": [
+          {
+            "name": "水戸",
+            "old": [
+              {
+                "name": "茨城",
+                "international": "IGI"
+              },
+              {
+                "name": "茨",
+                "international": "IG"
+              }
+            ],
+            "transliteration": "Mito",
+            "international": "IGM"
+          },
+          {
+            "name": "土浦",
+            "transliteration": "Tsuchiura",
+            "international": "IGT"
+          },
+          {
+            "name": "つくば",
+            "transliteration": "Tsukuba",
+            "local": true,
+            "international": "IGK"
+          }
+        ],
+        "transliteration": "Ibaraki Prefecture"
+      },
+      {
+        "name": "栃木県",
+        "places": [
+          {
+            "name": "宇都宮",
+            "old": [
+              {
+                "name": "栃木",
+                "international": "TGT"
+              },
+              {
+                "name": "栃",
+                "international": "TG"
+              }
+            ],
+            "transliteration": "Utsunomiya",
+            "international": "TGU"
+          },
+          {
+            "name": "那須",
+            "transliteration": "Nasu",
+            "local": true,
+            "international": "TGN"
+          },
+          {
+            "name": "とちぎ",
+            "transliteration": "Tochigi",
+            "international": "TGC"
+          }
+        ],
+        "transliteration": "Tochigi Prefecture"
+      },
+      {
+        "name": "群馬県",
+        "places": [
+          {
+            "name": "群馬",
+            "old": [
+              {
+                "name": "群",
+                "international": "GM"
+              }
+            ],
+            "transliteration": "Gunma",
+            "international": "GMG"
+          },
+          {
+            "name": "前橋",
+            "transliteration": "Maebashi",
+            "local": true,
+            "international": "GMM"
+          },
+          {
+            "name": "高崎",
+            "transliteration": "Takasaki",
+            "local": true,
+            "international": "GMT"
+          }
+        ],
+        "transliteration": "Gunma Prefecture"
+      },
+      {
+        "name": "埼玉県",
+        "places": [
+          {
+            "name": "大宮",
+            "old": [
+              {
+                "name": "埼玉",
+                "international": "STS"
+              },
+              {
+                "name": "埼",
+                "international": "ST"
+              }
+            ],
+            "transliteration": "Omiya",
+            "international": "STO"
+          },
+          {
+            "name": "川口",
+            "transliteration": "Kawaguchi",
+            "local": true,
+            "international": "STW"
+          },
+          {
+            "name": "所沢",
+            "transliteration": "Tokorozawa",
+            "international": "STT"
+          },
+          {
+            "name": "川越",
+            "transliteration": "Kawagoe",
+            "local": true,
+            "international": "STG"
+          },
+          {
+            "name": "熊谷",
+            "transliteration": "Kumagaya",
+            "international": "STK"
+          },
+          {
+            "name": "春日部",
+            "transliteration": "Kasukabe",
+            "international": "STB"
+          },
+          {
+            "name": "越谷",
+            "transliteration": "Koshigaya",
+            "local": true,
+            "international": "STY"
+          }
+        ],
+        "transliteration": "Saitama Prefecture"
+      },
+      {
+        "name": "千葉県",
+        "places": [
+          {
+            "name": "千葉",
+            "old": [
+              {
+                "name": "千",
+                "international": "CB"
+              }
+            ],
+            "transliteration": "Chiba",
+            "international": "CBC"
+          },
+          {
+            "name": "成田",
+            "transliteration": "Narita",
+            "local": true,
+            "international": "CBT"
+          },
+          {
+            "name": "習志野",
+            "transliteration": "Narashino",
+            "international": "CBN"
+          },
+          {
+            "name": "市川",
+            "transliteration": "Ichikawa",
+            "local": true,
+            "international": "CBI"
+          },
+          {
+            "name": "船橋",
+            "transliteration": "Funabashi",
+            "local": true,
+            "international": "CBF"
+          },
+          {
+            "name": "袖ヶ浦",
+            "transliteration": "Sodegaura",
+            "international": "CBS"
+          },
+          {
+            "name": "市原",
+            "transliteration": "Ichihara",
+            "local": true,
+            "international": "CBH"
+          },
+          {
+            "name": "野田",
+            "transliteration": "Noda",
+            "international": "CBD"
+          },
+          {
+            "name": "柏",
+            "transliteration": "Kashiwa",
+            "local": true,
+            "international": "CBK"
+          },
+          {
+            "name": "松戸",
+            "transliteration": "Matsudo",
+            "local": true,
+            "international": "CBM"
+          }
+        ],
+        "transliteration": "Chiba Prefecture"
+      },
+      {
+        "name": "東京都",
+        "places": [
+          {
+            "name": "品川",
+            "old": [
+              {
+                "name": "品",
+                "international": "TOS"
+              },
+              {
+                "name": "東"
+              }
+            ],
+            "transliteration": "Shinagawa",
+            "international": "TKS"
+          },
+          {
+            "name": "世田谷",
+            "transliteration": "Setagaya",
+            "local": true,
+            "international": "TKG"
+          },
+          {
+            "name": "練馬",
+            "old": [
+              {
+                "name": "練",
+                "international": "TON"
+              }
+            ],
+            "transliteration": "Nerima",
+            "international": "TKN"
+          },
+          {
+            "name": "杉並",
+            "transliteration": "Suginami",
+            "local": true,
+            "international": "TKM"
+          },
+          {
+            "name": "板橋",
+            "transliteration": "Itabashi",
+            "local": true,
+            "international": "TKI"
+          },
+          {
+            "name": "足立",
+            "old": [
+              {
+                "name": "足",
+                "international": "TOA"
+              }
+            ],
+            "transliteration": "Adachi",
+            "international": "TKA"
+          },
+          {
+            "name": "江東",
+            "transliteration": "Koto",
+            "local": true,
+            "international": "TKK"
+          },
+          {
+            "name": "葛飾",
+            "transliteration": "Katsushika",
+            "local": true,
+            "international": "TKU"
+          },
+          {
+            "name": "八王子",
+            "transliteration": "Hachioji",
+            "international": "TKH"
+          },
+          {
+            "name": "多摩",
+            "old": [
+              {
+                "name": "多",
+                "international": "TOT"
+              }
+            ],
+            "transliteration": "Tama",
+            "international": "TKT"
+          }
+        ],
+        "transliteration": "Tokyo"
+      },
+      {
+        "name": "神奈川県",
+        "places": [
+          {
+            "name": "横浜",
+            "old": [
+              {
+                "name": "神",
+                "international": "KN"
+              }
+            ],
+            "transliteration": "Yokohama",
+            "international": "KNY"
+          },
+          {
+            "name": "川崎",
+            "transliteration": "Kawasaki",
+            "international": "KNK"
+          },
+          {
+            "name": "湘南",
+            "transliteration": "Shonan",
+            "international": "KNN"
+          },
+          {
+            "name": "相模",
+            "transliteration": "Sagami",
+            "international": "KNS"
+          }
+        ],
+        "transliteration": "Kanagawa Prefecture"
+      }
+    ]
+  },
+  {
+    "name": "中部地方",
+    "transliteration": "Chubu region",
+    "prefectures": [
+      {
+        "name": "山梨県",
+        "places": [
+          {
+            "name": "山梨",
+            "transliteration": "Yamanashi",
+            "international": "YN"
+          },
+          {
+            "name": "富士山",
+            "transliteration": "Mount Fuji",
+            "local": true,
+            "international": "YNF"
+          }
+        ],
+        "transliteration": "Yamanashi Prefecture"
+      },
+      {
+        "name": "新潟県",
+        "places": [
+          {
+            "name": "新潟",
+            "old": [
+              {
+                "name": "新",
+                "international": "NG"
+              }
+            ],
+            "transliteration": "Niigata",
+            "international": "NGN"
+          },
+          {
+            "name": "長岡",
+            "transliteration": "Nagaoka",
+            "international": "NGO"
+          },
+          {
+            "name": "上越",
+            "transliteration": "Joetsu",
+            "local": true,
+            "international": "NGJ"
+          }
+        ],
+        "transliteration": "Niigata Prefecture"
+      },
+      {
+        "name": "長野県",
+        "places": [
+          {
+            "name": "長野",
+            "old": [
+              {
+                "name": "長",
+                "international": "NN"
+              }
+            ],
+            "transliteration": "Nagano",
+            "international": "NNN"
+          },
+          {
+            "name": "松本",
+            "transliteration": "Matsumoto",
+            "international": "NNM"
+          },
+          {
+            "name": "諏訪",
+            "transliteration": "Suwa",
+            "local": true,
+            "international": "NNS"
+          }
+        ],
+        "transliteration": "Nagano Prefecture"
+      },
+      {
+        "name": "富山県",
+        "places": [
+          {
+            "name": "富山",
+            "old": [
+              {
+                "name": "富",
+                "international": "TY"
+              }
+            ],
+            "transliteration": "Toyama",
+            "international": "TYT"
+          }
+        ],
+        "transliteration": "Toyama Prefecture"
+      },
+      {
+        "name": "石川県",
+        "places": [
+          {
+            "name": "石川",
+            "old": [
+              {
+                "name": "石",
+                "international": "IK"
+              }
+            ],
+            "transliteration": "Ishikawa",
+            "international": "IKI"
+          },
+          {
+            "name": "金沢",
+            "transliteration": "Kanazawa",
+            "local": true,
+            "international": "IKK"
+          }
+        ],
+        "transliteration": "Ishikawa Prefecture"
+      },
+      {
+        "name": "福井県",
+        "places": [
+          {
+            "name": "福井",
+            "transliteration": "Fukui",
+            "international": "FI"
+          }
+        ],
+        "transliteration": "Fukui Prefecture"
+      },
+      {
+        "name": "岐阜県",
+        "places": [
+          {
+            "name": "岐阜",
+            "old": [
+              {
+                "name": "岐",
+                "international": "GF"
+              }
+            ],
+            "transliteration": "Gifu",
+            "international": "GFG"
+          },
+          {
+            "name": "飛騨",
+            "transliteration": "Hida",
+            "international": "GFH"
+          }
+        ],
+        "transliteration": "Gifu Prefecture"
+      },
+      {
+        "name": "静岡県",
+        "places": [
+          {
+            "name": "静岡",
+            "old": [
+              {
+                "name": "静",
+                "international": "SZ"
+              }
+            ],
+            "transliteration": "Shizuoka",
+            "international": "SZS"
+          },
+          {
+            "name": "浜松",
+            "transliteration": "Hamamatsu",
+            "international": "SZH"
+          },
+          {
+            "name": "沼津",
+            "transliteration": "Numazu",
+            "international": "SZN"
+          },
+          {
+            "name": "伊豆",
+            "transliteration": "Izu",
+            "local": true,
+            "international": "SZI"
+          },
+          {
+            "name": "富士山",
+            "transliteration": "Mount Fuji",
+            "local": true,
+            "international": "SZF"
+          }
+        ],
+        "transliteration": "Shizuoka Prefecture"
+      },
+      {
+        "name": "愛知県",
+        "places": [
+          {
+            "name": "名古屋",
+            "old": [
+              {
+                "name": "愛",
+                "international": "AC"
+              }
+            ],
+            "transliteration": "Nagoya",
+            "international": "ACN"
+          },
+          {
+            "name": "豊橋",
+            "transliteration": "Toyohashi",
+            "international": "ACT"
+          },
+          {
+            "name": "三河",
+            "transliteration": "Mikawa",
+            "international": "ACM"
+          },
+          {
+            "name": "岡崎",
+            "transliteration": "Okazaki",
+            "local": true,
+            "international": "ACZ"
+          },
+          {
+            "name": "豊田",
+            "transliteration": "Toyota",
+            "local": true,
+            "international": "ACY"
+          },
+          {
+            "name": "尾張小牧",
+            "transliteration": "Owari Komaki",
+            "international": "ACO"
+          },
+          {
+            "name": "一宮",
+            "transliteration": "Ichinomiya",
+            "local": true,
+            "international": "ACI"
+          },
+          {
+            "name": "春日井",
+            "transliteration": "Kasugai",
+            "local": true,
+            "international": "ACK"
+          }
+        ],
+        "transliteration": "Aichi prefecture"
+      }
+    ]
+  },
+  {
+    "name": "近畿地方",
+    "transliteration": "Kinki region",
+    "prefectures": [
+      {
+        "name": "三重県",
+        "places": [
+          {
+            "name": "三重",
+            "old": [
+              {
+                "name": "三",
+                "international": "ME"
+              }
+            ],
+            "transliteration": "Mie",
+            "international": "MEM"
+          },
+          {
+            "name": "鈴鹿",
+            "transliteration": "Suzuka",
+            "local": true,
+            "international": "MES"
+          },
+          {
+            "name": "四日市",
+            "transliteration": "Yokkaichi",
+            "local": true,
+            "international": "MEY"
+          },
+          {
+            "name": "伊勢志摩",
+            "transliteration": "Ise-Shima",
+            "local": true,
+            "international": "MEI"
+          }
+        ],
+        "transliteration": "Mie Prefecture"
+      },
+      {
+        "name": "滋賀県",
+        "places": [
+          {
+            "name": "滋賀",
+            "old": [
+              {
+                "name": "滋",
+                "international": "SI"
+              }
+            ],
+            "transliteration": "Shiga",
+            "international": "SIS"
+          }
+        ],
+        "transliteration": "Shiga Prefecture"
+      },
+      {
+        "name": "京都府",
+        "places": [
+          {
+            "name": "京都",
+            "old": [
+              {
+                "name": "京",
+                "international": "KT"
+              }
+            ],
+            "transliteration": "Kyoto",
+            "international": "KTK"
+          }
+        ],
+        "transliteration": "Kyoto Prefecture"
+      },
+      {
+        "name": "大阪府",
+        "places": [
+          {
+            "name": "なにわ",
+            "old": [
+              {
+                "name": "大",
+                "international": "OS"
+              }
+            ],
+            "transliteration": "Naniwa",
+            "international": "OSN"
+          },
+          {
+            "name": "大阪",
+            "transliteration": "Osaka",
+            "international": "OSO"
+          },
+          {
+            "name": "和泉",
+            "old": [
+              {
+                "name": "泉",
+                "international": "OSI"
+              }
+            ],
+            "transliteration": "Izumi",
+            "international": "OSZ"
+          },
+          {
+            "name": "堺",
+            "transliteration": "Sakai",
+            "local": true,
+            "international": "OSS"
+          }
+        ],
+        "transliteration": "Osaka Prefecture"
+      },
+      {
+        "name": "奈良県",
+        "places": [
+          {
+            "name": "奈良",
+            "old": [
+              {
+                "name": "奈",
+                "international": "NR"
+              }
+            ],
+            "transliteration": "Nara",
+            "international": "NRN"
+          },
+          {
+            "name": "飛鳥",
+            "transliteration": "Asuka",
+            "local": true,
+            "international": "NRA"
+          }
+        ],
+        "transliteration": "Nara Prefecture"
+      },
+      {
+        "name": "和歌山県",
+        "places": [
+          {
+            "name": "和歌山",
+            "old": [
+              {
+                "name": "和",
+                "international": "WK"
+              }
+            ],
+            "transliteration": "Wakayama",
+            "international": "WKW"
+          }
+        ],
+        "transliteration": "Wakayama Prefecture"
+      },
+      {
+        "name": "兵庫県",
+        "places": [
+          {
+            "name": "神戸",
+            "old": [
+              {
+                "name": "兵",
+                "international": "HG"
+              }
+            ],
+            "transliteration": "Kobe",
+            "international": "HGK"
+          },
+          {
+            "name": "姫路",
+            "transliteration": "Himeji",
+            "international": "HGH"
+          }
+        ],
+        "transliteration": "Hyogo Prefecture"
+      }
+    ]
+  },
+  {
+    "name": "中国地方",
+    "transliteration": "Chugoku region",
+    "prefectures": [
+      {
+        "name": "鳥取県",
+        "places": [
+          {
+            "name": "鳥取",
+            "old": [
+              {
+                "name": "鳥",
+                "international": "TT"
+              }
+            ],
+            "transliteration": "Tottori",
+            "international": "TTT"
+          }
+        ],
+        "transliteration": "Tottori Prefecture"
+      },
+      {
+        "name": "島根県",
+        "places": [
+          {
+            "name": "島根",
+            "old": [
+              {
+                "name": "嶋",
+                "international": "SM"
+              }
+            ],
+            "transliteration": "Shimane",
+            "international": "SN"
+          },
+          {
+            "name": "出雲",
+            "transliteration": "Izumo",
+            "local": true,
+            "international": "SNI"
+          }
+        ],
+        "transliteration": "Shimane Prefecture"
+      },
+      {
+        "name": "岡山県",
+        "places": [
+          {
+            "name": "岡山",
+            "old": [
+              {
+                "name": "岡",
+                "international": "OY"
+              }
+            ],
+            "transliteration": "Okayama",
+            "international": "OYO"
+          },
+          {
+            "name": "倉敷",
+            "transliteration": "Kurashiki",
+            "local": true,
+            "international": "OYK"
+          }
+        ],
+        "transliteration": "Okayama Prefecture"
+      },
+      {
+        "name": "広島県",
+        "places": [
+          {
+            "name": "広島",
+            "old": [
+              {
+                "name": "広",
+                "international": "HS"
+              }
+            ],
+            "transliteration": "Hiroshima",
+            "international": "HSH"
+          },
+          {
+            "name": "福山",
+            "transliteration": "Fukuyama",
+            "international": "HSF"
+          }
+        ],
+        "transliteration": "Hiroshima Prefecture"
+      },
+      {
+        "name": "山口県",
+        "places": [
+          {
+            "name": "山口",
+            "old": [
+              {
+                "name": "山",
+                "international": "YU"
+              }
+            ],
+            "transliteration": "Yamaguchi",
+            "international": "YUY"
+          },
+          {
+            "name": "下関",
+            "transliteration": "Shimonoseki",
+            "local": true,
+            "international": "YUS"
+          }
+        ],
+        "transliteration": "Yamaguchi Prefecture"
+      }
+    ]
+  },
+  {
+    "name": "四国地方",
+    "transliteration": "Shikoku region",
+    "prefectures": [
+      {
+        "name": "徳島県",
+        "places": [
+          {
+            "name": "徳島",
+            "old": [
+              {
+                "name": "徳",
+                "international": "TS"
+              }
+            ],
+            "transliteration": "Tokushima",
+            "international": "TST"
+          }
+        ],
+        "transliteration": "Tokushima Prefecture"
+      },
+      {
+        "name": "香川県",
+        "places": [
+          {
+            "name": "香川",
+            "old": [
+              {
+                "name": "香",
+                "international": "KA"
+              }
+            ],
+            "transliteration": "Kagawa",
+            "international": "KAK"
+          },
+          {
+            "name": "高松",
+            "transliteration": "Takamatsu",
+            "local": true,
+            "international": "KAT"
+          }
+        ],
+        "transliteration": "Kagawa Prefecture"
+      },
+      {
+        "name": "愛媛県",
+        "places": [
+          {
+            "name": "愛媛",
+            "transliteration": "Ehime",
+            "international": "EH"
+          }
+        ],
+        "transliteration": "Ehime Prefecture"
+      },
+      {
+        "name": "高知県",
+        "places": [
+          {
+            "name": "高知",
+            "old": [
+              {
+                "name": "高",
+                "international": "KC"
+              }
+            ],
+            "transliteration": "Kochi",
+            "international": "KCK"
+          }
+        ],
+        "transliteration": "Kochi Prefecture"
+      }
+    ]
+  },
+  {
+    "name": "九州・沖縄地方",
+    "transliteration": "Kyushu and Okinawa region",
+    "prefectures": [
+      {
+        "name": "福岡県",
+        "places": [
+          {
+            "name": "福岡",
+            "old": [
+              {
+                "name": "福",
+                "international": "FO"
+              }
+            ],
+            "transliteration": "Fukuoka",
+            "international": "FOF"
+          },
+          {
+            "name": "北九州",
+            "transliteration": "Kitakyushu",
+            "international": "FOK"
+          },
+          {
+            "name": "久留米",
+            "transliteration": "Kurume",
+            "international": "FOR"
+          },
+          {
+            "name": "筑豊",
+            "transliteration": "Chikuho",
+            "international": "FOC"
+          }
+        ],
+        "transliteration": "Fukuoka Prefecture"
+      },
+      {
+        "name": "佐賀県",
+        "places": [
+          {
+            "name": "佐賀",
+            "old": [
+              {
+                "name": "佐",
+                "international": "SA"
+              }
+            ],
+            "transliteration": "Saga",
+            "international": "SAS"
+          }
+        ],
+        "transliteration": "Saga Prefecture"
+      },
+      {
+        "name": "長崎県",
+        "places": [
+          {
+            "name": "長崎",
+            "transliteration": "Nagasaki",
+            "international": "NS"
+          },
+          {
+            "name": "佐世保",
+            "transliteration": "Sasebo",
+            "international": "NSS"
+          }
+        ],
+        "transliteration": "Nagasaki Prefecture"
+      },
+      {
+        "name": "熊本県",
+        "places": [
+          {
+            "name": "熊本",
+            "old": [
+              {
+                "name": "熊",
+                "international": "KU"
+              }
+            ],
+            "transliteration": "Kumamoto",
+            "international": "KUK"
+          }
+        ],
+        "transliteration": "Kumamoto Prefecture"
+      },
+      {
+        "name": "大分県",
+        "places": [
+          {
+            "name": "大分",
+            "transliteration": "Oita",
+            "international": "OT"
+          }
+        ],
+        "transliteration": "Oita Prefecture"
+      },
+      {
+        "name": "宮崎県",
+        "places": [
+          {
+            "name": "宮崎",
+            "transliteration": "Miyazaki",
+            "international": "MZ"
+          }
+        ],
+        "transliteration": "Miyazaki Prefecture"
+      },
+      {
+        "name": "鹿児島県",
+        "places": [
+          {
+            "name": "鹿児島",
+            "old": [
+              {
+                "name": "鹿",
+                "international": "KO"
+              }
+            ],
+            "transliteration": "Kagoshima",
+            "international": "KOK"
+          },
+          {
+            "name": "奄美",
+            "transliteration": "Amami",
+            "local": true,
+            "international": "KOA"
+          }
+        ],
+        "transliteration": "Kagoshima Prefecture"
+      },
+      {
+        "name": "沖縄県",
+        "places": [
+          {
+            "name": "沖縄",
+            "old": [
+              {
+                "name": "沖繩"
+              },
+              {
+                "name": "沖",
+                "international": "ON"
+              }
+            ],
+            "transliteration": "Okinawa",
+            "international": "ONO"
+          }
+        ],
+        "transliteration": "Okinawa Prefecture"
+      }
+    ]
+  }
+]
