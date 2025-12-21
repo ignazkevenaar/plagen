@@ -10,6 +10,8 @@ import LabelInput from "./settings/LabelInput.vue";
 import LabelSelect from "./settings/LabelSelect.vue";
 import LabelSwitch from "./settings/LabelSwitch.vue";
 import PlateColorButton from "./settings/PlateColorButton.vue";
+import Button from "./settings/Button.vue";
+import FadeTransition from "./FadeTransition.vue";
 
 const props = defineProps({
   modelValue: Object,
@@ -175,29 +177,31 @@ defineExpose({
       </button>
     </template>
     <template #title>
-      <template v-if="openModel">
-        Plate #{{ index }}
-        <span v-if="isPreviewing" class="opacity-60 dark:opacity-30">
-          — Previewing</span
-        >
-      </template>
-      <div v-else class="flex items-center gap-2">
-        <span>#{{ index }}</span>
-        <span
-          class="size-3 rounded-full border border-current"
-          :style="{ background: miniColor }"
-        />
-        <div>
-          {{ miniKana }}
+      <FadeTransition mode="out-in">
+        <div v-if="openModel">
+          Plate #{{ index }}
+          <span v-if="isPreviewing" class="opacity-60 dark:opacity-30">
+            — Previewing</span
+          >
         </div>
-        <div
-          class="-my-1 grid aspect-[2] items-center rounded-md border border-gray-300 px-2 font-mono text-xl font-light dark:border-gray-600"
-        >
-          {{ miniSerial }}
+        <div v-else class="flex items-center gap-2">
+          <span>#{{ index }}</span>
+          <span
+            class="size-3 rounded-full border border-current"
+            :style="{ background: miniColor }"
+          />
+          <div>
+            {{ miniKana }}
+          </div>
+          <div
+            class="-my-1 grid aspect-[2] items-center rounded-md border border-gray-300 px-2 font-mono text-xl font-light dark:border-gray-600"
+          >
+            {{ miniSerial }}
+          </div>
+          <div>{{ miniOffice }}</div>
+          <div>{{ modelValue.classification }}</div>
         </div>
-        <div>{{ miniOffice }}</div>
-        <div>{{ modelValue.classification }}</div>
-      </div>
+      </FadeTransition>
     </template>
     <template #afterTitle>
       <IconButton
