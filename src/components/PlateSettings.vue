@@ -6,6 +6,7 @@ import offices from "../data/offices.json";
 
 import CollapsablePanel from "./CollapsablePanel.vue";
 import IconButton from "./settings/IconButton.vue";
+import Label from "./settings/Label.vue";
 import LabelInput from "./settings/LabelInput.vue";
 import LabelSelect from "./settings/LabelSelect.vue";
 import LabelSwitch from "./settings/LabelSwitch.vue";
@@ -218,8 +219,7 @@ defineExpose({
       />
     </template>
 
-    <div class="block font-semibold">
-      <span class="block text-[10pt] uppercase select-none">Plate type</span>
+    <Label label="Plate type">
       <div class="mt-1 grid grid-cols-4 gap-4">
         <PlateColorButton
           :model-value="modelValue.color"
@@ -254,7 +254,7 @@ defineExpose({
           @update:model-value="applyColorChange"
         />
       </div>
-    </div>
+    </Label>
 
     <LabelInput
       :model-value="modelValue.serial"

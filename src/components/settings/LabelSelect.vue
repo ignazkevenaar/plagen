@@ -1,4 +1,6 @@
 <script setup>
+import Label from "./Label.vue";
+
 const model = defineModel();
 
 const props = defineProps({
@@ -10,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <label class="block font-semibold">
+  <Label :label="label" :sublabel="sublabel">
     <span class="block text-[10pt] uppercase select-none">{{ label }}</span>
     <span class="mb-1 block text-[10pt] font-normal opacity-60 select-none">
       {{ sublabel }}
@@ -29,5 +31,5 @@ const props = defineProps({
         {{ option.text ?? option }}
       </option>
     </select>
-  </label>
+  </Label>
 </template>
