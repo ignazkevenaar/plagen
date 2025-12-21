@@ -107,16 +107,8 @@ const computedKana = computed(() => {
           :class="{ wide: classification.length < 3 }"
         >
           <ClassificationFont
-            v-if="classification.length >= 1"
-            :modelValue="classification?.[0]"
-          />
-          <ClassificationFont
-            v-if="classification.length >= 2"
-            :modelValue="classification?.[1]"
-          />
-          <ClassificationFont
-            v-if="classification.length >= 3"
-            :modelValue="classification?.[2]"
+            v-for="character in classification"
+            :modelValue="character"
           />
         </p>
       </div>
@@ -322,12 +314,12 @@ const computedKana = computed(() => {
 
       &.three {
         transform: scaleY(1.35);
+        font-weight: 600;
         font-size: calc(34 * var(--cmm));
       }
 
       &.four {
         transform: scaleY(1.65);
-        font-weight: 500;
         font-size: calc(28 * var(--cmm));
       }
     }
