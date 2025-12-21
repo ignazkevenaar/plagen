@@ -209,7 +209,7 @@ onMounted(() => addPlate());
 
     <!-- Preview plate -->
     <div
-      class="mask-bottom md:mask-none sticky top-0 z-20 -order-1 grid items-center bg-gray-900 p-8 md:order-1 md:h-screen md:bg-transparent"
+      class="sticky top-0 z-20 -order-1 grid items-center bg-gray-50 mask-bottom p-8 md:order-1 md:h-screen md:bg-transparent md:mask-none dark:bg-gray-900"
     >
       <LicencePlate
         v-if="previewedPlate"
