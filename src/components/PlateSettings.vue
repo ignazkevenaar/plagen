@@ -153,10 +153,6 @@ const plateColors = {
   },
 };
 
-const miniColor = computed(
-  () => plateColors[props.modelValue.color].background,
-);
-
 const collapsablePanel = ref(null);
 defineExpose({
   collapse: () => collapsablePanel.value.collapse(),
@@ -189,7 +185,7 @@ defineExpose({
           <span>#{{ index }}</span>
           <span
             class="size-3 rounded-full border border-current"
-            :style="{ background: miniColor }"
+            :style="{ background: plateColors[modelValue.color].background }"
           />
           <div>
             {{ miniKana }}

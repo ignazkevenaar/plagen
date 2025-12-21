@@ -128,7 +128,7 @@ const collapseAllPlatePanels = () => {
       <TopLevelButton
         prepend-icon="download-circle-outline"
         :loading="generating"
-        class="!rounded-md"
+        class="rounded-md!"
         @click="emit('generate')"
       >
         Download PNG
