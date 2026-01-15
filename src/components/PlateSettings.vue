@@ -179,13 +179,13 @@ const locationSelectorOpen = ref(false);
     <template #title>
       <FadeTransition mode="out-in">
         <div v-if="openModel">
-          Plate #{{ index }}
+          Plate #{{ index + 1 }}
           <span v-if="isPreviewing" class="opacity-60 dark:opacity-30">
             — Previewing</span
           >
         </div>
         <div v-else class="flex items-center gap-2">
-          <span>#{{ index }}</span>
+          <span>#{{ index + 1 }}</span>
           <span
             class="size-3 rounded-full border border-current"
             :style="{ background: plateColors[modelValue.color].background }"
