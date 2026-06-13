@@ -12,9 +12,20 @@ const { currentSealCharacters } = useLocations(() => props.location);
 <template>
   <div class="seal">
     <div class="innerSeal">
-      <span :class="{ small: currentSealCharacters.length > 1 }">
-        <span v-for="c in currentSealCharacters" :key="c" v-text="c" />
-      </span>
+      <svg
+        class="sealText"
+        :class="{ small: currentSealCharacters.length > 1 }"
+      >
+        <text
+          v-for="(c, i) in currentSealCharacters"
+          :key="c"
+          x="50%"
+          :y="`${((i + 0.5) / currentSealCharacters.length) * 100}%`"
+          text-anchor="middle"
+        >
+          {{ c }}
+        </text>
+      </svg>
     </div>
   </div>
 </template>
@@ -90,9 +101,9 @@ const { currentSealCharacters } = useLocations(() => props.location);
       content: "";
     }
 
-    span {
+    .sealText {
       position: relative;
-      top: calc(-0.25 * var(--cmm));
+      top: calc(4 * var(--cmm));
       filter: drop-shadow(
           calc(0.2 * var(--cmm)) calc(0.2 * var(--cmm)) calc(0.1 * var(--cmm))
             rgba(255, 255, 255, 0.75)
@@ -101,16 +112,21 @@ const { currentSealCharacters } = useLocations(() => props.location);
           calc(-0.1 * var(--cmm)) calc(-0.1 * var(--cmm)) calc(0.1 * var(--cmm))
             rgba(0, 0, 0, 0.5)
         );
-      color: silver;
+      fill: silver;
+      width: calc(21 * var(--cmm));
+      height: calc(21 * var(--cmm));
+      overflow: visible;
+      font-weight: 400;
       font-size: calc(12 * var(--cmm));
-      line-height: 0;
+      font-family: "Kiwi Maru", serif;
 
       &.small {
-        span {
-          display: block;
+        font-size: calc(10 * var(--cmm));
+
+        text {
           transform: scaleY(0.6);
-          font-size: calc(10 * var(--cmm));
-          line-height: calc(7 * var(--cmm));
+          transform-box: fill-box;
+          transform-origin: center;
         }
       }
     }
