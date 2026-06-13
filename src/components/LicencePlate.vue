@@ -78,15 +78,15 @@ const computedKana = computed(() => {
         </div>
       </div>
       <div class="topRow emboss">
-        <p
+        <svg
           class="location"
           :class="{
             three: currentLocationName.length === 3,
             four: currentLocationName.length >= 4,
           }"
         >
-          {{ currentLocationName }}
-        </p>
+          <text x="50%" y="50%" text-anchor="middle">{{ currentLocationName }}</text>
+        </svg>
         <p
           v-if="classification"
           class="classification"
@@ -99,9 +99,9 @@ const computedKana = computed(() => {
         </p>
       </div>
       <div class="bottomRow emboss" :class="{ long: serial.length === 5 }">
-        <p class="kana" :class="{ special: isSpecialKana }">
-          <span>{{ computedKana.kana ?? computedKana }}</span>
-        </p>
+        <svg class="kana" :class="{ special: isSpecialKana }">
+          <text x="50%" y="50%" text-anchor="middle">{{ computedKana.kana ?? computedKana }}</text>
+        </svg>
         <div class="serial">
           <div
             v-if="serial.length === 5"
@@ -278,7 +278,6 @@ const computedKana = computed(() => {
     display: flex;
     position: relative;
     justify-content: center;
-    align-items: center;
     margin: auto;
   }
 
@@ -291,20 +290,30 @@ const computedKana = computed(() => {
     white-space: nowrap;
 
     .location {
-      position: relative;
-      top: calc(-3 * var(--cmm));
+      width: calc(95 * var(--cmm));
+      height: calc(40 * var(--cmm));
+      overflow: visible;
+      fill: currentColor;
       font-weight: 500;
       font-size: calc(48 * var(--cmm));
       font-family: "Kiwi Maru", serif;
       letter-spacing: calc(-3 * var(--cmm));
+      position: relative;
+      top: calc(18 * var(--cmm));
 
       &.three {
+        width: calc(98 * var(--cmm));
+        transform-box: fill-box;
+        transform-origin: center;
         transform: scaleY(1.35);
         font-weight: 600;
         font-size: calc(34 * var(--cmm));
       }
 
       &.four {
+        width: calc(105 * var(--cmm));
+        transform-box: fill-box;
+        transform-origin: center;
         transform: scaleY(1.65);
         font-size: calc(28 * var(--cmm));
       }
@@ -336,6 +345,7 @@ const computedKana = computed(() => {
     justify-content: space-between;
     inset-inline-end: calc(15 * var(--cmm));
     inset-inline-start: calc(20 * var(--cmm));
+    align-items: center;
 
     &.long {
       inset-inline-start: calc(15 * var(--cmm));
@@ -350,26 +360,19 @@ const computedKana = computed(() => {
     }
 
     .kana {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       width: calc(42 * var(--cmm));
+      height: calc(80 * var(--cmm));
+      overflow: visible;
+      fill: currentColor;
       font-weight: 700;
       font-size: calc(45 * var(--cmm));
-      line-height: 0;
       font-family: "BIZ UDPMincho", serif;
       font-optical-sizing: auto;
 
       &.special {
-        transform: scaleY(1);
         font-weight: 600;
         font-size: calc(60 * var(--cmm));
         font-family: "Lexend Giga", serif;
-      }
-
-      span {
-        position: relative;
-        inset-block-start: calc(-2 * var(--cmm));
       }
     }
 
