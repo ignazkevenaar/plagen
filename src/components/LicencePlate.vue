@@ -77,19 +77,21 @@ const computedKana = computed(() => {
           <div v-else class="hole"></div>
         </div>
       </div>
-      <div class="topRow emboss">
+      <div class="topRow">
         <svg
-          class="location"
+          class="location emboss"
           :class="{
             three: currentLocationName.length === 3,
             four: currentLocationName.length >= 4,
           }"
         >
-          <text x="50%" y="50%" text-anchor="middle">{{ currentLocationName }}</text>
+          <text x="50%" y="50%" text-anchor="middle">
+            {{ currentLocationName }}
+          </text>
         </svg>
         <p
           v-if="classification"
-          class="classification"
+          class="classification emboss"
           :class="{ wide: classification.length < 3 }"
         >
           <ClassificationFont
@@ -98,11 +100,13 @@ const computedKana = computed(() => {
           />
         </p>
       </div>
-      <div class="bottomRow emboss" :class="{ long: serial.length === 5 }">
-        <svg class="kana" :class="{ special: isSpecialKana }">
-          <text x="50%" y="50%" text-anchor="middle">{{ computedKana.kana ?? computedKana }}</text>
+      <div class="bottomRow" :class="{ long: serial.length === 5 }">
+        <svg class="kana emboss" :class="{ special: isSpecialKana }">
+          <text x="50%" y="50%" text-anchor="middle">
+            {{ computedKana.kana ?? computedKana }}
+          </text>
         </svg>
-        <div class="serial">
+        <div class="serial emboss">
           <div
             v-if="serial.length === 5"
             class="number"
@@ -139,6 +143,33 @@ const computedKana = computed(() => {
         </div>
       </div>
     </div>
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none">
+      <defs>
+        <filter id="bevelFilter" filterUnits="objectBoundingBox">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur" />
+          <feSpecularLighting
+            in="blur"
+            surfaceScale="5"
+            specularConstant="0.5"
+            specularExponent="5"
+            result="specOut"
+            lighting-color="white"
+          >
+            <fePointLight x="-100" y="-100" z="5" />
+          </feSpecularLighting>
+          <feComposite
+            in="SourceGraphic"
+            in2="specOut"
+            operator="arithmetic"
+            k1="0"
+            k2="1"
+            k3="1"
+            k4="-0.1"
+            result="litPaint"
+          />
+        </filter>
+      </defs>
+    </svg>
   </div>
 </template>
 
@@ -161,6 +192,10 @@ const computedKana = computed(() => {
   height: 100%;
   overflow: hidden;
   color: var(--plate-foreground);
+  /* html-to-image only traverses HTMLElements, not SVGElements, when detecting
+     used fonts. All plate fonts are on SVG elements, so we list them here on
+     a parent HTMLElement to ensure they get embedded in the export. */
+  font-family: "BIZ UDPMincho", "Lexend Giga", "Kiwi Maru", serif;
   user-select: none;
 
   &.private {
@@ -223,18 +258,7 @@ const computedKana = computed(() => {
   }
 
   .emboss {
-    filter: drop-shadow(
-        calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
-          var(--shadow-light)
-      )
-      drop-shadow(
-        calc(0.5 * var(--cmm)) calc(0.5 * var(--cmm)) calc(0.25 * var(--cmm))
-          var(--plate-background)
-      )
-      drop-shadow(
-        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
-          color-mix(in srgb, var(--shadow-dark), transparent 50%)
-      );
+    filter: url(#bevelFilter);
   }
 
   .reference {
@@ -278,6 +302,19 @@ const computedKana = computed(() => {
     display: flex;
     position: relative;
     justify-content: center;
+
+    filter: drop-shadow(
+        calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
+          var(--shadow-light)
+      )
+      drop-shadow(
+        calc(0.5 * var(--cmm)) calc(0.5 * var(--cmm)) calc(0.25 * var(--cmm))
+          var(--plate-background)
+      )
+      drop-shadow(
+        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
+          color-mix(in srgb, var(--shadow-dark), transparent 50%)
+      );
     margin: auto;
   }
 
@@ -290,31 +327,31 @@ const computedKana = computed(() => {
     white-space: nowrap;
 
     .location {
+      position: relative;
+      top: calc(18 * var(--cmm));
+      fill: currentColor;
       width: calc(95 * var(--cmm));
       height: calc(40 * var(--cmm));
       overflow: visible;
-      fill: currentColor;
       font-weight: 500;
       font-size: calc(48 * var(--cmm));
       font-family: "Kiwi Maru", serif;
       letter-spacing: calc(-3 * var(--cmm));
-      position: relative;
-      top: calc(18 * var(--cmm));
 
       &.three {
-        width: calc(98 * var(--cmm));
+        transform: scaleY(1.35);
         transform-box: fill-box;
         transform-origin: center;
-        transform: scaleY(1.35);
+        width: calc(98 * var(--cmm));
         font-weight: 600;
         font-size: calc(34 * var(--cmm));
       }
 
       &.four {
-        width: calc(105 * var(--cmm));
+        transform: scaleY(1.65);
         transform-box: fill-box;
         transform-origin: center;
-        transform: scaleY(1.65);
+        width: calc(105 * var(--cmm));
         font-size: calc(28 * var(--cmm));
       }
     }
@@ -343,9 +380,9 @@ const computedKana = computed(() => {
     position: absolute;
     bottom: calc(15 * var(--cmm));
     justify-content: space-between;
+    align-items: center;
     inset-inline-end: calc(15 * var(--cmm));
     inset-inline-start: calc(20 * var(--cmm));
-    align-items: center;
 
     &.long {
       inset-inline-start: calc(15 * var(--cmm));
@@ -360,16 +397,15 @@ const computedKana = computed(() => {
     }
 
     .kana {
+      position: relative;
+      top: calc(15 * var(--cmm));
+      fill: currentColor;
       width: calc(42 * var(--cmm));
       height: calc(80 * var(--cmm));
       overflow: visible;
-      fill: currentColor;
       font-weight: 700;
       font-size: calc(45 * var(--cmm));
       font-family: "BIZ UDPMincho", serif;
-      font-optical-sizing: auto;
-      position: relative;
-      top: calc(15 * var(--cmm));
 
       &.special {
         font-weight: 600;

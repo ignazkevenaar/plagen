@@ -1,6 +1,6 @@
 <script setup>
 import { nextTick, ref, computed, onMounted } from "vue";
-import { toPng } from "html-to-image";
+import { toSvg } from "html-to-image";
 import download from "downloadjs";
 import LicencePlate from "./components/LicencePlate.vue";
 import SettingsPanel from "./components/SettingsPanel.vue";
@@ -47,33 +47,58 @@ const plateWidthPx = computed(() => {
   return 0;
 });
 
+// html-to-image wraps captured HTML in <svg><foreignObject>.
+// CSS filter: url(#id) inside foreignObject resolves against the *outer* SVG document,
+// not nested SVGs inside foreignObject — so we use toSvg() and inject the filter
+// definition directly into the outer <svg> before rasterizing to canvas.
 const render = () => {
   generating.value = true;
-  nextTick(() => {
-    toPng(plateElement.value.$el.children[0])
-      .then((dataUrl) => {
-        let sizePart = `${exportSettings.value.width}${exportSettings.value.unit}`;
-        if (exportSettings.value.unit !== "px")
-          sizePart += `@${exportSettings.value.dpi}dpi`;
+  nextTick(async () => {
+    try {
+      const element = plateElement.value.$el.children[0];
+      const svgDataUrl = await toSvg(element);
 
-        const filename = [
-          "plate",
-          previewedPlate.value.serial,
-          previewedPlate.value.kana,
-          previewedPlate.value.classification,
-          previewedPlate.value.location,
-          previewedPlate.value.color,
-          sizePart,
-        ].join("-");
+      const filterEl = plateElement.value.$el.querySelector("filter");
+      const filterDef = filterEl ? new XMLSerializer().serializeToString(filterEl) : "";
 
-        download(dataUrl, `${filename}.png`);
-      })
-      .catch((error) => {
-        console.error("oops, something went wrong!", error);
-      })
-      .finally(() => {
-        generating.value = false;
+      const prefix = "data:image/svg+xml;charset=utf-8,";
+      const svgText = decodeURIComponent(svgDataUrl.slice(prefix.length));
+      const withFilter = svgText.replace(/(<svg[^>]*>)/, `$1<defs>${filterDef}</defs>`);
+
+      const img = new Image();
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = prefix + encodeURIComponent(withFilter);
       });
+
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth || element.offsetWidth;
+      canvas.height = img.naturalHeight || element.offsetHeight;
+      canvas.getContext("2d").drawImage(img, 0, 0);
+
+      const dataUrl = canvas.toDataURL("image/png");
+
+      let sizePart = `${exportSettings.value.width}${exportSettings.value.unit}`;
+      if (exportSettings.value.unit !== "px")
+        sizePart += `@${exportSettings.value.dpi}dpi`;
+
+      const filename = [
+        "plate",
+        previewedPlate.value.serial,
+        previewedPlate.value.kana,
+        previewedPlate.value.classification,
+        previewedPlate.value.location,
+        previewedPlate.value.color,
+        sizePart,
+      ].join("-");
+
+      download(dataUrl, `${filename}.png`);
+    } catch (error) {
+      console.error("oops, something went wrong!", error);
+    } finally {
+      generating.value = false;
+    }
   });
 };
 
