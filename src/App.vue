@@ -73,9 +73,10 @@ const render = () => {
       });
 
       const canvas = document.createElement("canvas");
-      canvas.width = img.naturalWidth || element.offsetWidth;
-      canvas.height = img.naturalHeight || element.offsetHeight;
-      canvas.getContext("2d").drawImage(img, 0, 0);
+      const targetWidth = Math.round(plateWidthPx.value);
+      canvas.width = targetWidth;
+      canvas.height = Math.round(targetWidth / 2);
+      canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
 
       const dataUrl = canvas.toDataURL("image/png");
 
@@ -261,7 +262,7 @@ onMounted(() => addPlate());
         :kana="previewedPlate.kana"
         :show-seal="previewedPlate.showSeal"
         :show-screws="previewedPlate.showScrews"
-        :style="{ width: `${Math.round(plateWidthPx)}px !important` }"
+        :style="{ width: `${Math.round(plateWidthPx)}px`, maxWidth: 'none' }"
       />
     </div>
     <input type="file" ref="fileInput" class="hidden" />
