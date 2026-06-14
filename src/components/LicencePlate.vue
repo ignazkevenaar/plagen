@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 import kanaData from "../data/kana.json";
 import Screw from "./Screw.vue";
 import Seal from "./Seal.vue";
@@ -48,6 +48,21 @@ const isSpecialKana = computed(() =>
   kanaData.special.find((k) => k === props.kana),
 );
 
+const plateContainer = ref(null);
+const plateWidth = ref(0);
+let resizeObserver = null;
+
+onMounted(() => {
+  resizeObserver = new ResizeObserver(([entry]) => {
+    plateWidth.value = entry.contentRect.width;
+  });
+  resizeObserver.observe(plateContainer.value);
+});
+
+onUnmounted(() => resizeObserver?.disconnect());
+
+const blurDeviation = computed(() => plateWidth.value * 0.0015);
+
 const computedKana = computed(() => {
   const flatKana = [
     ...kanaData.private,
@@ -63,7 +78,7 @@ const computedKana = computed(() => {
 </script>
 
 <template>
-  <div class="plateContainer">
+  <div ref="plateContainer" class="plateContainer">
     <div class="licencePlate" :class="color">
       <div class="ridge"><div></div></div>
       <div class="screws">
@@ -77,9 +92,9 @@ const computedKana = computed(() => {
           <div v-else class="hole"></div>
         </div>
       </div>
-      <div class="topRow emboss">
+      <div class="topRow">
         <svg
-          class="location"
+          class="location emboss"
           :class="{
             three: currentLocationName.length === 3,
             four: currentLocationName.length >= 4,
@@ -91,7 +106,7 @@ const computedKana = computed(() => {
         </svg>
         <p
           v-if="classification"
-          class="classification"
+          class="classification emboss"
           :class="{ wide: classification.length < 3 }"
         >
           <ClassificationFont
@@ -100,13 +115,13 @@ const computedKana = computed(() => {
           />
         </p>
       </div>
-      <div class="bottomRow emboss" :class="{ long: serial.length === 5 }">
-        <svg class="kana" :class="{ special: isSpecialKana }">
+      <div class="bottomRow" :class="{ long: serial.length === 5 }">
+        <svg class="kana emboss" :class="{ special: isSpecialKana }">
           <text x="50%" y="50%" text-anchor="middle">
             {{ computedKana.kana ?? computedKana }}
           </text>
         </svg>
-        <div class="serial">
+        <div class="serial emboss">
           <div
             v-if="serial.length === 5"
             class="number"
@@ -143,6 +158,37 @@ const computedKana = computed(() => {
         </div>
       </div>
     </div>
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none">
+      <defs>
+        <filter id="bevelFilter" filterUnits="objectBoundingBox">
+          <feGaussianBlur
+            in="SourceAlpha"
+            :stdDeviation="blurDeviation"
+            result="blur"
+          />
+          <feSpecularLighting
+            in="blur"
+            surfaceScale="5"
+            specularConstant="0.5"
+            specularExponent="5"
+            result="specOut"
+            lighting-color="white"
+          >
+            <fePointLight x="-100" y="-100" z="5" />
+          </feSpecularLighting>
+          <feComposite
+            in="SourceGraphic"
+            in2="specOut"
+            operator="arithmetic"
+            k1="0"
+            k2="1"
+            k3="1"
+            k4="-0.1"
+            result="litPaint"
+          />
+        </filter>
+      </defs>
+    </svg>
   </div>
 </template>
 
@@ -165,6 +211,10 @@ const computedKana = computed(() => {
   height: 100%;
   overflow: hidden;
   color: var(--plate-foreground);
+  /* html-to-image only traverses HTMLElements, not SVGElements, when detecting
+     used fonts. So we list them here on the parent HTMLElement to ensure
+     they get embedded when exporting. */
+  font-family: "BIZ UDPMincho", "Lexend Giga", "Kiwi Maru", serif;
   user-select: none;
 
   &.private {
@@ -227,18 +277,7 @@ const computedKana = computed(() => {
   }
 
   .emboss {
-    filter: drop-shadow(
-        calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
-          var(--shadow-light)
-      )
-      drop-shadow(
-        calc(0.5 * var(--cmm)) calc(0.5 * var(--cmm)) calc(0.25 * var(--cmm))
-          var(--plate-background)
-      )
-      drop-shadow(
-        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
-          color-mix(in srgb, var(--shadow-dark), transparent 50%)
-      );
+    filter: url(#bevelFilter);
   }
 
   .reference {
@@ -282,6 +321,18 @@ const computedKana = computed(() => {
     display: flex;
     position: relative;
     justify-content: center;
+    filter: drop-shadow(
+        calc(-0.5 * var(--cmm)) calc(-0.5 * var(--cmm)) calc(1 * var(--cmm))
+          var(--shadow-light)
+      )
+      drop-shadow(
+        calc(0.5 * var(--cmm)) calc(0.5 * var(--cmm)) calc(0.25 * var(--cmm))
+          var(--plate-background)
+      )
+      drop-shadow(
+        calc(1 * var(--cmm)) calc(1 * var(--cmm)) calc(1 * var(--cmm))
+          color-mix(in srgb, var(--shadow-dark), transparent 50%)
+      );
     margin: auto;
   }
 
