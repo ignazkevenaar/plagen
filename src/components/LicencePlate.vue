@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 import kanaData from "../data/kana.json";
 import Screw from "./Screw.vue";
 import Seal from "./Seal.vue";
@@ -48,6 +48,21 @@ const isSpecialKana = computed(() =>
   kanaData.special.find((k) => k === props.kana),
 );
 
+const plateContainer = ref(null);
+const plateWidth = ref(0);
+let resizeObserver = null;
+
+onMounted(() => {
+  resizeObserver = new ResizeObserver(([entry]) => {
+    plateWidth.value = entry.contentRect.width;
+  });
+  resizeObserver.observe(plateContainer.value);
+});
+
+onUnmounted(() => resizeObserver?.disconnect());
+
+const blurDeviation = computed(() => plateWidth.value * 0.0015);
+
 const computedKana = computed(() => {
   const flatKana = [
     ...kanaData.private,
@@ -63,7 +78,7 @@ const computedKana = computed(() => {
 </script>
 
 <template>
-  <div class="plateContainer">
+  <div ref="plateContainer" class="plateContainer">
     <div class="licencePlate" :class="color">
       <div class="ridge"><div></div></div>
       <div class="screws">
@@ -146,7 +161,11 @@ const computedKana = computed(() => {
     <svg style="position: absolute; width: 0; height: 0; pointer-events: none">
       <defs>
         <filter id="bevelFilter" filterUnits="objectBoundingBox">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur" />
+          <feGaussianBlur
+            in="SourceAlpha"
+            :stdDeviation="blurDeviation"
+            result="blur"
+          />
           <feSpecularLighting
             in="blur"
             surfaceScale="5"
