@@ -368,6 +368,8 @@ const computedKana = computed(() => {
       font-size: calc(45 * var(--cmm));
       font-family: "BIZ UDPMincho", serif;
       font-optical-sizing: auto;
+      position: relative;
+      top: calc(15 * var(--cmm));
 
       &.special {
         font-weight: 600;
