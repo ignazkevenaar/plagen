@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.0 - 2026-10-25
+
+### Added
+
+- Add transitions to collapsible elements
+- Add arrow to selects
+- Add new location picker
+
+### Changed
+
+- Fix background color on plate preview in light theme
+- Improve look of switches
+- Improve kana position when character is roman letter
+- Improve plate font appearance
+- Changed plate index to counter (they start at 1 now)
+- Update dependencies
+
 ## 0.5.1 - 2026-06-13
 
 ### Changed
